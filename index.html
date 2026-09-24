@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Magnum Skill Lab – Beta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1E3CA; --surface:#FBF4E8; --surface-2:#F6EBD8; --ink:#3B2116; --muted:#7A5A45; --line:#E3CFAE;
+  --navy:#3B2116; --navy-2:#553324; --navy-muted:#D8C3A5; --gold:#B8893A; --gold-ink:#86621F; --gold-soft:#F0DFBC;
+  --green:#5E8232; --green-soft:#E6ECD2; --blue:#A8435A; --blue-soft:#F3DEDF; --orange:#C27A26; --orange-soft:#F5E1C6;
+  --red:#B23A2E; --red-soft:#F6DDD5;
+  --shadow:0 1px 2px rgba(59,33,22,.06), 0 12px 26px -18px rgba(59,33,22,.38);
+  --crack:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%233B2116' stroke-opacity='.09' stroke-width='1.2'%3E%3Cpath d='M117 54 L116 34 L120 -10 L112 -28 L99 -49 L90 -67'/%3E%3Cpath d='M204 341 L205 307 L199 262 L165 238 L144 232 L120 244 L97 241 L62 231 L29 230 L15 243'/%3E%3Cpath d='M74 245 L36 267 L18 284 L9 323 L22 346 L36 369 L57 398 L89 403'/%3E%3Cpath d='M59 123 L71 88 L95 64 L122 62 L155 70 L184 82 L208 120 L228 150 L266 156'/%3E%3Cpath d='M233 358 L265 329 L289 291 L299 258 L306 235 L302 196 L291 154 L284 133'/%3E%3Cpath d='M145 100 L146 126 L152 153 L131 193 L134 216 L149 235 L170 263 L186 271 L212 281'/%3E%3Cpath d='M204 343 L219 310 L243 290 L287 289 L320 298 L348 301 L378 303 L418 282 L435 270 L454 262'/%3E%3Cpath d='M204 193 L220 154 L233 136 L237 108 L235 87 L258 47 L273 19 L267 -1 L254 -22 L255 -45'/%3E%3Cpath d='M8 342 L-30 321 L-44 299 L-51 279 L-42 248 L-18 234 L-1 205'/%3E%3C/g%3E%3C/svg%3E");
+  --hero-grad:linear-gradient(160deg,#E9D3AE 0%,#E3C89E 100%); --hero-ink:#3B2116; --hero-sub:#6B4A36; --hero-em:#8A5A2B; --hero-line:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 34' preserveAspectRatio='none'%3E%3Cpath d='M0 32 L100 6' stroke='%233B2116' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --font-d:'DM Serif Display',Georgia,'Times New Roman',serif; --font-b:'Figtree','Segoe UI',system-ui,-apple-system,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#150C08; --surface:#21140E; --surface-2:#2A1A12; --ink:#F3E9DC; --muted:#BCA692; --line:#3A271C;
+  --navy:#0E0704; --navy-2:#2E1D14; --navy-muted:#BCA692; --gold:#D6B065; --gold-ink:#E2C07A; --gold-soft:#33261A;
+  --green:#9DBB63; --green-soft:#1F2A14; --blue:#DC7A8E; --blue-soft:#3A1A22; --orange:#E3A04E; --orange-soft:#36240F;
+  --red:#EC7A66; --red-soft:#3A1A15; --shadow:none;
+  --crack:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M117 54 L116 34 L120 -10 L112 -28 L99 -49 L90 -67'/%3E%3Cpath d='M204 341 L205 307 L199 262 L165 238 L144 232 L120 244 L97 241 L62 231 L29 230 L15 243'/%3E%3Cpath d='M74 245 L36 267 L18 284 L9 323 L22 346 L36 369 L57 398 L89 403'/%3E%3Cpath d='M59 123 L71 88 L95 64 L122 62 L155 70 L184 82 L208 120 L228 150 L266 156'/%3E%3Cpath d='M233 358 L265 329 L289 291 L299 258 L306 235 L302 196 L291 154 L284 133'/%3E%3Cpath d='M145 100 L146 126 L152 153 L131 193 L134 216 L149 235 L170 263 L186 271 L212 281'/%3E%3Cpath d='M204 343 L219 310 L243 290 L287 289 L320 298 L348 301 L378 303 L418 282 L435 270 L454 262'/%3E%3Cpath d='M204 193 L220 154 L233 136 L237 108 L235 87 L258 47 L273 19 L267 -1 L254 -22 L255 -45'/%3E%3Cpath d='M8 342 L-30 321 L-44 299 L-51 279 L-42 248 L-18 234 L-1 205'/%3E%3C/g%3E%3C/svg%3E"); --hero-grad:radial-gradient(120% 140% at 100% 0%,#5E3B27 0%,#2B1810 55%,#1B0F0A 100%); --hero-ink:#FFF8EC; --hero-sub:#D9C7B2; --hero-em:#E2C07A; --hero-line:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 34' preserveAspectRatio='none'%3E%3Cpath d='M0 32 L100 6' stroke='%23C29B4C' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+}}
+:root[data-theme="dark"]{
+  --bg:#150C08; --surface:#21140E; --surface-2:#2A1A12; --ink:#F3E9DC; --muted:#BCA692; --line:#3A271C;
+  --navy:#0E0704; --navy-2:#2E1D14; --navy-muted:#BCA692; --gold:#D6B065; --gold-ink:#E2C07A; --gold-soft:#33261A;
+  --green:#9DBB63; --green-soft:#1F2A14; --blue:#DC7A8E; --blue-soft:#3A1A22; --orange:#E3A04E; --orange-soft:#36240F;
+  --red:#EC7A66; --red-soft:#3A1A15; --shadow:none;
+  --crack:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M117 54 L116 34 L120 -10 L112 -28 L99 -49 L90 -67'/%3E%3Cpath d='M204 341 L205 307 L199 262 L165 238 L144 232 L120 244 L97 241 L62 231 L29 230 L15 243'/%3E%3Cpath d='M74 245 L36 267 L18 284 L9 323 L22 346 L36 369 L57 398 L89 403'/%3E%3Cpath d='M59 123 L71 88 L95 64 L122 62 L155 70 L184 82 L208 120 L228 150 L266 156'/%3E%3Cpath d='M233 358 L265 329 L289 291 L299 258 L306 235 L302 196 L291 154 L284 133'/%3E%3Cpath d='M145 100 L146 126 L152 153 L131 193 L134 216 L149 235 L170 263 L186 271 L212 281'/%3E%3Cpath d='M204 343 L219 310 L243 290 L287 289 L320 298 L348 301 L378 303 L418 282 L435 270 L454 262'/%3E%3Cpath d='M204 193 L220 154 L233 136 L237 108 L235 87 L258 47 L273 19 L267 -1 L254 -22 L255 -45'/%3E%3Cpath d='M8 342 L-30 321 L-44 299 L-51 279 L-42 248 L-18 234 L-1 205'/%3E%3C/g%3E%3C/svg%3E"); --hero-grad:radial-gradient(120% 140% at 100% 0%,#5E3B27 0%,#2B1810 55%,#1B0F0A 100%); --hero-ink:#FFF8EC; --hero-sub:#D9C7B2; --hero-em:#E2C07A; --hero-line:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 34' preserveAspectRatio='none'%3E%3Cpath d='M0 32 L100 6' stroke='%23C29B4C' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-b);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:8px}
+h1,h2,h3{margin:0;line-height:1.2}
+h1{font-family:var(--font-d);font-weight:400;font-size:clamp(1.8rem,5vw,2.4rem);letter-spacing:0}
+h2{font-family:var(--font-b);font-size:1.05rem;font-weight:700}
+h3{font-family:var(--font-b);font-size:.98rem;font-weight:700}
+p{margin:0}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+
+.app{display:flex;min-height:100vh}
+.side{display:none}
+main{flex:1;min-width:0;width:100%;max-width:1120px;margin:0 auto;padding:14px 16px calc(92px + env(safe-area-inset-bottom,0px))}
+
+/* sidebar (desktop) */
+.brand{display:flex;align-items:center;gap:10px}
+.mark{width:36px;height:36px;border-radius:10px;background:var(--gold);display:grid;place-items:center;flex:none}
+.mark svg{width:20px;height:20px}
+.brand b{font-family:var(--font-d);font-weight:400;font-size:1.15rem;display:block;line-height:1.1}
+.brand span{font-size:.72rem;opacity:.7}
+.side nav{display:flex;flex-direction:column;gap:4px;margin-top:34px}
+.side nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--navy-muted);text-decoration:none;font-weight:600;font-size:.95rem}
+.side nav a:hover{background:var(--navy-2);color:#fff}
+.side nav a.on{background:var(--navy-2);color:#fff}
+.side nav a.on svg{color:var(--gold)}
+.side .sfoot{margin-top:auto;font-size:.78rem;color:var(--navy-muted)}
+
+/* bottom tab bar (mobile) */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--navy);display:flex;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+.tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--navy-muted);text-decoration:none;font-size:.7rem;font-weight:600;padding:6px 0}
+.tabbar a.on{color:#fff}
+.tabbar a.on svg{color:var(--gold)}
+
+@media (min-width:900px){
+  .side{display:flex;flex-direction:column;width:244px;flex:none;background:var(--navy);color:#fff;position:sticky;top:env(safe-area-inset-top,0px);height:100vh;padding:28px 16px 24px}
+  .tabbar{display:none}
+  main{padding:26px 40px 48px}
+  .top .brand{display:none}
+}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.top .brand b{color:var(--ink)}
+.top .brand span{color:var(--muted);opacity:1}
+@media (max-width:440px){.top .brand span{display:none}}
+.who{display:flex;align-items:center;gap:12px;margin-left:auto}
+.iconbtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;position:relative}
+.iconbtn .dot{position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--gold);border:2px solid var(--surface)}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.85rem;flex:none;text-decoration:none}
+.whoname{display:none;line-height:1.2}
+.whoname b{display:block;font-size:.9rem}
+.whoname span{font-size:.78rem;color:var(--muted)}
+@media (min-width:600px){.whoname{display:block}}
+
+/* cards & layout */
+.hello{margin-bottom:18px}
+.hello p{margin-top:4px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.card>h2{margin-bottom:12px}
+.stack{display:grid;gap:14px}
+.grid-home{display:grid;gap:14px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (min-width:760px){.grid-home{grid-template-columns:1.15fr 1fr}}
+.row-link{display:flex;align-items:center;gap:12px;padding:11px 2px;border-top:1px solid var(--line);text-decoration:none}
+.row-link:first-of-type{border-top:0}
+.row-link .chev{margin-left:auto;color:var(--muted)}
+.badge{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex:none;color:#fff}
+.lvl0{background:var(--orange)} .lvl1{background:var(--blue)} .lvl2{background:var(--green)}
+.t0{color:var(--orange)} .t1{color:var(--blue)} .t2{color:var(--green)}
+.row-link b{display:block;font-size:.95rem;font-weight:600}
+.row-link small{font-size:.82rem;color:var(--muted)}
+.row-link small em{font-style:normal;font-weight:600}
+
+.modstate{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--surface-2)}
+.modstate .ico{width:40px;height:40px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;flex:none}
+.bar{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--gold);border-radius:99px;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.pill{display:inline-block;font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.p-doing{background:var(--gold-soft);color:var(--gold-ink)} .p-todo{background:var(--orange-soft);color:var(--orange)}
+.p-done{background:var(--green-soft);color:var(--green)} .p-locked{background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+
+.ringwrap{display:flex;align-items:center;gap:12px;margin-top:4px}
+.ring{position:relative;width:64px;height:64px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-d);font-size:.95rem}
+.score{display:flex;align-items:center;gap:6px;font-family:var(--font-d);font-size:1.8rem;font-weight:400}
+.score svg{color:var(--gold)}
+.quote{font-size:.84rem;margin-top:6px}
+
+.next{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.next .ico{width:44px;height:44px;border-radius:12px;background:var(--gold-soft);color:var(--gold-ink);display:grid;place-items:center;flex:none}
+.next .txt{flex:1;min-width:180px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:12px 18px;font-weight:700;text-decoration:none;background:var(--navy);color:#fff;font-size:.95rem;min-height:44px}
+:root[data-theme="dark"] .btn,.btn{box-shadow:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn{background:var(--gold);color:#1A1405}}
+:root[data-theme="dark"] .btn{background:var(--gold);color:#1A1405}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.gold{background:var(--gold);color:#1A1405}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* percorso */
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:40px 1fr;gap:14px;position:relative;padding-bottom:18px}
+.tl li:not(:last-child)::before{content:"";position:absolute;left:19px;top:40px;bottom:0;width:2px;background:var(--line)}
+.tl li.done:not(:last-child)::before{background:var(--green)}
+.num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-family:var(--font-d);background:var(--surface);border:2px solid var(--line);color:var(--muted)}
+.done .num{background:var(--green);border-color:var(--green);color:#fff}
+.now .num{background:var(--navy);border-color:var(--gold);color:#fff;box-shadow:0 0 0 4px var(--gold-soft)}
+.tl h3{margin-top:8px}
+.tl p{font-size:.88rem;color:var(--muted);margin-top:2px}
+.who-does{font-size:.76rem;font-weight:700;color:var(--gold-ink);margin-top:4px}
+
+/* competenze */
+.meter{display:flex;gap:4px;margin-top:8px}
+.meter i{flex:1;height:6px;border-radius:99px;background:var(--line)}
+.meter i.lvl0{background:var(--orange)} .meter i.lvl1{background:var(--blue)} .meter i.lvl2{background:var(--green)}
+.meter.big i{height:10px}
+.skill{text-decoration:none}
+.skill:hover{border-color:var(--gold)}
+.lvlsteps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.lvlsteps li{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}
+.lvlsteps li.reached{border-color:var(--green);background:var(--green-soft)}
+.lvlsteps li.cur{box-shadow:0 0 0 2px var(--gold)}
+.lvlsteps .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.8rem;flex:none;background:var(--line);color:var(--muted)}
+.lvlsteps li.reached .n{background:var(--green);color:#fff}
+.skill{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.skills{display:grid;gap:14px}
+@media (min-width:700px){.skills{grid-template-columns:1fr 1fr}}
+
+/* moduli */
+.mods{display:grid;gap:12px}
+@media (min-width:700px){.mods{grid-template-columns:1fr 1fr}}
+.mod{display:flex;flex-direction:column;gap:10px}
+.mod .head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.mod .meta{font-size:.82rem;color:var(--muted)}
+.section-title{font-size:.95rem;color:var(--muted);font-weight:600;margin:20px 0 10px}
+
+/* player */
+.back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-weight:600;font-size:.9rem;margin-bottom:12px;min-height:40px}
+.stepper{display:flex;gap:6px;margin:16px 0 18px}
+.stepper div{flex:1}
+.stepper i{display:block;height:5px;border-radius:99px;background:var(--line)}
+.stepper .d i{background:var(--green)} .stepper .c i{background:var(--gold)}
+.stepper span{display:block;font-size:.7rem;font-weight:600;color:var(--muted);margin-top:6px;text-align:center}
+.stepper .c span{color:var(--ink)}
+@media (max-width:420px){.stepper span{font-size:0}.stepper .c span{font-size:.7rem}}
+.keypoints{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.keypoints li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem}
+.keypoints li svg{color:var(--green);flex:none;margin-top:2px}
+.video{aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg,var(--navy),var(--navy-2));display:grid;place-items:center;color:#fff;border:0;width:100%;position:relative}
+.video .play{width:62px;height:62px;border-radius:50%;background:var(--gold);color:#1A1405;display:grid;place-items:center}
+.video small{position:absolute;left:14px;bottom:12px;font-size:.8rem;opacity:.85}
+.check{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);cursor:pointer}
+.check input{width:22px;height:22px;accent-color:var(--green);flex:none;margin:1px 0 0}
+.q{margin-top:16px}
+.q legend{font-weight:600;margin-bottom:8px;padding:0}
+.q fieldset{border:0;margin:0;padding:0}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:12px;margin-top:8px;cursor:pointer;background:var(--surface-2)}
+.opt input{accent-color:var(--navy);width:18px;height:18px;margin:2px 0 0;flex:none}
+.opt.wrong{border-color:var(--red);background:var(--red-soft)}
+.opt.right{border-color:var(--green);background:var(--green-soft)}
+.tutor{display:flex;gap:12px;align-items:flex-start}
+.stars{display:flex;gap:2px;color:var(--gold)}
+.celebrate{text-align:center;padding:28px 18px}
+.celebrate .big{width:76px;height:76px;margin:0 auto 14px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center}
+.levelup{display:inline-flex;gap:8px;align-items:center;margin:14px 0 4px;padding:8px 14px;border-radius:99px;background:var(--gold-soft);font-weight:700;font-size:.9rem}
+
+/* feedback / team / profilo */
+.fb{display:grid;gap:6px}
+.fb .h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.stat{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.stat b{display:block;font-family:var(--font-d);font-size:1.35rem}
+.stat span{font-size:.76rem;color:var(--muted)}
+.prof{display:flex;gap:14px;align-items:center}
+.prof .avatar{width:58px;height:58px;font-size:1.1rem}
+.opline{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.opline:first-of-type{border-top:0}
+.mini{display:flex;gap:3px}
+.mini i{width:14px;height:6px;border-radius:99px;background:var(--line)}
+.mini i.f{background:var(--green)}
+.valid{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.valid:first-of-type{border-top:0}
+.empty{padding:14px;text-align:center;color:var(--muted);font-size:.9rem}
+
+
+/* legenda livelli (gusti Magnum) */
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--muted);margin-top:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:50%}
+/* animazioni */
+.ring .arc{transition:stroke-dasharray 1.2s cubic-bezier(.2,.8,.2,1)}
+.meter i[class*="lvl"]{transform-origin:left;animation:grow .55s cubic-bezier(.2,.8,.2,1) both}
+.meter i:nth-child(2){animation-delay:.12s}.meter i:nth-child(3){animation-delay:.24s}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.celebrate .big{animation:pop .7s cubic-bezier(.2,1.5,.4,1) both}
+.celebrate .levelup{animation:pop .7s .35s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:none;opacity:1}}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:45;overflow:hidden}
+.confetti i{position:absolute;top:-24px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(760deg)}}
+/* pulsante tour */
+.tourbtn{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:12px;border:1px solid var(--gold);background:var(--gold-soft);color:var(--gold-ink);font-weight:700;font-size:.85rem}
+/* schermata iniziale */
+.splash{position:fixed;inset:0;z-index:50;background:radial-gradient(120% 80% at 50% 0%,#4A2E1F 0%,#2B1810 55%,#1A0E09 100%);color:#F3E9DC;display:grid;place-items:center;text-align:center;padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px));transition:opacity .45s}
+.splash.hide{opacity:0;pointer-events:none}
+.splash[hidden]{display:none}
+.splash .inner{max-width:420px;width:100%}
+.splash .mark{width:68px;height:68px;border-radius:20px;margin:0 auto 22px}
+.splash .mark svg{width:36px;height:36px}
+.splash h1{font-size:clamp(2.4rem,9vw,3.2rem);color:#fff}
+.splash .gold-line{width:56px;height:2px;background:#C29B4C;margin:18px auto}
+.splash p{color:#D9C7B2}
+.splash .btns{flex-direction:column;margin-top:30px}
+.splash .btn{width:100%;min-height:52px}
+.splash .btn.ghost{color:#F3E9DC;border-color:rgba(243,233,220,.3)}
+.splash small{display:block;margin-top:22px;color:#A88F79;font-size:.78rem}
+.splash .or{margin:24px 0 10px;font-size:.84rem;color:#BCA692}
+.enter{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.entry{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 10px;border-radius:16px;border:1px solid rgba(243,233,220,.22);background:rgba(255,255,255,.04);color:#F3E9DC;text-align:center;transition:border-color .2s,background .2s}
+.entry:hover{border-color:#C29B4C;background:rgba(194,155,76,.1)}
+.entry .avatar{background:#C29B4C;color:#2B1810;width:46px;height:46px}
+.entry b{display:block;font-size:.98rem;color:#fff}
+.splash .entry small{margin-top:3px;font-size:.76rem;color:#BCA692}
+button.brand{background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+/* tour guidato */
+.tour{position:fixed;left:12px;right:12px;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:40;background:#2B1810;color:#F3E9DC;border-radius:16px;padding:16px 16px 12px;border:1px solid #C29B4C;box-shadow:0 18px 40px -12px rgba(0,0,0,.5);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .3s,transform .3s}
+.tour.show{opacity:1;transform:none;pointer-events:auto}
+@media (min-width:900px){.tour{left:auto;right:28px;bottom:28px;width:370px}}
+.tour .dots{display:flex;gap:4px;margin-bottom:12px}
+.tour .dots i{height:4px;flex:1;border-radius:99px;background:rgba(243,233,220,.18)}
+.tour .dots i.on{background:#C29B4C}
+.tour h3{color:#fff;font-size:1.02rem}
+.tour p{font-size:.9rem;color:#E4D6C4;margin-top:4px}
+.tour .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px}
+.tour .skip{background:none;border:0;color:#BCA692;font-weight:600;font-size:.85rem;padding:10px 0}
+.tour .hint{font-size:.82rem;color:#D6B065;font-weight:700}
+.tour .btn{background:#C29B4C;color:#1E120A}
+.tour-target{box-shadow:0 0 0 3px var(--gold),0 0 0 9px rgba(194,155,76,.28)!important;border-radius:14px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 3px var(--gold),0 0 0 14px rgba(194,155,76,.06)}}
+body.touring main{padding-bottom:calc(260px + env(safe-area-inset-bottom,0px))}
+body.touring .toast{top:calc(128px + env(safe-area-inset-top,0px));bottom:auto}
+@media (prefers-reduced-motion: reduce){.confetti{display:none}}
+/* barra vista demo */
+.rolebar{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:6px 6px 6px 12px;border:1px dashed var(--gold);border-radius:14px;background:var(--surface)}
+.rolebar .rl{font-size:.78rem;font-weight:700;color:var(--gold-ink);white-space:nowrap}
+.seg{display:flex;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:3px;flex:1;max-width:320px}
+.seg a{flex:1;text-align:center;padding:7px 8px;border-radius:8px;font-weight:700;font-size:.84rem;text-decoration:none;color:var(--muted)}
+.seg a.on{background:var(--navy);color:#fff}
+.rolebar .tourbtn{margin-left:auto;height:36px}
+@media (max-width:480px){.rolebar .rl{display:none}.rolebar{padding-left:6px}}
+/* supervisore */
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpis .stat{background:var(--surface);box-shadow:var(--shadow);text-align:left;padding:14px}
+.alert{display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-left:4px solid var(--gold)}
+a.opline{text-decoration:none}
+a.opline:hover b{color:var(--gold-ink)}
+.mx{overflow-x:auto}
+.mx table{border-collapse:separate;border-spacing:0;width:100%;min-width:580px;font-size:.85rem}
+.mx th,.mx td{padding:10px 6px;text-align:center;border-bottom:1px solid var(--line)}
+.mx th{font-weight:700;color:var(--muted);font-size:.74rem;vertical-align:bottom;line-height:1.25}
+.mx th:first-child,.mx td:first-child{text-align:left;position:sticky;left:0;background:var(--surface);z-index:1;white-space:nowrap}
+.dotl{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;color:#fff;font-weight:700;font-size:.72rem}
+.mx tr.cov td{font-weight:700;border-bottom:0}
+.mx .gap{color:var(--red)}
+.starpick{display:flex;gap:2px}
+.starpick button{background:none;border:0;padding:2px;color:var(--line);min-width:40px;min-height:40px}
+.starpick button.on{color:var(--gold)}
+.ta{width:100%;min-height:92px;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;font-size:.95rem;background:var(--surface-2);color:var(--ink);resize:vertical}
+.ta:focus{outline:2px solid var(--gold);outline-offset:1px}
+.foot{margin-top:26px;font-size:.78rem;color:var(--muted);text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--navy);color:#fff;padding:12px 16px;border-radius:12px;font-size:.9rem;font-weight:600;max-width:calc(100% - 32px);transition:opacity .25s,transform .25s;z-index:30;border:1px solid var(--navy-2)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (min-width:900px){.toast{bottom:28px}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+.fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ====== stile Magnum: cioccolato, oro opaco, linea diagonale ====== */
+.fade>*{animation:rise .6s cubic-bezier(.2,.8,.2,1) both}
+.fade>*:nth-child(2){animation-delay:.07s}.fade>*:nth-child(3){animation-delay:.14s}.fade>*:nth-child(4){animation-delay:.21s}.fade>*:nth-child(5){animation-delay:.28s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.fade{animation:none}
+.hello{position:relative;isolation:isolate;color:#F3E9DC;padding:26px 22px 50px;margin-bottom:14px;border-radius:22px}
+.hello::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:22px 22px 0 0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M117 54 L116 34 L120 -10 L112 -28 L99 -49 L90 -67'/%3E%3Cpath d='M204 341 L205 307 L199 262 L165 238 L144 232 L120 244 L97 241 L62 231 L29 230 L15 243'/%3E%3Cpath d='M74 245 L36 267 L18 284 L9 323 L22 346 L36 369 L57 398 L89 403'/%3E%3Cpath d='M59 123 L71 88 L95 64 L122 62 L155 70 L184 82 L208 120 L228 150 L266 156'/%3E%3Cpath d='M233 358 L265 329 L289 291 L299 258 L306 235 L302 196 L291 154 L284 133'/%3E%3Cpath d='M145 100 L146 126 L152 153 L131 193 L134 216 L149 235 L170 263 L186 271 L212 281'/%3E%3Cpath d='M204 343 L219 310 L243 290 L287 289 L320 298 L348 301 L378 303 L418 282 L435 270 L454 262'/%3E%3Cpath d='M204 193 L220 154 L233 136 L237 108 L235 87 L258 47 L273 19 L267 -1 L254 -22 L255 -45'/%3E%3Cpath d='M8 342 L-30 321 L-44 299 L-51 279 L-42 248 L-18 234 L-1 205'/%3E%3C/g%3E%3C/svg%3E"),radial-gradient(120% 140% at 100% 0%,#5E3B27 0%,#2B1810 55%,#1B0F0A 100%);clip-path:polygon(0 0,100% 0,100% calc(100% - 26px),0 100%)}
+.hello::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:34px;z-index:-1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 34' preserveAspectRatio='none'%3E%3Cpath d='M0 32 L100 6' stroke='%23C29B4C' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat;background-size:100% 100%;pointer-events:none}
+.hello h1{color:#FFF8EC;font-size:clamp(2rem,6vw,2.8rem)}
+h1 em{font-style:italic;color:#E2C07A}
+.hello p{color:#D9C7B2;margin-top:6px}
+.hello p b{color:#F3E9DC}
+.hello .legend{color:#CDB9A3}
+.hello::selection{background:#C29B4C}
+.card{border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 16px 32px -22px rgba(43,24,16,.45)}
+.card h2,.card>h2{font-family:var(--font-d);font-weight:400;font-size:1.3rem;letter-spacing:0}
+.section-title{font-family:var(--font-d);font-weight:400;font-size:1.25rem;color:var(--ink)}
+.btn{border-radius:999px;padding:12px 22px}
+.btn.gold,.tour .btn,.next .btn{background:linear-gradient(135deg,#E6C781,#C29B4C 55%,#A97E32);color:#2B1810;box-shadow:0 10px 20px -12px rgba(169,126,50,.9)}
+.btn.ghost{border-color:var(--gold)}
+.mark{border-radius:50%;background:linear-gradient(135deg,#E6C781,#C29B4C 55%,#A97E32);box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+.side{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M117 54 L116 34 L120 -10 L112 -28 L99 -49 L90 -67'/%3E%3Cpath d='M204 341 L205 307 L199 262 L165 238 L144 232 L120 244 L97 241 L62 231 L29 230 L15 243'/%3E%3Cpath d='M74 245 L36 267 L18 284 L9 323 L22 346 L36 369 L57 398 L89 403'/%3E%3Cpath d='M59 123 L71 88 L95 64 L122 62 L155 70 L184 82 L208 120 L228 150 L266 156'/%3E%3Cpath d='M233 358 L265 329 L289 291 L299 258 L306 235 L302 196 L291 154 L284 133'/%3E%3Cpath d='M145 100 L146 126 L152 153 L131 193 L134 216 L149 235 L170 263 L186 271 L212 281'/%3E%3Cpath d='M204 343 L219 310 L243 290 L287 289 L320 298 L348 301 L378 303 L418 282 L435 270 L454 262'/%3E%3Cpath d='M204 193 L220 154 L233 136 L237 108 L235 87 L258 47 L273 19 L267 -1 L254 -22 L255 -45'/%3E%3Cpath d='M8 342 L-30 321 L-44 299 L-51 279 L-42 248 L-18 234 L-1 205'/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(180deg,#2B1810,#1B0F0A)!important}
+.side nav a.on{background:rgba(194,155,76,.14);color:#F3E9DC;box-shadow:inset 3px 0 0 #C29B4C}
+.tabbar{background:#1E110B;border-top:1px solid rgba(194,155,76,.35)}
+.tabbar a{position:relative}
+.tabbar a.on{color:#E2C07A}
+.tabbar a.on::before{content:"";position:absolute;top:-7px;width:28px;height:3px;border-radius:0 0 4px 4px;background:#C29B4C}
+.next{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M117 54 L116 34 L120 -10 L112 -28 L99 -49 L90 -67'/%3E%3Cpath d='M204 341 L205 307 L199 262 L165 238 L144 232 L120 244 L97 241 L62 231 L29 230 L15 243'/%3E%3Cpath d='M74 245 L36 267 L18 284 L9 323 L22 346 L36 369 L57 398 L89 403'/%3E%3Cpath d='M59 123 L71 88 L95 64 L122 62 L155 70 L184 82 L208 120 L228 150 L266 156'/%3E%3Cpath d='M233 358 L265 329 L289 291 L299 258 L306 235 L302 196 L291 154 L284 133'/%3E%3Cpath d='M145 100 L146 126 L152 153 L131 193 L134 216 L149 235 L170 263 L186 271 L212 281'/%3E%3Cpath d='M204 343 L219 310 L243 290 L287 289 L320 298 L348 301 L378 303 L418 282 L435 270 L454 262'/%3E%3Cpath d='M204 193 L220 154 L233 136 L237 108 L235 87 L258 47 L273 19 L267 -1 L254 -22 L255 -45'/%3E%3Cpath d='M8 342 L-30 321 L-44 299 L-51 279 L-42 248 L-18 234 L-1 205'/%3E%3C/g%3E%3C/svg%3E"),radial-gradient(120% 140% at 100% 0%,#5E3B27 0%,#2B1810 55%,#1B0F0A 100%);color:#F3E9DC;border-color:#4A2E1F}
+.next h3{font-family:var(--font-d);font-weight:400;font-size:1.35rem;color:#FFF8EC}
+.next .muted,.next small{color:#CDB9A3!important}
+.next .ico{background:rgba(194,155,76,.18);color:#E2C07A}
+.card.celebrate{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M117 54 L116 34 L120 -10 L112 -28 L99 -49 L90 -67'/%3E%3Cpath d='M204 341 L205 307 L199 262 L165 238 L144 232 L120 244 L97 241 L62 231 L29 230 L15 243'/%3E%3Cpath d='M74 245 L36 267 L18 284 L9 323 L22 346 L36 369 L57 398 L89 403'/%3E%3Cpath d='M59 123 L71 88 L95 64 L122 62 L155 70 L184 82 L208 120 L228 150 L266 156'/%3E%3Cpath d='M233 358 L265 329 L289 291 L299 258 L306 235 L302 196 L291 154 L284 133'/%3E%3Cpath d='M145 100 L146 126 L152 153 L131 193 L134 216 L149 235 L170 263 L186 271 L212 281'/%3E%3Cpath d='M204 343 L219 310 L243 290 L287 289 L320 298 L348 301 L378 303 L418 282 L435 270 L454 262'/%3E%3Cpath d='M204 193 L220 154 L233 136 L237 108 L235 87 L258 47 L273 19 L267 -1 L254 -22 L255 -45'/%3E%3Cpath d='M8 342 L-30 321 L-44 299 L-51 279 L-42 248 L-18 234 L-1 205'/%3E%3C/g%3E%3C/svg%3E"),radial-gradient(120% 140% at 100% 0%,#5E3B27 0%,#2B1810 55%,#1B0F0A 100%);color:#F3E9DC;border-color:#4A2E1F}
+.card.celebrate h1{color:#FFF8EC}
+.card.celebrate .muted{color:#CDB9A3}
+.celebrate .levelup{background:linear-gradient(135deg,#E6C781,#C29B4C);color:#2B1810}
+.celebrate .big{background:linear-gradient(135deg,#E6C781,#A97E32);color:#2B1810;box-shadow:0 0 0 8px rgba(194,155,76,.15)}
+.celebrate .btn.ghost{color:#F3E9DC;border-color:rgba(243,233,220,.35)}
+.stat b,.score{color:var(--ink)}
+.rolebar{border-radius:999px;background:var(--surface)}
+.seg{border-radius:999px} .seg a{border-radius:999px}
+.avatar{background:linear-gradient(135deg,#4A2E1F,#2B1810);box-shadow:0 0 0 2px var(--gold-soft)}
+.num{font-family:var(--font-d)}
+/* splash */
+.splash{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M117 54 L116 34 L120 -10 L112 -28 L99 -49 L90 -67'/%3E%3Cpath d='M204 341 L205 307 L199 262 L165 238 L144 232 L120 244 L97 241 L62 231 L29 230 L15 243'/%3E%3Cpath d='M74 245 L36 267 L18 284 L9 323 L22 346 L36 369 L57 398 L89 403'/%3E%3Cpath d='M59 123 L71 88 L95 64 L122 62 L155 70 L184 82 L208 120 L228 150 L266 156'/%3E%3Cpath d='M233 358 L265 329 L289 291 L299 258 L306 235 L302 196 L291 154 L284 133'/%3E%3Cpath d='M145 100 L146 126 L152 153 L131 193 L134 216 L149 235 L170 263 L186 271 L212 281'/%3E%3Cpath d='M204 343 L219 310 L243 290 L287 289 L320 298 L348 301 L378 303 L418 282 L435 270 L454 262'/%3E%3Cpath d='M204 193 L220 154 L233 136 L237 108 L235 87 L258 47 L273 19 L267 -1 L254 -22 L255 -45'/%3E%3Cpath d='M8 342 L-30 321 L-44 299 L-51 279 L-42 248 L-18 234 L-1 205'/%3E%3C/g%3E%3C/svg%3E"),radial-gradient(120% 80% at 50% 0%,#5A3825 0%,#2B1810 55%,#150C08 100%)}
+.splash .drip{position:absolute;top:0;left:0;right:0;height:110px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 110' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H1200 V26 C1192 26 1175 26 1171 26 A14 14 0 0 1 1143 26 C1139 26 1123 26 1115 26 C1107 26 1100 26 1096 44 A14 14 0 0 1 1068 44 C1064 26 1057 26 1049 26 C1041 26 1015 26 1011 44 A14 14 0 0 1 983 44 C979 26 952 26 944 26 C936 26 907 26 903 44 A14 14 0 0 1 875 44 C871 26 842 26 834 26 C826 26 819 26 815 56 A14 14 0 0 1 787 56 C783 26 776 26 768 26 C760 26 735 26 731 20 A14 14 0 0 1 703 20 C699 26 674 26 666 26 C658 26 652 26 648 56 A14 14 0 0 1 620 56 C616 26 610 26 602 26 C594 26 582 26 578 12 A14 14 0 0 1 550 12 C546 26 535 26 527 26 C519 26 485 26 481 44 A14 14 0 0 1 453 44 C449 26 416 26 408 26 C400 26 391 26 387 34 A14 14 0 0 1 359 34 C355 26 346 26 338 26 C330 26 324 26 320 82 A14 14 0 0 1 292 82 C288 26 283 26 275 26 C267 26 234 26 230 56 A14 14 0 0 1 202 56 C198 26 166 26 158 26 C150 26 122 26 118 26 A14 14 0 0 1 90 26 C86 26 59 26 51 26 C43 26 43 26 39 34 A14 14 0 0 1 11 34 C7 26 8 26 0 26 Z' fill='%233B2116'/%3E%3C/svg%3E") no-repeat top/100% 100%;pointer-events:none}
+.splash .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.28em;color:#C29B4C;margin-bottom:10px}
+.splash h1{background:linear-gradient(100deg,#FFF8EC 25%,#F1D48F 42%,#FFF8EC 58%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{from{background-position:120% 0}to{background-position:-140% 0}}
+.splash .tagline{font-family:var(--font-d);font-style:italic;font-size:1.3rem;color:#E2C07A;margin-top:4px}
+.splash .inner{position:relative;z-index:1}
+.splash .mark{box-shadow:0 0 0 6px rgba(194,155,76,.14),0 18px 40px -10px rgba(0,0,0,.6)}
+.entry{border-radius:20px;background:rgba(255,248,236,.05);backdrop-filter:blur(2px)}
+.entry .avatar{background:linear-gradient(135deg,#E6C781,#A97E32);color:#2B1810;box-shadow:none}
+@media (prefers-reduced-motion: reduce){.splash h1{animation:none;color:#FFF8EC;background:none}}
+
+/* ====== crema cotta con elementi marroni ====== */
+.hello{color:var(--hero-ink)}
+.hello::before{background:var(--crack),var(--hero-grad)}
+.hello::after{background:var(--hero-line) no-repeat;background-size:100% 100%}
+.hello h1{color:var(--hero-ink)}
+.hello h1 em{color:var(--hero-em)}
+.hello p{color:var(--hero-sub)} .hello p b{color:var(--hero-ink)}
+.hello .legend{color:var(--hero-sub)}
+.card{background:var(--surface)}
+.btn.gold{background:#3B2116;color:#F6EAD4;box-shadow:0 10px 20px -12px rgba(59,33,22,.8)}
+.next .btn,.tour .btn,.celebrate .btn:not(.ghost){background:#F6EAD4;color:#3B2116;box-shadow:none}
+.next{background:var(--crack),linear-gradient(150deg,#553324,#3B2116 60%,#2E1A11)}
+.card.celebrate{background:var(--crack),linear-gradient(150deg,#553324,#3B2116 60%,#2E1A11)}
+.tabbar{background:#3B2116;border-top:1px solid rgba(184,137,58,.4)}
+.side{background:var(--crack),linear-gradient(180deg,#3B2116,#2B1810)!important}
+.tour{background:#3B2116}
+.tourbtn{background:var(--surface);border-color:var(--ink);color:var(--ink)}
+.rolebar{border-color:var(--ink);border-style:solid;border-width:1px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.gold{background:linear-gradient(135deg,#E6C781,#C29B4C 55%,#A97E32);color:#2B1810}}
+:root[data-theme="dark"] .btn.gold{background:linear-gradient(135deg,#E6C781,#C29B4C 55%,#A97E32);color:#2B1810}
+/* schermata iniziale crema cotta */
+.splash{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%233B2116' stroke-opacity='.09' stroke-width='1.2'%3E%3Cpath d='M117 54 L116 34 L120 -10 L112 -28 L99 -49 L90 -67'/%3E%3Cpath d='M204 341 L205 307 L199 262 L165 238 L144 232 L120 244 L97 241 L62 231 L29 230 L15 243'/%3E%3Cpath d='M74 245 L36 267 L18 284 L9 323 L22 346 L36 369 L57 398 L89 403'/%3E%3Cpath d='M59 123 L71 88 L95 64 L122 62 L155 70 L184 82 L208 120 L228 150 L266 156'/%3E%3Cpath d='M233 358 L265 329 L289 291 L299 258 L306 235 L302 196 L291 154 L284 133'/%3E%3Cpath d='M145 100 L146 126 L152 153 L131 193 L134 216 L149 235 L170 263 L186 271 L212 281'/%3E%3Cpath d='M204 343 L219 310 L243 290 L287 289 L320 298 L348 301 L378 303 L418 282 L435 270 L454 262'/%3E%3Cpath d='M204 193 L220 154 L233 136 L237 108 L235 87 L258 47 L273 19 L267 -1 L254 -22 L255 -45'/%3E%3Cpath d='M8 342 L-30 321 L-44 299 L-51 279 L-42 248 L-18 234 L-1 205'/%3E%3C/g%3E%3C/svg%3E"),radial-gradient(120% 80% at 50% 0%,#F7ECD8 0%,#F0DFC2 55%,#E6CFA8 100%);color:#3B2116}
+.splash .drip{height:130px}
+.splash h1{background:linear-gradient(100deg,#3B2116 30%,#B8893A 45%,#3B2116 60%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.splash .eyebrow{color:#86621F}
+.splash .tagline{color:#8A5A2B}
+.splash .gold-line{background:#3B2116}
+.splash p{color:#6B4A36}
+.splash .or{color:#7A5A45}
+.splash small{color:#8F7866}
+.splash .btn.gold{background:#3B2116;color:#F6EAD4}
+.entry{background:#FBF4E8;border-color:#DCC39C;color:#3B2116}
+.entry:hover{border-color:#3B2116;background:#FFF9EF}
+.entry b{color:#3B2116}
+.splash .entry small{color:#7A5A45}
+.entry .avatar{background:#3B2116;color:#F1E3CA}
+@media (prefers-reduced-motion: reduce){.splash h1{color:#3B2116}}
+</style>
+</head>
+<body>
+<div class="splash" id="splash" role="dialog" aria-modal="true" aria-labelledby="splash-t">
+  <div class="drip" aria-hidden="true"></div>
+  <div class="inner"><div class="mark" aria-hidden="true"></div><div class="eyebrow">TALENT FACTORY 2030</div><h1 id="splash-t">Magnum Skill Lab</h1><p class="tagline">Il piacere di crescere, un livello alla volta.</p><div class="gold-line"></div>
+  <p>La demo interattiva del percorso di crescita per il personale operaio.</p>
+  <div class="btns"><button class="btn gold" data-action="tour-start" id="splashTour">Avvia la demo guidata (2 minuti)</button></div>
+  <p class="or">oppure entra direttamente in una delle due aree</p>
+  <div class="enter">
+   <button class="entry" data-action="enter" data-to="home"><span class="avatar">MR</span><span><b>Area operatore</b><small>Marco R., Operatore di linea</small></span></button>
+   <button class="entry" data-action="enter" data-to="s-home"><span class="avatar">LB</span><span><b>Area supervisore</b><small>Luca B., Supervisore di linea</small></span></button>
+  </div>
+  <small>Prototipo con dati di esempio.</small></div>
+</div>
+<div class="app">
+  <aside class="side" aria-label="Menu principale">
+    <button class="brand" data-action="splash" aria-label="Torna alla schermata iniziale"><div class="mark" aria-hidden="true"></div><div><b>Skill Lab</b><span>Magnum Ice Cream Company</span></div></button>
+    <nav id="sidenav"></nav>
+    <p class="sfoot">Talent Factory 2030<br>Prototipo in beta</p>
+  </aside>
+  <main>
+    <div class="rolebar"><span class="rl">Vista demo</span><div class="seg" role="group" aria-label="Scegli la vista"><a href="#home" id="roleOp">Operatore</a><a href="#s-home" id="roleSup">Supervisore</a></div><button class="tourbtn" data-action="tour-start" id="tourbtn"></button></div>
+    <div class="top">
+      <button class="brand" data-action="splash" aria-label="Torna alla schermata iniziale"><div class="mark" aria-hidden="true"></div><div><b>Skill Lab</b><span>Magnum Ice Cream Company</span></div></button>
+      <div class="who">
+        <button class="iconbtn" data-action="notif" aria-label="Notifiche"><span id="bell"></span><span class="dot"></span></button>
+        <a class="avatar" id="avatar" href="#profilo">MR</a>
+        <div class="whoname" id="whoname"></div>
+      </div>
+    </div>
+    <div id="view"></div>
+    <p class="foot">Prototipo dimostrativo con dati di esempio. Project work Magnum Talent Factory 2030.</p>
+  </main>
+</div>
+<nav class="tabbar" id="tabbar" aria-label="Menu"></nav>
+<div class="tour" id="tour" role="dialog" aria-live="polite" aria-label="Tour guidato"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- icone ---------- */
+const P={
+ home:'M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10',
+ route:'M6 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM8 19h8a3.5 3.5 0 0 0 0-7H8a3.5 3.5 0 0 1 0-7h8',
+ target:'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 12m-5 0a5 5 0 1 0 10 0a5 5 0 1 0-10 0M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0',
+ book:'M4 19V5a2 2 0 0 1 2-2h14v14H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h14',
+ chat:'M4 4h16v12H9l-5 4zM8 9h8M8 12h5',
+ user:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+ shield:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4',
+ cpu:'M7 7h10v10H7zM10 10h4v4h-4zM10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4',
+ wrench:'M14.7 6.3a4 4 0 0 0 5 5l-9.4 9.4a2.1 2.1 0 0 1-3-3l9.4-9.4a4 4 0 0 0-2-2zM14.7 6.3L17 4a4 4 0 0 1 3 3l-2.3 2.3',
+ bulb:'M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z',
+ drop:'M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z',
+ users:'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a7 7 0 0 1 14 0M16 3.5a4 4 0 0 1 0 7M18 14a6 6 0 0 1 4 7',
+ check:'M5 12l5 5 9-10',
+ lock:'M6 11h12v10H6zM8 11V7a4 4 0 0 1 8 0v4',
+ chev:'M9 6l6 6-6 6',
+ left:'M15 6l-6 6 6 6',
+ bell:'M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4',
+ play:'M8 5l11 7-11 7z',
+ levels:'M5 20v-5M12 20V10M19 20V4',
+ clock:'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 7v5l3 2',
+ bench:'M3 10h18M5 10v9M19 10v9M7 10V6h10v4'
+};
+const ic=(n,s=20,fill=false)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="${fill?'currentColor':'none'}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${P[n]}"/></svg>`;
+const star=(s=18)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2 6.4 20.2l1.1-6.3L2.9 9.5l6.3-.9z"/></svg>`;
+document.querySelectorAll('.mark').forEach(m=>m.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="#2B1810" stroke-width="2.6" stroke-linecap="round"><path d="${P.levels}"/></svg>`);
+document.getElementById('bell').innerHTML=ic('bell');
+document.getElementById('tourbtn').innerHTML=ic('play',14,true)+'Tour';
+
+/* ---------- dati ---------- */
+const LEGEND=`<div class="legend"><span><i class="lvl0"></i>Caramello: Base</span><span><i class="lvl1"></i>Lampone: Intermedio</span><span><i class="lvl2"></i>Pistacchio: Avanzato</span></div>`;
+const LEVELS=['Base','Intermedio','Avanzato'];
+const SKILLS=[
+ {id:'sic',name:'Sicurezza e qualità',icon:'shield',desc:'Procedure di sicurezza, DPI e controlli qualità sul prodotto finito.',
+  lv:['Usi i DPI e segui le procedure di sicurezza della postazione.','Esegui in autonomia i controlli qualità previsti dal turno.','Riconosci i rischi prima che diventino problemi e guidi i colleghi nuovi.']},
+ {id:'aut',name:'Automazione di linea',icon:'cpu',desc:'Avvio, arresto e monitoraggio delle macchine automatiche.',
+  lv:['Avvii e arresti la macchina con il tecnico accanto.','Gestisci da solo avvio, arresto e allarmi più comuni.','Gestisci il cambio formato e ottimizzi i parametri di linea.']},
+ {id:'man',name:'Manutenzione di base',icon:'wrench',desc:'Piccoli interventi, pulizia tecnica e sostituzioni semplici.',
+  lv:['Esegui la pulizia tecnica e riconosci i componenti usurati.','Fai piccoli interventi in sicurezza, con blocco energia.','Programmi la manutenzione ordinaria e affianchi i colleghi.']},
+ {id:'pro',name:'Problem solving',icon:'bulb',desc:'Riconoscere un\'anomalia, capirne la causa e proporre una soluzione.',
+  lv:['Riconosci un\'anomalia e la segnali subito.','Individui la causa più probabile e proponi una soluzione.','Guidi l\'analisi dei problemi ricorrenti e proponi miglioramenti.']},
+ {id:'igi',name:'Igiene alimentare',icon:'drop',desc:'Regole HACCP, sanificazione e gestione degli allergeni.',
+  lv:['Conosci e applichi le regole igieniche di base.','Esegui e registri la sanificazione e i controlli HACCP.','Gestisci allergeni e cambi prodotto senza rischi di contaminazione.']},
+ {id:'team',name:'Lavoro in squadra',icon:'users',desc:'Passaggio di consegne tra turni e comunicazione con il team.',
+  lv:['Comunichi con il team durante il turno.','Fai un passaggio di consegne completo al turno successivo.','Coordini il lavoro di squadra nei momenti critici.']}
+];
+const PRIORITY=['sic','aut','man','pro'];
+const STEPS=['Spiegare','Dimostrare','Provare','Feedback','Verificare'];
+const PHASES=[
+ ['Mappare i bisogni','Analisi delle competenze attuali e dei gap individuali e di ruolo.','HR e responsabile di linea'],
+ ['Progettare il modulo','Definizione di contenuti, obiettivi e modalità di apprendimento.','HR e tecnici'],
+ ['Spiegare','Introduzione dei concetti chiave in modo semplice e chiaro.','Tu, sull\'app'],
+ ['Dimostrare','Esempi pratici, video e casi reali del contesto produttivo.','Tu, sull\'app'],
+ ['Provare','Applicazione pratica al banco o in linea, con affiancamento.','Tu, con il tecnico'],
+ ['Ricevere feedback','Indicazioni da parte dei tutor e dei responsabili di linea.','Tutor e supervisore'],
+ ['Verificare','Misurazione dei risultati e aggiornamento della Skill Board.','Tu, sull\'app'],
+ ['Scegliere il prossimo modulo','In base ai progressi, agli obiettivi e alle esigenze di ruolo.','Tu e il supervisore']
+];
+const MODULES=[
+ {id:'banco',title:'Basi tecniche sul banco',skill:'aut',mins:25,icon:'bench',
+  intro:'Prima di lavorare in linea impari a riconoscere i componenti principali di una macchina confezionatrice e a leggerne lo stato, in un ambiente sicuro: il banco didattico.',
+  points:['I tre stati della macchina: pronta, in marcia, in allarme','Dove si trovano i pulsanti di arresto di emergenza','Come si legge il pannello operatore'],
+  demo:'Caso reale, Linea 3: la macchina segnala "film esaurito". Il tecnico mostra come riconoscere l\'allarme sul pannello, mettere in sicurezza e caricare la nuova bobina.',
+  tasks:['Individuo sul banco tutti gli arresti di emergenza','Porto la macchina da "pronta" a "in marcia" e poi in arresto','Leggo e annoto tre allarmi dal pannello operatore'],
+  fb:{from:'Sara M.',role:'Tecnico di riferimento',stars:5,text:'Sequenza di avvio corretta e sicura. Ottima attenzione agli arresti di emergenza.'},
+  quiz:[{q:'La macchina è in allarme. Qual è la prima cosa da fare?',o:['Riavviarla subito','Metterla in sicurezza e leggere il messaggio','Chiamare il turno successivo'],a:1},
+        {q:'Dove leggi lo stato della macchina?',o:['Sul pannello operatore','Sul registro di turno','Sull\'etichetta del prodotto'],a:0}]},
+ {id:'intervento',title:'Primo intervento guidato in linea',skill:'man',mins:40,icon:'wrench',
+  intro:'Metti in pratica ciò che hai imparato sul banco, questa volta in linea, affiancato dal tuo tecnico di riferimento.',
+  points:['Blocco e segnalazione della macchina prima dell\'intervento','Uso corretto degli attrezzi del kit di linea','Verifica finale e ripartenza controllata'],
+  demo:'Video: sostituzione di una lama di taglio sulla confezionatrice. Il tecnico mostra ogni passaggio, dal blocco energia alla prova di ripartenza.',
+  tasks:['Eseguo il blocco energia e appongo il cartellino','Sostituisco il componente con il tecnico accanto','Faccio la prova di ripartenza e registro l\'intervento'],
+  fb:{from:'Luca B.',role:'Supervisore di linea',stars:5,text:'Intervento pulito e nei tempi. Sei pronto per lavorare con più autonomia.'},
+  quiz:[{q:'Prima di un intervento in linea devi sempre…',o:['Avvisare solo a voce','Eseguire il blocco energia e mettere il cartellino','Rallentare la macchina'],a:1},
+        {q:'Dopo l\'intervento, cosa chiude il lavoro?',o:['La prova di ripartenza e la registrazione','La pausa','Il cambio turno'],a:0}]},
+ {id:'parametri',title:'Lettura parametri macchina',skill:'pro',mins:30,icon:'levels',
+  intro:'Impari a leggere temperatura, velocità e pressione e a capire quando un valore fuori soglia richiede un intervento.',
+  points:['Le soglie di ogni parametro sono indicate sul pannello','Un valore fuori soglia va segnalato subito','Le cause più comuni di scostamento'],
+  demo:'Caso reale: la temperatura del tunnel di raffreddamento sale di 3 gradi. Vediamo come è stata individuata la causa in 10 minuti.',
+  tasks:['Leggo i parametri di inizio turno','Riconosco un valore fuori soglia simulato','Compilo la segnalazione per il supervisore'],
+  fb:{from:'Sara M.',role:'Tecnico di riferimento',stars:4,text:'Buona lettura dei valori. Da velocizzare la compilazione della segnalazione.'},
+  quiz:[{q:'Un parametro è fuori soglia. Cosa fai?',o:['Aspetto fine turno','Lo segnalo subito','Lo correggo a caso'],a:1},
+        {q:'Dove trovi le soglie di riferimento?',o:['Sul pannello operatore','Nel magazzino','Non esistono'],a:0}]},
+ {id:'haccp',title:'Sicurezza e qualità: HACCP',skill:'igi',mins:35,icon:'shield',
+  intro:'I principi HACCP applicati alla tua linea.',points:['Punti critici di controllo','Gestione allergeni','Sanificazione'],
+  demo:'Video: sanificazione di fine turno.',tasks:['Controllo i punti critici','Registro la sanificazione','Verifico gli allergeni'],
+  fb:{from:'Luca B.',role:'Supervisore di linea',stars:5,text:'Controlli sempre puntuali.'},
+  quiz:[{q:'HACCP serve a…',o:['Garantire la sicurezza alimentare','Aumentare la velocità','Nulla'],a:0},{q:'La sanificazione si registra?',o:['Sì','No','Solo il lunedì'],a:0}]},
+ {id:'formato',title:'Cambio formato della linea',skill:'aut',mins:50,icon:'cpu',req:'intervento',
+  intro:'Passaggio da un formato di prodotto all\'altro: regolazioni, prove e ripartenza.',points:['Preparazione','Regolazioni','Prova'],
+  demo:'Video: cambio formato da stecco a coppetta.',tasks:['Preparo il kit di cambio','Eseguo le regolazioni','Faccio la prova campione'],
+  fb:{from:'Luca B.',role:'Supervisore di linea',stars:5,text:'Cambio formato eseguito correttamente.'},
+  quiz:[{q:'Prima della ripartenza serve…',o:['Una prova campione','Niente','Un nuovo turno'],a:0},{q:'Il kit di cambio si prepara…',o:['Prima di fermare la linea','Dopo','Mai'],a:0}]}
+];
+const OPS=[
+ {id:'marco',name:'Marco R.',role:'Operatore di linea'},
+ {id:'giulia',name:'Giulia F.',role:'Operatrice polivalente',aut:4,mod:'Cambio formato della linea',lvl:{sic:2,aut:2,man:1,pro:2,igi:2,team:2}},
+ {id:'elena',name:'Elena P.',role:'Operatrice di linea',aut:3,mod:'Lettura parametri macchina',lvl:{sic:1,aut:1,man:1,pro:1,igi:2,team:2}},
+ {id:'antonio',name:'Antonio D.',role:'Operatore di linea',aut:2,mod:'Sicurezza e qualità: HACCP',lvl:{sic:1,aut:1,man:0,pro:0,igi:0,team:1}},
+ {id:'davide',name:'Davide C.',role:'Operatore in inserimento',aut:1,mod:'Basi tecniche sul banco',lvl:{sic:0,aut:0,man:0,pro:0,igi:1,team:1}}
+];
+
+/* ---------- stato (salvato solo su questo dispositivo) ---------- */
+const KEY='msl-demo-v2';
+function fresh(){return{v:2,
+ steps:{banco:3,intervento:0,parametri:0,haccp:5,formato:0},
+ lvl:{sic:2,aut:1,man:0,pro:1,igi:2,team:1},
+ feedback:[
+  {from:'Luca B.',role:'Supervisore di linea',stars:5,text:'Ottima precisione e grande impegno nel lavoro in autonomia.',date:'12 set'},
+  {from:'Sara M.',role:'Tecnico di riferimento',stars:4,text:'Buona gestione del cambio turno. Da consolidare la lettura degli allarmi.',date:'3 set'},
+  {from:'Luca B.',role:'Supervisore di linea',stars:5,text:'Controlli qualità sempre puntuali, anche nei picchi di produzione.',date:'26 ago'}],
+ valid:[{op:'giulia',skill:'aut',lvl:2,src:'Cambio formato della linea'},{op:'elena',skill:'pro',lvl:1,src:'Lettura parametri macchina'}],
+ validated:[],fbRequest:false,assigned:null,sent:0}}
+let S;
+try{S=JSON.parse(localStorage.getItem(KEY));if(!S||S.v!==2)S=fresh()}catch(e){S=fresh()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+const M=id=>MODULES.find(m=>m.id===id);
+const SK=id=>SKILLS.find(s=>s.id===id);
+function status(m){const k=S.steps[m.id];if(k>=5)return'done';if(m.req&&S.steps[m.req]<5)return'locked';return k>0?'doing':'todo'}
+const pct=m=>Math.min(100,S.steps[m.id]*20);
+const current=()=>MODULES.find(m=>status(m)==='doing')||MODULES.find(m=>status(m)==='todo');
+const suggested=()=>{const c=current();return MODULES.find(m=>status(m)==='todo'&&m!==c)||MODULES.find(m=>status(m)==='todo')};
+const autonomy=()=>3+((S.steps.banco>=5&&S.steps.intervento>=5)?1:0);
+const AUT_LABEL=['','Iniziale','In crescita','Buono','Ottimo'];
+const avg=()=>(S.feedback.reduce((a,f)=>a+f.stars,0)/S.feedback.length).toFixed(1).replace('.',',');
+const PILL={doing:['In corso','p-doing'],todo:['Da iniziare','p-todo'],done:['Completato','p-done'],locked:['Bloccato','p-locked']};
+const pill=s=>`<span class="pill ${PILL[s][1]}">${PILL[s][0]}</span>`;
+const OP=id=>OPS.find(o=>o.id===id);
+const opLvl=o=>o.id==='marco'?S.lvl:o.lvl;
+const opAut=o=>o.id==='marco'?autonomy():o.aut;
+const opMod=o=>{if(o.id!=='marco')return o.mod;const c=current();return c?c.title:'Nessun modulo in corso'};
+const initials=n=>n.split(' ').map(x=>x[0]).join('');
+const mini=a=>`<div class="mini">${[1,2,3,4].map(i=>`<i class="${i<=a?'f':''}"></i>`).join('')}</div>`;
+let starV=5;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- navigazione ---------- */
+const NAV=[['home','Home','home'],['percorso','Il mio percorso','route'],['competenze','Competenze','target'],['feedback','Feedback','chat'],['moduli','Moduli','book'],['profilo','Profilo','user']];
+const TABS=[['home','Home','home'],['percorso','Percorso','route'],['moduli','Moduli','book'],['feedback','Feedback','chat'],['profilo','Profilo','user']];
+const SUPSIDE=[['s-home','La mia squadra','users'],['s-matrix','Matrice competenze','target'],['s-valid','Convalide','check'],['s-profilo','Profilo','user']];
+const SUPTABS=[['s-home','Squadra','users'],['s-matrix','Matrice','target'],['s-valid','Convalide','check'],['s-profilo','Profilo','user']];
+let navRole=null;
+function setNav(r){
+ const sup=r.startsWith('s-'),role=sup?'sup':'op';
+ if(navRole!==role){navRole=role;
+  document.getElementById('sidenav').innerHTML=(sup?SUPSIDE:NAV).map(([r,l,i])=>`<a href="#${r}" data-r="${r}">${ic(i)}${l}</a>`).join('');
+  document.getElementById('tabbar').innerHTML=(sup?SUPTABS:TABS).map(([r,l,i])=>`<a href="#${r}" data-r="${r}">${ic(i,22)}${l}</a>`).join('');
+  const av=document.getElementById('avatar');av.textContent=sup?'LB':'MR';av.href=sup?'#s-profilo':'#profilo';av.setAttribute('aria-label',sup?'Profilo di Luca B.':'Profilo di Marco R.');
+  document.getElementById('whoname').innerHTML=sup?'<b>Luca B.</b><span>Supervisore di linea</span>':'<b>Marco R.</b><span>Operatore di linea</span>';
+  document.getElementById('roleOp').classList.toggle('on',!sup);document.getElementById('roleSup').classList.toggle('on',sup);
+ }
+ const map={modulo:'moduli','s-op':'s-home'};const k=map[r]||r;
+ document.querySelectorAll('[data-r]').forEach(a=>{const on=a.dataset.r===k;a.classList.toggle('on',on);on?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')})}
+
+/* ---------- viste ---------- */
+function skillRow(id){const s=SK(id),l=S.lvl[id];
+ return `<a class="row-link" href="#competenze/${id}"><span class="badge lvl${l}">${ic(s.icon,18)}</span><span><b>${s.name}</b><small>Livello: <em class="t${l}">${LEVELS[l]}</em></small></span><span class="chev">${ic('chev',18)}</span></a>`}
+
+function ring(n){const c=2*Math.PI*26,f=n/4;
+ return `<div class="ring"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="var(--line)" stroke-width="7"/><circle class="arc" cx="32" cy="32" r="26" fill="none" stroke="var(--gold)" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 ${c}" data-dash="${c*f} ${c}"/></svg><b>${n}/4</b></div>`}
+
+function home(){
+ const c=current(),asg=S.assigned&&status(M(S.assigned))==='todo'?M(S.assigned):null,sg=asg||suggested(),a=autonomy(),f=S.feedback[0];
+ const stato=c&&status(c)==='doing'
+  ?`<div class="modstate"><span class="ico">${ic(c.icon)}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><b style="font-size:.92rem">${c.title}</b>${pill('doing')}</div><div class="bar"><i style="width:0" data-w="${pct(c)}"></i></div><small class="muted">${pct(c)}% completato, fase: ${STEPS[Math.min(S.steps[c.id],4)]}</small></div></div>
+    <div class="btns" style="margin-top:12px"><a class="btn" href="#modulo/${c.id}">Continua il modulo</a></div>`
+  :`<p class="muted small">Nessun modulo in corso.</p>${c?`<div class="btns" style="margin-top:12px"><a class="btn" href="#modulo/${c.id}">Inizia ${esc(c.title)}</a></div>`:''}`;
+ return `<div class="fade">
+ <div class="hello"><h1>Ciao <em>Marco</em>,</h1><p>il tuo percorso di crescita continua!</p></div>
+ <div class="grid-home">
+  <section class="card"><h2>Le tue competenze prioritarie</h2>${PRIORITY.map(skillRow).join('')}${LEGEND}</section>
+  <div class="stack">
+   <section class="card"><h2>Stato del modulo</h2>${stato}</section>
+   <div class="pair">
+    <section class="card"><h2>Il tuo livello di autonomia</h2><div class="ringwrap">${ring(a)}<b>${AUT_LABEL[a]}</b></div><p class="small muted" style="margin-top:8px">${a<4?'Stai raggiungendo l\'autonomia prevista dal percorso.':'Hai raggiunto l\'autonomia prevista dal percorso.'}</p></section>
+    <a class="card" href="#feedback" style="text-decoration:none"><h2>Feedback ricevuto</h2><div class="score">${star(22)}${avg()}<span class="muted" style="font-size:.9rem;font-weight:500">/5</span></div><p class="quote">“${esc(f.text)}”</p><p class="small muted" style="margin-top:4px">${esc(f.role)}</p></a>
+   </div>
+  </div>
+ </div>
+ <section class="card next" style="margin-top:14px">
+  ${sg?`<span class="ico">${ic('bulb',22)}</span><div class="txt"><small class="muted">${asg?'Assegnato da Luca B., il tuo supervisore':'Prossimo modulo consigliato'}</small><h3>${sg.title}</h3><p class="small muted">${esc(sg.intro)}</p></div><a class="btn" href="#modulo/${sg.id}">Vai al modulo</a>`
+  :`<span class="ico">${ic('check',22)}</span><div class="txt"><h3>Hai completato tutti i moduli disponibili</h3><p class="small muted">Il tuo supervisore sceglierà con te i prossimi obiettivi.</p></div>`}
+ </section></div>`}
+
+function percorso(){
+ const c=current(); const k=c?S.steps[c.id]:5;
+ const items=PHASES.map((p,i)=>{let st='';
+  if(i<2)st='done'; else if(i<7){const s=i-2;st=s<k?'done':(s===k?'now':'')} else st=k>=5?'now':'';
+  return `<li class="${st}"><span class="num">${st==='done'?ic('check',18):i+1}</span><div><h3>${p[0]}</h3><p>${p[1]}</p><div class="who-does">${p[2]}${st==='now'?', sei qui':''}</div></div></li>`}).join('');
+ return `<div class="fade"><div class="hello"><h1>Il mio <em>percorso</em></h1><p>8 fasi per sviluppare competenze, autonomia e valore.${c?` Modulo attuale: <b>${c.title}</b>.`:''}</p></div>
+ <section class="card"><ol class="tl">${items}</ol>${c?`<a class="btn" href="#modulo/${c.id}">Continua da qui</a>`:''}</section></div>`}
+
+const meter=(l,big)=>`<div class="meter${big?' big':''}" role="img" aria-label="Livello ${LEVELS[l]}, ${l+1} su 3">${[0,1,2].map(i=>`<i class="${i<=l?'lvl'+l:''}"></i>`).join('')}</div>`;
+
+function skillDetail(id){
+ const s=SK(id); if(!s) return competenze();
+ const l=S.lvl[id]; const mods=MODULES.filter(m=>m.skill===id);
+ const nextTxt=l<2?`Prossimo traguardo: <b>${LEVELS[l+1]}</b>`:'Hai raggiunto il livello massimo';
+ return `<div class="fade"><a class="back" href="#competenze">${ic('left',18)}Tutte le competenze</a>
+ <section class="card" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+  <span class="badge lvl${l}" style="width:52px;height:52px">${ic(s.icon,24)}</span>
+  <div style="flex:1;min-width:200px"><h1 style="font-size:1.5rem">${s.name}</h1><p class="muted small" style="margin-top:4px">${s.desc}</p></div>
+  <div style="width:100%">${meter(l,true)}<p class="small" style="margin-top:8px">Livello attuale: <b class="t${l}">${LEVELS[l]}</b> <span class="muted">– ${nextTxt}</span></p>${S.validated.includes('marco:'+id)?`<p style="margin-top:10px"><span class="pill p-done">Convalidata da Luca B., supervisore</span></p>`:S.valid.some(v=>v.op==='marco'&&v.skill===id)?`<p style="margin-top:10px"><span class="pill p-doing">In attesa di convalida del supervisore</span></p>`:''}</div>
+ </section>
+ <div class="grid-home" style="margin-top:14px">
+  <section class="card"><h2>Cosa significa ogni livello</h2><ol class="lvlsteps">${s.lv.map((t,i)=>`<li class="${i<=l?'reached':''} ${i===l?'cur':''}"><span class="n">${i<=l?ic('check',14):i+1}</span><div><b>${LEVELS[i]}</b>${i===l?' <span class="small muted">(sei qui)</span>':''}<p class="small muted">${t}</p></div></li>`).join('')}</ol></section>
+  <section class="card"><h2>Moduli collegati</h2>${mods.length?`<div class="stack" style="gap:10px">${mods.map(m=>{const st=status(m);return `<a class="modstate" href="#modulo/${m.id}" style="text-decoration:none"><span class="ico">${ic(m.icon)}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><b style="font-size:.92rem">${m.title}</b>${pill(st)}</div>${st==='doing'?`<div class="bar"><i style="width:0" data-w="${pct(m)}"></i></div>`:`<small class="muted">${m.mins} min</small>`}</div></a>`}).join('')}</div>`
+   :`<p class="empty">Nessun modulo ancora disponibile per questa competenza: il supervisore lo definirà con te.</p>`}</section>
+ </div></div>`}
+
+function competenze(id){
+ if(id) return skillDetail(id);
+ return `<div class="fade"><div class="hello"><h1>Le tue <em>competenze</em></h1><p>La tua Skill Board: si aggiorna ogni volta che completi e superi un modulo.</p>${LEGEND}</div>
+ <div class="skills">${SKILLS.map(s=>{const l=S.lvl[s.id];
+  return `<a class="card skill" href="#competenze/${s.id}"><span class="badge lvl${l}">${ic(s.icon,18)}</span><div><h3>${s.name}</h3><p class="small muted">${s.desc}</p>
+  ${meter(l)}<p class="small" style="margin-top:6px">Livello: <b class="t${l}">${LEVELS[l]}</b></p></div></a>`}).join('')}</div></div>`}
+
+function modCard(m){const s=status(m);
+ const cta=s==='locked'?`<button class="btn ghost" disabled>${ic('lock',16)}Completa prima “${M(m.req).title}”</button>`
+  :`<a class="btn ${s==='done'?'ghost':''}" href="#modulo/${m.id}">${s==='doing'?'Continua':s==='done'?'Vedi riepilogo':'Inizia'}</a>`;
+ return `<section class="card mod"><div class="head"><h3>${m.title}</h3>${pill(s)}</div>
+ <p class="meta">${ic('clock',14)} ${m.mins} min &nbsp; ${ic('target',14)} ${SK(m.skill).name}</p>
+ ${s==='doing'?`<div class="bar"><i style="width:0" data-w="${pct(m)}"></i></div>`:''}<div>${cta}</div></section>`}
+
+function moduli(){
+ const groups=[['doing','In corso'],['todo','Consigliati per te'],['done','Completati'],['locked','Da sbloccare']];
+ return `<div class="fade"><div class="hello"><h1>I tuoi <em>moduli</em></h1><p>Brevi, pratici, pensati per il tuo ruolo in linea.</p></div>
+ ${groups.map(([s,t])=>{const l=MODULES.filter(m=>status(m)===s);return l.length?`<h2 class="section-title">${t}</h2><div class="mods">${l.map(modCard).join('')}</div>`:''}).join('')}</div>`}
+
+function feedback(){
+ return `<div class="fade"><div class="hello"><h1>I tuoi <em>feedback</em></h1><p>Le indicazioni dei tuoi tutor e responsabili di linea.</p></div>
+ <section class="card" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:14px">
+  <div><div class="score">${star(24)}${avg()}<span class="muted" style="font-size:.9rem;font-weight:500">/5</span></div><p class="small muted">Media su ${S.feedback.length} feedback</p></div>
+  ${S.fbRequest?'<button class="btn" disabled>Richiesta inviata</button>':'<button class="btn" data-action="askfb">Chiedi un feedback</button>'}</section>
+ <div class="stack">${S.feedback.map(f=>`<section class="card fb"><div class="h"><b>${esc(f.from)}</b><span class="small muted">${esc(f.date)}</span></div>
+  <div class="stars" aria-label="${f.stars} stelle su 5">${Array.from({length:5},(_,i)=>`<span style="opacity:${i<f.stars?1:.25}">${star(16)}</span>`).join('')}</div>
+  <p>“${esc(f.text)}”</p><p class="small muted">${esc(f.role)}</p></section>`).join('')}</div></div>`}
+
+function profilo(){
+ const done=MODULES.filter(m=>status(m)==='done').length;
+ const nInt=SKILLS.filter(s=>S.lvl[s.id]>=1).length,a=autonomy();
+ const req=[[nInt===6,`Tutte le competenze almeno a livello Intermedio (${nInt}/6)`],[a>=4,`Autonomia 4/4 (oggi ${a}/4)`]];
+ const ready=req.every(r=>r[0]);
+ const todo=['banco','intervento'].filter(id=>S.steps[id]<5).map(id=>`“${M(id).title}”`);
+ const roles=[
+  ['Operatore di linea','Il tuo ruolo attuale.','reached cur'],
+  ['Operatore polivalente',ready?'Requisiti raggiunti: il supervisore ti proporrà il colloquio di crescita.':'Il prossimo passo del tuo percorso: lavori su più postazioni della linea.',ready?'reached':''],
+  ['Tecnico di linea','Almeno 3 competenze a livello Avanzato e un anno da operatore polivalente.','']];
+ return `<div class="fade"><div class="hello"><h1>Il tuo <em>profilo</em></h1></div>
+ <section class="card"><div class="prof"><span class="avatar">MR</span><div><h2>Marco R.</h2><p class="muted small">Operatore di linea, Linea 3, turno A</p><p class="muted small">Tecnico di riferimento: Sara M. Supervisore: Luca B.</p></div></div>
+ <div class="stats"><div class="stat"><b>${done}</b><span>Moduli completati</span></div><div class="stat"><b>${a}/4</b><span>Autonomia</span></div><div class="stat"><b>${avg()}</b><span>Feedback medio</span></div></div></section>
+ <section class="card" style="margin-top:14px"><h2>Il mio percorso di carriera</h2><p class="small muted" style="margin:-4px 0 12px">Le competenze che sviluppi ti avvicinano al prossimo ruolo.</p>
+ <ol class="lvlsteps">${roles.map((r,i)=>`<li class="${r[2]}"><span class="n">${r[2].includes('reached')?ic('check',14):i+1}</span><div><b>${r[0]}</b>${i===0?' <span class="small muted">(sei qui)</span>':''}<p class="small muted">${r[1]}</p>${i===1?`<div style="margin-top:8px;display:grid;gap:6px">${req.map(([ok,t])=>`<p class="small" style="display:flex;gap:8px;align-items:center"><span style="color:${ok?'var(--green)':'var(--muted)'};display:flex">${ic(ok?'check':'clock',16)}</span>${t}</p>`).join('')}</div>`:''}</div></li>`).join('')}</ol>
+ ${todo.length?`<p class="small muted" style="margin-top:12px">Per arrivarci: completa ${todo.join(' e ')}.</p>`:''}</section>
+ <section class="card" style="margin-top:14px"><h2>Demo</h2><div class="btns"><button class="btn gold" data-action="tour-start">${ic('play',16,true)}Tour guidato</button><button class="btn ghost" data-action="reset">Ricomincia la demo</button></div></section></div>`}
+
+/* ---------- app supervisore ---------- */
+function sHome(){
+ const avgA=(OPS.reduce((n,o)=>n+opAut(o),0)/OPS.length).toFixed(1).replace('.',',');
+ const adv=OPS.reduce((n,o)=>n+Object.values(opLvl(o)).filter(l=>l===2).length,0);
+ const md=MODULES.filter(m=>status(m)==='done').length;
+ return `<div class="fade"><div class="hello"><h1>Buongiorno <em>Luca</em>,</h1><p>Linea 3, turno A: ${OPS.length} operatori in squadra.</p></div>
+ ${S.fbRequest?`<section class="card alert" style="margin-bottom:14px"><span class="badge" style="background:var(--gold);color:#2B1810">${ic('chat',18)}</span><div style="flex:1;min-width:180px"><b>Marco R. ha chiesto un feedback</b><p class="small muted">Rispondi entro fine turno.</p></div><a class="btn" href="#s-op/marco">Scrivi il feedback</a></section>`:''}
+ <div class="kpis">
+  <div class="stat"><b>${avgA}/4</b><span>Autonomia media</span></div>
+  <a class="stat" href="#s-valid" style="text-decoration:none;color:inherit"><b>${S.valid.length}</b><span>Da convalidare</span></a>
+  <div class="stat"><b>${adv}</b><span>Competenze avanzate</span></div>
+  <div class="stat"><b>${7+md}</b><span>Moduli completati nel mese</span></div>
+ </div>
+ <section class="card" style="margin-top:14px"><h2>La tua squadra</h2>${OPS.map(o=>`<a class="opline" href="#s-op/${o.id}"><span class="avatar" style="width:38px;height:38px;font-size:.78rem">${initials(o.name)}</span><div><b style="font-size:.93rem">${o.name}</b><p class="small muted">${esc(opMod(o))}</p></div><div style="text-align:right">${mini(opAut(o))}<small class="muted">${opAut(o)}/4</small></div></a>`).join('')}</section></div>`}
+
+function sOp(id){
+ const o=OP(id); if(!o) return sHome();
+ const L=opLvl(o),a=opAut(o),isM=o.id==='marco',first=o.name.split(' ')[0];
+ const mods=MODULES.map(m=>[m,isM?status(m):(m.title===o.mod?'doing':'todo')]);
+ return `<div class="fade"><a class="back" href="#s-home">${ic('left',18)}La tua squadra</a>
+ <section class="card prof" style="flex-wrap:wrap"><span class="avatar">${initials(o.name)}</span><div style="flex:1;min-width:160px"><h2>${o.name}</h2><p class="small muted">${o.role}, Linea 3, turno A</p><p class="small muted">In corso: ${esc(opMod(o))}</p></div><div>${mini(a)}<small class="muted">Autonomia ${a}/4</small></div></section>
+ <div class="grid-home" style="margin-top:14px">
+  <section class="card"><h2>Competenze</h2>${SKILLS.map((s,i)=>`<div style="padding:10px 0;${i?'border-top:1px solid var(--line)':''}"><div style="display:flex;justify-content:space-between;gap:10px"><b style="font-size:.92rem">${s.name}</b><span class="small t${L[s.id]}" style="font-weight:700">${LEVELS[L[s.id]]}</span></div>${meter(L[s.id])}</div>`).join('')}${LEGEND}</section>
+  <div class="stack">
+   <section class="card"><h2>Scrivi un feedback</h2>
+    <div class="starpick" role="group" aria-label="Valutazione">${[1,2,3,4,5].map(i=>`<button type="button" data-action="star" data-v="${i}" class="${i<=starV?'on':''}" aria-label="${i} stelle">${star(26)}</button>`).join('')}</div>
+    <label class="small muted" for="fbtext" style="display:block;margin:10px 0 6px">Commento per ${first}</label>
+    <textarea id="fbtext" class="ta" placeholder="Es. Ottimo lavoro nel cambio turno di oggi."></textarea>
+    <div class="btns" style="margin-top:12px"><button class="btn" data-action="sendfb" data-op="${o.id}">Invia feedback</button></div></section>
+   <section class="card"><h2>Assegna un modulo</h2>${mods.map(([m,st])=>`<div class="valid"><div><b style="font-size:.9rem">${m.title}</b><p class="small muted">${SK(m.skill).name}, ${m.mins} min</p></div>${st==='todo'?(isM&&S.assigned===m.id?'<span class="pill p-doing">Assegnato</span>':`<button class="btn ghost" data-action="assign" data-op="${o.id}" data-m="${m.id}">Assegna</button>`):pill(st)}</div>`).join('')}</section>
+  </div></div></div>`}
+
+function sMatrix(){
+ const cov=SKILLS.map(s=>OPS.filter(o=>opLvl(o)[s.id]===2).length);
+ const gaps=SKILLS.filter((s,i)=>cov[i]<2);
+ return `<div class="fade"><div class="hello"><h1>Matrice <em>competenze</em></h1><p>Chi sa fare cosa nella tua squadra, e dove serve formazione.</p>${LEGEND}</div>
+ <section class="card"><div class="mx"><table><thead><tr><th>Operatore</th>${SKILLS.map(s=>`<th>${s.name}</th>`).join('')}</tr></thead><tbody>
+ ${OPS.map(o=>`<tr><td><a href="#s-op/${o.id}" style="font-weight:700;text-decoration:none">${o.name}</a></td>${SKILLS.map(s=>{const l=opLvl(o)[s.id];return `<td><span class="dotl lvl${l}" title="${LEVELS[l]}">${LEVELS[l][0]}</span></td>`}).join('')}</tr>`).join('')}
+ <tr class="cov"><td>Esperti (Avanzato)</td>${cov.map(n=>`<td class="${n<2?'gap':''}">${n}</td>`).join('')}</tr></tbody></table></div>
+ <p class="small muted" style="margin-top:12px">In rosso le competenze con meno di 2 esperti in squadra.</p></section>
+ ${gaps.length?`<section class="card" style="margin-top:14px"><h2>Priorità del piano formativo</h2>${gaps.map(s=>`<div class="valid"><div><b style="font-size:.92rem">${s.name}</b><p class="small muted">${cov[SKILLS.indexOf(s)]} esperti su ${OPS.length}</p></div><button class="btn ghost" data-action="plan" data-s="${s.id}">Pianifica formazione</button></div>`).join('')}</section>`:''}</div>`}
+
+function sValid(){
+ return `<div class="fade"><div class="hello"><h1>Da <em>convalidare</em></h1><p>Competenze raggiunte dagli operatori che aspettano la tua conferma.</p></div>
+ <section class="card">${S.valid.length?S.valid.map((x,i)=>{const o=OP(x.op);return `<div class="valid"><div style="display:flex;gap:12px;align-items:center"><span class="avatar" style="width:38px;height:38px;font-size:.78rem">${initials(o.name)}</span><div><b style="font-size:.93rem">${o.name}</b><p class="small">${SK(x.skill).name}: <b class="t${x.lvl}">${LEVELS[x.lvl]}</b></p><p class="small muted">Dopo il modulo “${esc(x.src)}”</p></div></div><div class="btns"><button class="btn ghost" data-action="prova" data-i="${i}">Chiedi una prova in linea</button><button class="btn gold" data-action="valida" data-i="${i}">${ic('check',18)}Convalida</button></div></div>`}).join(''):`<p class="empty">Nessuna competenza da convalidare.</p>`}</section>
+ ${S.validated.length?`<p class="small muted" style="margin-top:12px">Convalidate in questa sessione: ${S.validated.length}</p>`:''}</div>`}
+
+function sProfilo(){
+ return `<div class="fade"><div class="hello"><h1>Il tuo <em>profilo</em></h1></div>
+ <section class="card"><div class="prof"><span class="avatar">LB</span><div><h2>Luca B.</h2><p class="muted small">Supervisore di linea, Linea 3, turno A</p></div></div>
+ <div class="stats"><div class="stat"><b>${OPS.length}</b><span>Operatori</span></div><div class="stat"><b>${S.validated.length}</b><span>Convalide fatte</span></div><div class="stat"><b>${S.sent}</b><span>Feedback inviati</span></div></div></section>
+ <section class="card" style="margin-top:14px"><h2>Demo</h2><div class="btns"><button class="btn gold" data-action="tour-start">${ic('play',16,true)}Tour guidato</button><button class="btn ghost" data-action="reset">Ricomincia la demo</button></div></section></div>`}
+
+/* ---------- modulo (fasi 3–8) ---------- */
+let vs=null,vsFor=null;
+function modulo(id){
+ const m=M(id); if(!m) return home();
+ const s=status(m);
+ const head=`<a class="back" href="#moduli">${ic('left',18)}Tutti i moduli</a>`;
+ if(s==='locked') return `<div class="fade">${head}<section class="card celebrate"><div class="big" style="background:var(--muted)">${ic('lock',34)}</div><h1>${m.title}</h1><p class="muted" style="margin-top:8px">Si sblocca dopo “${M(m.req).title}”.</p><div class="btns" style="justify-content:center;margin-top:16px"><a class="btn" href="#modulo/${m.req}">Vai al modulo richiesto</a></div></section></div>`;
+ if(S.steps[id]>=5){vsFor=null;
+  const sk=SK(m.skill),l=S.lvl[m.skill],sg=current();
+  return `<div class="fade">${head}<section class="card celebrate"><div class="big">${ic('check',38)}</div><h1>Modulo completato</h1><p class="muted" style="margin-top:6px">${m.title}</p>
+   <div class="levelup">${ic(sk.icon,18)}${sk.name}: ${LEVELS[l]}</div>
+   <p class="small muted">Fase 8: scegli il prossimo modulo in base ai tuoi progressi.</p>
+   <div class="btns" style="justify-content:center;margin-top:16px">${sg?`<a class="btn" href="#modulo/${sg.id}">Prossimo: ${sg.title}</a>`:''}<a class="btn ghost" href="#home">Torna alla home</a></div></section></div>`}
+ if(vsFor!==id){vs=S.steps[id];vsFor=id}
+ const k=vs,past=k<S.steps[id];
+ const stepper=`<div class="stepper" aria-label="Fase ${k+1} di 5">${STEPS.map((t,i)=>`<div class="${i<S.steps[id]&&i!==k?'d':''}${i===k?'c':''}"><i></i><span>${t}</span></div>`).join('')}</div>`;
+ let body='';
+ if(k===0) body=`<h2>Spiegare</h2><p style="margin-top:8px">${m.intro}</p><ul class="keypoints">${m.points.map(p=>`<li>${ic('check',18)}${p}</li>`).join('')}</ul>`;
+ if(k===1) body=`<h2>Dimostrare</h2><button class="video" data-action="video" style="margin-top:12px" aria-label="Riproduci video dimostrativo"><span class="play">${ic('play',26,true)}</span><small>Video dimostrativo, 2:40</small></button><p style="margin-top:12px">${m.demo}</p>`;
+ if(k===2) body=`<h2>Provare</h2><p class="muted small" style="margin:6px 0 12px">Esegui ogni attività con il tuo tecnico di riferimento e spuntala quando hai finito.</p><div class="stack" style="gap:10px">${m.tasks.map((t,i)=>`<label class="check"><input type="checkbox" class="task" ${past?'checked':''}><span>${t}</span></label>`).join('')}</div>`;
+ if(k===3) body=`<h2>Ricevere feedback</h2><div class="tutor" style="margin-top:12px"><span class="avatar">${m.fb.from.split(' ').map(x=>x[0]).join('')}</span><div><b>${m.fb.from}</b><p class="small muted">${m.fb.role}</p><div class="stars" style="margin:6px 0">${Array.from({length:5},(_,i)=>`<span style="opacity:${i<m.fb.stars?1:.25}">${star(16)}</span>`).join('')}</div><p>“${m.fb.text}”</p></div></div>`;
+ if(k===4) body=`<h2>Verificare</h2><p class="muted small" style="margin-top:6px">Due domande per aggiornare la tua Skill Board.</p>${m.quiz.map((q,qi)=>`<div class="q"><fieldset><legend>${qi+1}. ${q.q}</legend>${q.o.map((o,oi)=>`<label class="opt" data-q="${qi}" data-o="${oi}"><input type="radio" name="q${qi}" value="${oi}"><span>${o}</span></label>`).join('')}</fieldset></div>`).join('')}`;
+ const label=['Ho capito, avanti','Ho visto l\'esempio, avanti','Ho completato la prova','Ho letto il feedback','Verifica le risposte'][k];
+ return `<div class="fade">${head}<h1>${m.title}</h1><p class="muted small" style="margin-top:4px">${ic('clock',14)} ${m.mins} min &nbsp; ${ic('target',14)} ${SK(m.skill).name}</p>${stepper}
+ <section class="card">${body}<div class="btns" style="margin-top:18px">${k>0?`<button class="btn ghost" data-action="prev">Indietro</button>`:''}<button class="btn" data-action="next" data-id="${id}">${label}</button></div></section></div>`}
+
+function next(id){
+ const m=M(id);
+ if(vs<S.steps[id]){vs++;render();return}
+ if(vs===2&&[...document.querySelectorAll('.task')].some(c=>!c.checked)){toast('Spunta tutte le attività della prova per continuare.');return}
+ if(vs===4){let ok=true;
+  m.quiz.forEach((q,qi)=>{const sel=document.querySelector(`input[name="q${qi}"]:checked`);
+   document.querySelectorAll(`.opt[data-q="${qi}"]`).forEach(o=>o.classList.remove('wrong','right'));
+   if(!sel){ok=false;return}
+   const lab=sel.closest('.opt');if(+sel.value===q.a)lab.classList.add('right');else{lab.classList.add('wrong');ok=false}});
+  if(!ok){toast('Una o più risposte non sono corrette. Rileggi e riprova.');return}
+ }
+ if(vs===3&&!S.feedback.some(f=>f.text===m.fb.text)) S.feedback.unshift({...m.fb,date:'oggi'});
+ S.steps[id]++; vs++;
+ if(S.steps[id]>=5){S.lvl[m.skill]=Math.min(2,S.lvl[m.skill]+1);S.valid=S.valid.filter(v=>!(v.op==='marco'&&v.skill===m.skill));S.valid.unshift({op:'marco',skill:m.skill,lvl:S.lvl[m.skill],src:m.title})}
+ save(); render();
+ if(S.steps[id]>=5){confetti();toast(`${SK(m.skill).name} ora è ${LEVELS[S.lvl[m.skill]]}`)}
+}
+
+
+/* ---------- tour guidato ---------- */
+const TOUR=[
+ {route:'home',target:'.hello',title:'Questa è la home di Marco',text:'Marco è un operatore di linea. Da qui vede a colpo d\'occhio le sue competenze, il modulo in corso, l\'autonomia raggiunta e i feedback ricevuti.'},
+ {route:'home',target:'a[href="#competenze/man"]',title:'Ogni competenza ha un livello',text:'I colori richiamano i gusti Magnum: caramello per Base, lampone per Intermedio, pistacchio per Avanzato. Tocca "Manutenzione di base".',until:()=>location.hash==='#competenze/man'},
+ {target:'.lvlsteps',title:'Traguardi concreti',text:'Ogni livello descrive cosa l\'operatore sa fare davvero sul campo. Marco oggi è a livello Base e sa già quali moduli seguire per crescere.'},
+ {route:'home',target:'a.btn[href="#modulo/banco"]',title:'Il modulo in corso',text:'Marco sta seguendo "Basi tecniche sul banco", già al 60%. Tocca "Continua il modulo".',until:()=>location.hash==='#modulo/banco'},
+ {target:'[data-action="next"]',title:'Le fasi del percorso',text:'La barra in alto mostra le fasi del modulo. Marco è alla fase Feedback: il tutor ha valutato la sua prova pratica. Tocca "Ho letto il feedback".',until:()=>S.steps.banco>=4},
+ {target:'section.card',title:'La verifica',text:'Ultima fase: due domande per aggiornare la Skill Board. Tocca una risposta per ciascuna domanda. Suggerimento: in linea la sicurezza viene sempre prima di tutto.',hint:'Rispondi alle due domande',until:()=>document.querySelectorAll('#view .opt input:checked').length>=2},
+ {target:'[data-action="next"]',title:'Conferma le risposte',text:'Ora tocca "Verifica le risposte". Se sono corrette il modulo si chiude e la competenza sale di livello; se una è sbagliata, la vedi in rosso e puoi riprovare.',hint:'Tocca il pulsante evidenziato',until:()=>S.steps.banco>=5},
+ {target:'.levelup',title:'Livello raggiunto',text:'Automazione di linea passa ad Avanzato. Home, Skill Board e percorso si aggiornano da soli, e l\'app propone il modulo successivo.'},
+ {global:true,target:'#roleSup',title:'Cambiamo punto di vista',text:'Il supervisore ha una sua app, separata da quella dell\'operatore. Tocca "Supervisore" in alto.',until:()=>curRoute().startsWith('s-')},
+ {route:'s-home',target:'.kpis',title:'L\'app del supervisore',text:'Luca B., responsabile della Linea 3, vede la sua squadra a colpo d\'occhio: autonomia media, convalide in attesa, competenze avanzate e moduli completati.'},
+ {route:'s-valid',target:'.valid',title:'Convalidare le competenze',text:'La nuova competenza di Marco aspetta la conferma di chi lo vede lavorare ogni giorno. Tocca "Convalida".',until:()=>!S.valid.some(v=>v.op==='marco')},
+ {route:'s-matrix',target:'.mx',title:'La matrice delle competenze',text:'Tutta la squadra in una tabella. Grazie a Marco, Automazione di linea ora ha 2 esperti; in rosso restano le priorità del piano formativo.'},
+ {route:'s-home',target:'.hello',title:'Tour completato',text:'Magnum Skill Lab: percorsi chiari per chi lavora in linea, strumenti concreti per chi guida la squadra. Ora puoi esplorare liberamente le due app.'}
+];
+let T=null;
+const curRoute=()=>location.hash.slice(1)||'home';
+function tourStart(){S=fresh();vsFor=null;save();T=0;document.body.classList.add('touring');if(curRoute()==='home')render();else location.hash='#home'}
+function goStep(){const st=TOUR[T];if(st.route&&curRoute()!==st.route){location.hash='#'+st.route;return}tourPaint()}
+function tourEnd(){T=null;document.body.classList.remove('touring');document.querySelectorAll('.tour-target').forEach(e=>e.classList.remove('tour-target'));document.getElementById('tour').classList.remove('show');toast('Buona esplorazione!')}
+function tourPaint(){
+ const card=document.getElementById('tour');
+ document.querySelectorAll('.tour-target').forEach(e=>e.classList.remove('tour-target'));
+ if(T===null){card.classList.remove('show');return}
+ const st=TOUR[T];
+ if(st.until&&st.until()){T++;if(T>=TOUR.length)return tourEnd();return goStep()}
+ const last=T===TOUR.length-1;
+ card.innerHTML=`<div class="dots">${TOUR.map((_,i)=>`<i class="${i<=T?'on':''}"></i>`).join('')}</div><h3>${st.title}</h3><p>${st.text}</p>
+  <div class="row">${last?'<span></span>':'<button class="skip" data-action="tour-end">Esci dal tour</button>'}${st.until?`<span class="hint">${st.hint||'Tocca l\'elemento evidenziato'}</span>`:`<button class="btn" data-action="tour-next">${last?'Esplora l\'app':'Avanti'}</button>`}</div>`;
+ card.classList.add('show');
+ const el=document.querySelector(st.global?st.target:'#view '+st.target);
+ if(el){el.classList.add('tour-target');setTimeout(()=>el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:el.offsetHeight>innerHeight*.45?'start':'center'}),120)}
+}
+function confetti(){
+ const box=document.createElement('div');box.className='confetti';
+ const cols=['#C29B4C','#E2C07A','#5A3825','#2B1810','#F3E6C8'];
+ for(let i=0;i<60;i++){const c=document.createElement('i');const w=6+Math.random()*6;
+  c.style.cssText=`left:${Math.random()*100}%;width:${w}px;height:${w*1.6}px;background:${cols[i%cols.length]};animation-duration:${1.8+Math.random()*1.6}s;animation-delay:${Math.random()*.4}s`;box.appendChild(c)}
+ document.body.appendChild(box);setTimeout(()=>box.remove(),4200)}
+function hideSplash(){const sp=document.getElementById('splash');sp.classList.add('hide');setTimeout(()=>sp.hidden=true,450)}
+function showSplash(){if(T!==null){T=null;document.body.classList.remove('touring');tourPaint()}const sp=document.getElementById('splash');sp.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>sp.classList.remove('hide')));setTimeout(()=>document.getElementById('splashTour').focus(),100)}
+
+/* ---------- eventi ---------- */
+let tt;
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2600)}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-action]'); if(!b) return;
+ const a=b.dataset.action;
+ if(a==='next') next(b.dataset.id);
+ if(a==='prev'){vs=Math.max(0,vs-1);render()}
+ if(a==='video') toast('Nella beta il video è un segnaposto: qui andrà il filmato girato in linea.');
+ if(a==='notif') toast(curRoute().startsWith('s-')?(S.fbRequest?'Marco R. ha chiesto un feedback.':(S.valid.length?`${S.valid.length} competenze aspettano la tua convalida.`:'Nessuna nuova notifica.')):(S.assigned?'Luca B. ti ha assegnato un nuovo modulo.':'Nuovo feedback disponibile e un modulo consigliato per te.'));
+ if(a==='askfb'){S.fbRequest=true;save();render();toast('Richiesta inviata a Luca B., supervisore di linea.')}
+ if(a==='valida'){const x=S.valid.splice(+b.dataset.i,1)[0];S.validated.push(x.op+':'+x.skill);save();render();toast(`${SK(x.skill).name} di ${OP(x.op).name} convalidata.`)}
+ if(a==='prova'){const x=S.valid[+b.dataset.i];toast(`${OP(x.op).name} riceverà la richiesta di una prova in linea`)}
+ if(a==='star'){starV=+b.dataset.v;document.querySelectorAll('.starpick button').forEach((x,i)=>x.classList.toggle('on',i<starV))}
+ if(a==='sendfb'){const o=OP(b.dataset.op),t=(document.getElementById('fbtext').value.trim()||'Buon lavoro, continua così.');
+  if(o.id==='marco'){S.feedback.unshift({from:'Luca B.',role:'Supervisore di linea',stars:starV,text:t,date:'oggi'});S.fbRequest=false}
+  S.sent++;starV=5;save();render();toast(`Feedback inviato: ${o.name} lo vedrà nella sua app`)}
+ if(a==='assign'){const o=OP(b.dataset.op),m=M(b.dataset.m);if(o.id==='marco')S.assigned=m.id;save();render();toast(`${o.name} vedrà “${m.title}” nella sua home`)}
+ if(a==='plan'){toast(`Formazione su ${SK(b.dataset.s).name} aggiunta al piano del mese.`)}
+ if(a==='tour-start'){hideSplash();tourStart()}
+ if(a==='enter'){hideSplash();const to='#'+b.dataset.to;if(location.hash===to)render();else location.hash=to}
+ if(a==='splash'){showSplash()}
+ if(a==='tour-next'){T++;T>=TOUR.length?tourEnd():goStep()}
+ if(a==='tour-end'){tourEnd()}
+ if(a==='reset'){S=fresh();vsFor=null;save();location.hash='#home';render();toast('Demo ripristinata.')}
+});
+const VIEWS={home,percorso,competenze,moduli,feedback,profilo,modulo,'s-home':sHome,'s-op':sOp,'s-matrix':sMatrix,'s-valid':sValid,'s-profilo':sProfilo};
+function render(){
+ const [r,arg]=(location.hash.slice(1)||'home').split('/');
+ const fn=VIEWS[r]||home;
+ document.getElementById('view').innerHTML=fn(arg);
+ setNav(VIEWS[r]?r:'home');
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  document.querySelectorAll('.arc').forEach(a=>a.style.strokeDasharray=a.dataset.dash);
+  document.querySelectorAll('[data-w]').forEach(b=>b.style.width=b.dataset.w+'%');
+ }));
+ tourPaint();
+}
+document.addEventListener('change',()=>{if(T!==null)tourPaint()});
+window.addEventListener('hashchange',()=>{window.scrollTo(0,0);render()});
+render();
+</script>
+</body>
+</html>
