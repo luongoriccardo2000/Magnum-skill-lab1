@@ -55,7 +55,7 @@ main{flex:1;min-width:0;width:100%;max-width:1120px;margin:0 auto;padding:14px 1
 /* sidebar (desktop) */
 .brand{display:flex;align-items:center;gap:10px}
 .mark{width:36px;height:36px;border-radius:10px;background:var(--gold);display:grid;place-items:center;flex:none}
-.mark svg{width:20px;height:20px}
+.mark svg{width:26px;height:26px}
 .brand b{font-family:var(--font-d);font-weight:400;font-size:1.15rem;display:block;line-height:1.1}
 .brand span{font-size:.72rem;opacity:.7}
 .side nav{display:flex;flex-direction:column;gap:4px;margin-top:34px}
@@ -249,7 +249,7 @@ main{flex:1;min-width:0;width:100%;max-width:1120px;margin:0 auto;padding:14px 1
 .splash[hidden]{display:none}
 .splash .inner{max-width:420px;width:100%}
 .splash .mark{width:68px;height:68px;border-radius:20px;margin:0 auto 22px}
-.splash .mark svg{width:36px;height:36px}
+.splash .mark svg{width:46px;height:46px}
 .splash h1{font-size:clamp(2.4rem,9vw,3.2rem);color:#fff}
 .splash .gold-line{width:56px;height:2px;background:#C29B4C;margin:18px auto}
 .splash p{color:#D9C7B2}
@@ -503,6 +503,12 @@ label.small.muted{display:block;margin:8px 0 4px}
 .tutorok{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:var(--green-soft);color:var(--ink);margin-bottom:6px}
 .tutorok svg{color:var(--green);flex:none;margin-top:2px}
 .tutorsec{border-color:var(--gold)}
+
+/* logo come icona di app */
+.mark,.splash .mark,.entry .mark{background:none!important;border-radius:24%!important;overflow:hidden;box-shadow:0 6px 14px -6px rgba(59,33,22,.55)!important}
+.mark svg{width:100%!important;height:100%!important;display:block}
+.top .mark,.side .mark{width:38px;height:38px}
+.splash .mark{width:92px!important;height:92px!important;margin:0 auto 22px;box-shadow:0 18px 34px -12px rgba(59,33,22,.6)!important}
 </style>
 </head>
 <body>
@@ -573,7 +579,24 @@ const P={
 };
 const ic=(n,s=20,fill=false)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="${fill?'currentColor':'none'}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${P[n]}"/></svg>`;
 const star=(s=18)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2 6.4 20.2l1.1-6.3L2.9 9.5l6.3-.9z"/></svg>`;
-document.querySelectorAll('.mark').forEach(m=>m.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="#2B1810" stroke-width="2.6" stroke-linecap="round"><path d="${P.levels}"/></svg>`);
+const LOGO=k=>`<svg viewBox="0 0 64 64" aria-hidden="true"><defs>
+<linearGradient id="lbg${k}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7DB98"/><stop offset=".55" stop-color="#DDAA55"/><stop offset="1" stop-color="#B9802F"/></linearGradient>
+<radialGradient id="lgl${k}" cx=".25" cy=".15" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<linearGradient id="lch${k}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#74472E"/><stop offset="1" stop-color="#2A160D"/></linearGradient>
+<linearGradient id="lcr${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF9EF"/><stop offset="1" stop-color="#F0D9B3"/></linearGradient></defs>
+<rect width="64" height="64" rx="15" fill="url(#lbg${k})"/><rect width="64" height="64" rx="15" fill="url(#lgl${k})"/>
+<ellipse cx="35" cy="56.5" rx="10" ry="2.4" fill="#5A3420" opacity=".28"/>
+<g transform="rotate(-14 32 33)">
+<rect x="29" y="40" width="6" height="16.5" rx="3" fill="#F6E3BE"/><rect x="31.2" y="44" width="1.4" height="10" rx=".7" fill="#D9B98A"/>
+<path d="M19 22A13 13 0 0 1 45 22V41a3 3 0 0 1-3 3H22a3 3 0 0 1-3-3z" fill="url(#lcr${k})"/>
+<path d="M19 22A13 13 0 0 1 45 22V31C43.5 32.5 42 31 41 32C40 33 40.6 36.5 38.6 36.5C36.6 36.5 37 33 35.2 33C33.6 33 33.4 35 31.8 34.6C30.2 34.2 30.6 31.6 28.8 31.6C27.2 31.6 26.6 33 25.2 32.6C23.8 32.2 24 30.4 22.4 30.4C21 30.4 20.2 31.4 19 30.6Z" fill="url(#lch${k})"/>
+<path d="M24.6 14.2c-1.7 1.7-2.8 4-3 6.6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" fill="none" opacity=".45"/>
+<g fill="#F7DB98"><rect x="35" y="15" width="3.2" height="1.3" rx=".65" transform="rotate(30 36.6 15.6)"/><rect x="29" y="22" width="3.2" height="1.3" rx=".65" transform="rotate(-25 30.6 22.6)"/><rect x="38.5" y="23.5" width="3.2" height="1.3" rx=".65" transform="rotate(70 40.1 24.1)"/></g>
+</g>
+<path d="M50 9.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff" opacity=".9"/>
+</svg>`;
+document.querySelectorAll('.mark').forEach((m,i)=>m.innerHTML=LOGO('m'+i));
+try{const fav=document.createElement('link');fav.rel='icon';fav.href='data:image/svg+xml,'+encodeURIComponent(LOGO('f'));document.head.appendChild(fav);const ap=fav.cloneNode();ap.rel='apple-touch-icon';document.head.appendChild(ap)}catch(e){}
 document.getElementById('bell').innerHTML=ic('bell');
 document.getElementById('tourbtn').innerHTML=ic('play',14,true)+'Tour';
 
