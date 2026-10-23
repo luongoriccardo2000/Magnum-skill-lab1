@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Magnum Skill Lab – Beta</title>
+<title>My Magnum</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -411,14 +411,106 @@ h1 em{font-style:italic;color:#E2C07A}
 .splash .entry small{color:#7A5A45}
 .entry .avatar{background:#3B2116;color:#F1E3CA}
 @media (prefers-reduced-motion: reduce){.splash h1{color:#3B2116}}
+
+/* obiettivi e premi */
+.gmeter{display:flex;gap:5px;margin-top:10px}
+.gmeter i{flex:1;height:7px;border-radius:99px;background:var(--line)}
+.gmeter i.f{background:var(--gold);transform-origin:left;animation:grow .55s cubic-bezier(.2,.8,.2,1) both}
+.rwcard{display:flex;gap:14px;align-items:center;text-decoration:none;border-color:var(--gold)}
+.rwcard h3{font-family:var(--font-d);font-weight:400;font-size:1.2rem;margin-top:2px}
+.rwcard .chev{color:var(--muted)}
+.rwico{width:48px;height:48px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--navy);color:#E2C07A}
+.rwhero{text-align:center}
+.rwhero h2{margin-top:10px}
+.rwhero p{color:var(--muted);margin-top:4px}
+.rwhero .gmeter{max-width:280px;margin:16px auto 0}
+.rwbadge{width:70px;height:70px;border-radius:50%;margin:0 auto;display:grid;place-items:center;background:linear-gradient(135deg,#E6C781,#A97E32);color:#2B1810;box-shadow:0 0 0 8px var(--gold-soft);animation:pop .7s cubic-bezier(.2,1.5,.4,1) both}
+.rwbadge.locked{background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.goal{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line);text-decoration:none}
+.goal:first-of-type{border-top:0}
+.goal b{font-size:.93rem}
+.gck{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.goal.ok .gck{background:var(--green);border-color:var(--green);color:#fff}
+.rwgrid{display:grid;gap:12px}
+@media (min-width:700px){.rwgrid{grid-template-columns:repeat(3,1fr)}}
+.rw{display:flex;flex-direction:column;gap:8px;align-items:flex-start;padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}
+.rw .rwi{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--navy);color:#E2C07A}
+.rw.lockd{opacity:.65}
+.rw.mine{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold-soft)}
+.rw .btn{margin-top:auto}
+.tabbar a{font-size:.66rem}
+
+/* tasti da toccare nel tour */
+.tour-action{outline:4px solid #E8A317!important;outline-offset:4px;border-radius:14px;animation:tapPulse 1.1s ease-in-out infinite!important;position:relative;z-index:2}
+@keyframes tapPulse{0%,100%{box-shadow:0 0 0 0 rgba(232,163,23,.65)}50%{box-shadow:0 0 0 14px rgba(232,163,23,0)}}
+.tap{position:fixed;z-index:44;pointer-events:none;display:flex;flex-direction:column;align-items:center;opacity:0;transition:opacity .2s}
+.tap.show{opacity:1;animation:bob 1s ease-in-out infinite}
+.tap .lbl{background:#E8A317;color:#2B1810;font-weight:800;font-size:.92rem;padding:8px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 18px -6px rgba(0,0,0,.45)}
+.tap .arr{width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #E8A317}
+.tap .arr.up{border-top:0;border-bottom:10px solid #E8A317}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.tour .hint{font-size:.9rem;color:#F0C55A}
+.tour .btn{animation:tapPulse 1.4s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.tap.show{animation:none}}
+
+/* My Magnum: 4 livelli, Tutor, casi, piano */
+.lvl3{background:var(--gold)} .t3{color:var(--gold-ink)}
+.meter i.lvl3{background:var(--gold)}
+.meter i:nth-child(4){animation-delay:.36s}
+.mini i{width:10px}
+.evid{font-size:.76rem;font-weight:700;color:var(--gold-ink);margin-top:4px;display:flex;gap:4px;align-items:center}
+.glink{text-decoration:none;color:inherit}
+.goal{text-decoration:none}
+.case{border:1px solid var(--line);border-radius:14px;background:var(--surface-2);padding:14px}
+.case-h{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.case h3{font-family:var(--font-d);font-weight:400;font-size:1.15rem}
+.case dl{margin:10px 0 0;display:grid;gap:8px}
+.case dl div{display:grid;grid-template-columns:120px 1fr;gap:10px;padding-top:8px;border-top:1px solid var(--line)}
+.case dt{font-size:.74rem;font-weight:800;color:var(--gold-ink);text-transform:uppercase;letter-spacing:.04em}
+.case dd{margin:0;font-size:.9rem}
+@media (max-width:480px){.case dl div{grid-template-columns:1fr;gap:2px}}
+.cased summary{display:flex;gap:12px;align-items:center;cursor:pointer;list-style:none}
+.cased summary::-webkit-details-marker{display:none}
+.cased[open] summary .chev{transform:rotate(90deg)}
+.cased .chev{color:var(--muted);transition:transform .2s}
+.cased .case{margin-top:14px}
+.planmeta{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:0 0 16px}
+@media (min-width:700px){.planmeta{grid-template-columns:repeat(4,1fr)}}
+.planmeta span{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-size:.88rem}
+.planmeta b{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tl li.chk .num{border-radius:12px;background:var(--gold-soft);border-color:var(--gold);color:var(--gold-ink)}
+.tl li.chk.done .num{background:var(--green);border-color:var(--green);color:#fff}
+.tl li.chk h3{font-size:.92rem}
+.inp{min-height:0;margin-bottom:10px}
+.case-d{padding:0}
+label.small.muted{display:block;margin:8px 0 4px}
+
+.rwlvl{margin-bottom:8px}
+.bonus{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:16px;border:1px solid var(--gold);border-radius:16px;background:var(--gold-soft)}
+.bonus>div{flex:1;min-width:180px}
+.bonus .rwi{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--navy);color:#E2C07A;flex:none}
+
+/* livelli: lampone, caramello, pistacchio, cioccolato */
+:root{--l0:#A8435A;--l1:#C27A26;--l2:#5E8232;--l3:#5A3420}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--l0:#DC7A8E;--l1:#E3A04E;--l2:#9DBB63;--l3:#C08A62}}
+:root[data-theme="dark"]{--l0:#DC7A8E;--l1:#E3A04E;--l2:#9DBB63;--l3:#C08A62}
+.lvl0,.meter i.lvl0,.legend i.lvl0{background:var(--l0)} .lvl1,.meter i.lvl1,.legend i.lvl1{background:var(--l1)}
+.lvl2,.meter i.lvl2,.legend i.lvl2{background:var(--l2)} .lvl3,.meter i.lvl3,.legend i.lvl3{background:var(--l3)}
+.t0{color:var(--l0)} .t1{color:var(--l1)} .t2{color:var(--l2)} .t3{color:var(--l3)}
+.subh{font-family:var(--font-b);font-size:.95rem;font-weight:800;margin:18px 0 8px}
+.optin{padding:14px;border:1px dashed var(--gold);border-radius:14px;background:var(--surface-2)}
+.optin p{margin-bottom:12px}
+.tutorok{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:var(--green-soft);color:var(--ink);margin-bottom:6px}
+.tutorok svg{color:var(--green);flex:none;margin-top:2px}
+.tutorsec{border-color:var(--gold)}
 </style>
 </head>
 <body>
 <div class="splash" id="splash" role="dialog" aria-modal="true" aria-labelledby="splash-t">
   <div class="drip" aria-hidden="true"></div>
-  <div class="inner"><div class="mark" aria-hidden="true"></div><div class="eyebrow">TALENT FACTORY 2030</div><h1 id="splash-t">Magnum Skill Lab</h1><p class="tagline">Il piacere di crescere, un livello alla volta.</p><div class="gold-line"></div>
-  <p>La demo interattiva del percorso di crescita per il personale operaio.</p>
-  <div class="btns"><button class="btn gold" data-action="tour-start" id="splashTour">Avvia la demo guidata (2 minuti)</button></div>
+  <div class="inner"><div class="mark" aria-hidden="true"></div><div class="eyebrow">TALENT FACTORY 2030</div><h1 id="splash-t">My Magnum</h1><p class="tagline">Il piacere di crescere, un livello alla volta.</p><div class="gold-line"></div>
+  <p>L'app del Magnum Skill Lab: il percorso di crescita del personale operaio, in tasca.</p>
+  <div class="btns"><button class="btn gold" data-action="tour-start" id="splashTour">Avvia la demo guidata (3 minuti)</button></div>
   <p class="or">oppure entra direttamente in una delle due aree</p>
   <div class="enter">
    <button class="entry" data-action="enter" data-to="home"><span class="avatar">MR</span><span><b>Area operatore</b><small>Marco R., Operatore di linea</small></span></button>
@@ -428,14 +520,14 @@ h1 em{font-style:italic;color:#E2C07A}
 </div>
 <div class="app">
   <aside class="side" aria-label="Menu principale">
-    <button class="brand" data-action="splash" aria-label="Torna alla schermata iniziale"><div class="mark" aria-hidden="true"></div><div><b>Skill Lab</b><span>Magnum Ice Cream Company</span></div></button>
+    <button class="brand" data-action="splash" aria-label="Torna alla schermata iniziale"><div class="mark" aria-hidden="true"></div><div><b>My Magnum</b><span>Magnum Skill Lab</span></div></button>
     <nav id="sidenav"></nav>
     <p class="sfoot">Talent Factory 2030<br>Prototipo in beta</p>
   </aside>
   <main>
     <div class="rolebar"><span class="rl">Vista demo</span><div class="seg" role="group" aria-label="Scegli la vista"><a href="#home" id="roleOp">Operatore</a><a href="#s-home" id="roleSup">Supervisore</a></div><button class="tourbtn" data-action="tour-start" id="tourbtn"></button></div>
     <div class="top">
-      <button class="brand" data-action="splash" aria-label="Torna alla schermata iniziale"><div class="mark" aria-hidden="true"></div><div><b>Skill Lab</b><span>Magnum Ice Cream Company</span></div></button>
+      <button class="brand" data-action="splash" aria-label="Torna alla schermata iniziale"><div class="mark" aria-hidden="true"></div><div><b>My Magnum</b><span>Magnum Skill Lab</span></div></button>
       <div class="who">
         <button class="iconbtn" data-action="notif" aria-label="Notifiche"><span id="bell"></span><span class="dot"></span></button>
         <a class="avatar" id="avatar" href="#profilo">MR</a>
@@ -448,6 +540,7 @@ h1 em{font-style:italic;color:#E2C07A}
 </div>
 <nav class="tabbar" id="tabbar" aria-label="Menu"></nav>
 <div class="tour" id="tour" role="dialog" aria-live="polite" aria-label="Tour guidato"></div>
+<div class="tap" id="tap" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -473,7 +566,10 @@ const P={
  play:'M8 5l11 7-11 7z',
  levels:'M5 20v-5M12 20V10M19 20V4',
  clock:'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 7v5l3 2',
- bench:'M3 10h18M5 10v9M19 10v9M7 10V6h10v4'
+ bench:'M3 10h18M5 10v9M19 10v9M7 10V6h10v4',
+ file:'M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h5',
+ gift:'M4 11h16v10H4zM3 7h18v4H3zM12 7v14M12 7C10.5 4 7 3.5 7 5.5S10 7 12 7zM12 7c1.5-3 5-3.5 5-1.5S14 7 12 7z',
+ trophy:'M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6'
 };
 const ic=(n,s=20,fill=false)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="${fill?'currentColor':'none'}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${P[n]}"/></svg>`;
 const star=(s=18)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2 6.4 20.2l1.1-6.3L2.9 9.5l6.3-.9z"/></svg>`;
@@ -482,47 +578,48 @@ document.getElementById('bell').innerHTML=ic('bell');
 document.getElementById('tourbtn').innerHTML=ic('play',14,true)+'Tour';
 
 /* ---------- dati ---------- */
-const LEGEND=`<div class="legend"><span><i class="lvl0"></i>Caramello: Base</span><span><i class="lvl1"></i>Lampone: Intermedio</span><span><i class="lvl2"></i>Pistacchio: Avanzato</span></div>`;
-const LEVELS=['Base','Intermedio','Avanzato'];
+const LEGEND=`<div class="legend"><span><i class="lvl0"></i>1 Osservatore (lampone)</span><span><i class="lvl1"></i>2 Affiancato (caramello)</span><span><i class="lvl2"></i>3 Autonomo (pistacchio)</span><span><i class="lvl3"></i>4 Tutor (cioccolato)</span></div>`;
+const LEVELS=['Osservatore','Affiancato','Autonomo','Tutor'];
+const EVID=['Dimostrazione seguita e verifica iniziale completata','Prova completata sotto supervisione del senior','Attività reale conclusa e validata','Modulo tenuto o collega accompagnato con esito positivo'];
 const SKILLS=[
  {id:'sic',name:'Sicurezza e qualità',icon:'shield',desc:'Procedure di sicurezza, DPI e controlli qualità sul prodotto finito.',
-  lv:['Usi i DPI e segui le procedure di sicurezza della postazione.','Esegui in autonomia i controlli qualità previsti dal turno.','Riconosci i rischi prima che diventino problemi e guidi i colleghi nuovi.']},
+  lv:['Conosci DPI e procedure e hai visto come si applicano in postazione.','Esegui i controlli qualità del turno con il senior accanto.','Esegui da solo i controlli e riconosci i rischi prima che diventino problemi.','Insegni le procedure di sicurezza e qualità ai colleghi nuovi.']},
  {id:'aut',name:'Automazione di linea',icon:'cpu',desc:'Avvio, arresto e monitoraggio delle macchine automatiche.',
-  lv:['Avvii e arresti la macchina con il tecnico accanto.','Gestisci da solo avvio, arresto e allarmi più comuni.','Gestisci il cambio formato e ottimizzi i parametri di linea.']},
+  lv:['Hai visto avvio, arresto e gestione degli allarmi al banco.','Avvii e arresti la macchina con il senior che ti guida.','Gestisci da solo avvio, arresto e allarmi più comuni.','Affianchi i colleghi al banco e in linea nella gestione delle macchine.']},
  {id:'man',name:'Manutenzione di base',icon:'wrench',desc:'Piccoli interventi, pulizia tecnica e sostituzioni semplici.',
-  lv:['Esegui la pulizia tecnica e riconosci i componenti usurati.','Fai piccoli interventi in sicurezza, con blocco energia.','Programmi la manutenzione ordinaria e affianchi i colleghi.']},
+  lv:['Riconosci i componenti usurati e hai visto un intervento commentato.','Fai piccoli interventi con blocco energia, guidato dal senior.','Esegui in sicurezza i piccoli interventi previsti, senza supporto.','Accompagni i colleghi nei primi interventi di manutenzione.']},
  {id:'pro',name:'Problem solving',icon:'bulb',desc:'Riconoscere un\'anomalia, capirne la causa e proporre una soluzione.',
-  lv:['Riconosci un\'anomalia e la segnali subito.','Individui la causa più probabile e proponi una soluzione.','Guidi l\'analisi dei problemi ricorrenti e proponi miglioramenti.']},
+  lv:['Riconosci un\'anomalia e sai a chi segnalarla.','Cerchi la causa insieme al senior, che ti guida nei controlli.','Individui da solo la causa più probabile e proponi una soluzione.','Guidi i colleghi nell\'analisi dei problemi ricorrenti.']},
  {id:'igi',name:'Igiene alimentare',icon:'drop',desc:'Regole HACCP, sanificazione e gestione degli allergeni.',
-  lv:['Conosci e applichi le regole igieniche di base.','Esegui e registri la sanificazione e i controlli HACCP.','Gestisci allergeni e cambi prodotto senza rischi di contaminazione.']},
+  lv:['Conosci le regole igieniche e HACCP della linea.','Esegui sanificazione e controlli HACCP con supervisione.','Esegui e registri sanificazione e controlli in autonomia.','Formi i colleghi su igiene, allergeni e cambi prodotto.']},
  {id:'team',name:'Lavoro in squadra',icon:'users',desc:'Passaggio di consegne tra turni e comunicazione con il team.',
-  lv:['Comunichi con il team durante il turno.','Fai un passaggio di consegne completo al turno successivo.','Coordini il lavoro di squadra nei momenti critici.']}
+  lv:['Conosci il passaggio di consegne e hai visto come si fa.','Fai il passaggio di consegne con l\'aiuto del capoturno.','Fai da solo un passaggio di consegne completo.','Coordini la squadra nei momenti critici del turno.']}
 ];
 const PRIORITY=['sic','aut','man','pro'];
 const STEPS=['Spiegare','Dimostrare','Provare','Feedback','Verificare'];
 const PHASES=[
- ['Mappare i bisogni','Analisi delle competenze attuali e dei gap individuali e di ruolo.','HR e responsabile di linea'],
- ['Progettare il modulo','Definizione di contenuti, obiettivi e modalità di apprendimento.','HR e tecnici'],
- ['Spiegare','Introduzione dei concetti chiave in modo semplice e chiaro.','Tu, sull\'app'],
- ['Dimostrare','Esempi pratici, video e casi reali del contesto produttivo.','Tu, sull\'app'],
- ['Provare','Applicazione pratica al banco o in linea, con affiancamento.','Tu, con il tecnico'],
- ['Ricevere feedback','Indicazioni da parte dei tutor e dei responsabili di linea.','Tutor e supervisore'],
- ['Verificare','Misurazione dei risultati e aggiornamento della Skill Board.','Tu, sull\'app'],
- ['Scegliere il prossimo modulo','In base ai progressi, agli obiettivi e alle esigenze di ruolo.','Tu e il supervisore']
+ ['MAP','Mappare i bisogni','Attività critiche e differenze tra livello richiesto e posseduto.','HR e responsabile di linea'],
+ ['BUILD','Progettare il modulo','L\'attività diventa un modulo pratico con criteri di riuscita.','Responsabile e senior'],
+ ['EXPLAIN','Spiegare','Scopo, rischi, passaggi e standard essenziali.','Tu, sull\'app'],
+ ['SHOW','Dimostrare','Il senior mostra l\'attività e spiega le sue scelte.','Tu, con il senior'],
+ ['DO','Provare','Dalla prova guidata a quella autonoma.','Tu, al banco o in linea'],
+ ['FEEDBACK','Ricevere feedback','Correzioni subito e rinforzo di ciò che funziona.','Senior e supervisore'],
+ ['CHECK','Verificare','Il livello si attribuisce sulle evidenze e aggiorna la Skill Board.','Tu e il supervisore'],
+ ['NEXT','Scegliere il passo successivo','Consolidare, passare alla competenza successiva o diventare Tutor.','Tu e il supervisore']
 ];
 const MODULES=[
  {id:'banco',title:'Basi tecniche sul banco',skill:'aut',mins:25,icon:'bench',
   intro:'Prima di lavorare in linea impari a riconoscere i componenti principali di una macchina confezionatrice e a leggerne lo stato, in un ambiente sicuro: il banco didattico.',
   points:['I tre stati della macchina: pronta, in marcia, in allarme','Dove si trovano i pulsanti di arresto di emergenza','Come si legge il pannello operatore'],
-  demo:'Caso reale, Linea 3: la macchina segnala "film esaurito". Il tecnico mostra come riconoscere l\'allarme sul pannello, mettere in sicurezza e caricare la nuova bobina.',
+  demo:'Caso reale, Linea 3: la macchina segnala "film esaurito". Il senior mostra come riconoscere l\'allarme sul pannello, mettere in sicurezza e caricare la nuova bobina.',
   tasks:['Individuo sul banco tutti gli arresti di emergenza','Porto la macchina da "pronta" a "in marcia" e poi in arresto','Leggo e annoto tre allarmi dal pannello operatore'],
-  fb:{from:'Sara M.',role:'Tecnico di riferimento',stars:5,text:'Sequenza di avvio corretta e sicura. Ottima attenzione agli arresti di emergenza.'},
+  fb:{from:'Sara M.',role:'Senior di riferimento',stars:5,text:'Sequenza di avvio corretta e sicura. Ottima attenzione agli arresti di emergenza.'},
   quiz:[{q:'La macchina è in allarme. Qual è la prima cosa da fare?',o:['Riavviarla subito','Metterla in sicurezza e leggere il messaggio','Chiamare il turno successivo'],a:1},
         {q:'Dove leggi lo stato della macchina?',o:['Sul pannello operatore','Sul registro di turno','Sull\'etichetta del prodotto'],a:0}]},
  {id:'intervento',title:'Primo intervento guidato in linea',skill:'man',mins:40,icon:'wrench',
-  intro:'Metti in pratica ciò che hai imparato sul banco, questa volta in linea, affiancato dal tuo tecnico di riferimento.',
+  intro:'Metti in pratica ciò che hai imparato sul banco, questa volta in linea, affiancato dal tuo senior di riferimento.',
   points:['Blocco e segnalazione della macchina prima dell\'intervento','Uso corretto degli attrezzi del kit di linea','Verifica finale e ripartenza controllata'],
-  demo:'Video: sostituzione di una lama di taglio sulla confezionatrice. Il tecnico mostra ogni passaggio, dal blocco energia alla prova di ripartenza.',
+  demo:'Video: sostituzione di una lama di taglio sulla confezionatrice. Il senior mostra ogni passaggio, dal blocco energia alla prova di ripartenza.',
   tasks:['Eseguo il blocco energia e appongo il cartellino','Sostituisco il componente con il tecnico accanto','Faccio la prova di ripartenza e registro l\'intervento'],
   fb:{from:'Luca B.',role:'Supervisore di linea',stars:5,text:'Intervento pulito e nei tempi. Sei pronto per lavorare con più autonomia.'},
   quiz:[{q:'Prima di un intervento in linea devi sempre…',o:['Avvisare solo a voce','Eseguire il blocco energia e mettere il cartellino','Rallentare la macchina'],a:1},
@@ -532,7 +629,7 @@ const MODULES=[
   points:['Le soglie di ogni parametro sono indicate sul pannello','Un valore fuori soglia va segnalato subito','Le cause più comuni di scostamento'],
   demo:'Caso reale: la temperatura del tunnel di raffreddamento sale di 3 gradi. Vediamo come è stata individuata la causa in 10 minuti.',
   tasks:['Leggo i parametri di inizio turno','Riconosco un valore fuori soglia simulato','Compilo la segnalazione per il supervisore'],
-  fb:{from:'Sara M.',role:'Tecnico di riferimento',stars:4,text:'Buona lettura dei valori. Da velocizzare la compilazione della segnalazione.'},
+  fb:{from:'Sara M.',role:'Senior di riferimento',stars:4,text:'Buona lettura dei valori. Da velocizzare la compilazione della segnalazione.'},
   quiz:[{q:'Un parametro è fuori soglia. Cosa fai?',o:['Aspetto fine turno','Lo segnalo subito','Lo correggo a caso'],a:1},
         {q:'Dove trovi le soglie di riferimento?',o:['Sul pannello operatore','Nel magazzino','Non esistono'],a:0}]},
  {id:'haccp',title:'Sicurezza e qualità: HACCP',skill:'igi',mins:35,icon:'shield',
@@ -548,25 +645,25 @@ const MODULES=[
 ];
 const OPS=[
  {id:'marco',name:'Marco R.',role:'Operatore di linea'},
- {id:'giulia',name:'Giulia F.',role:'Operatrice polivalente',aut:4,mod:'Cambio formato della linea',lvl:{sic:2,aut:2,man:1,pro:2,igi:2,team:2}},
- {id:'elena',name:'Elena P.',role:'Operatrice di linea',aut:3,mod:'Lettura parametri macchina',lvl:{sic:1,aut:1,man:1,pro:1,igi:2,team:2}},
- {id:'antonio',name:'Antonio D.',role:'Operatore di linea',aut:2,mod:'Sicurezza e qualità: HACCP',lvl:{sic:1,aut:1,man:0,pro:0,igi:0,team:1}},
- {id:'davide',name:'Davide C.',role:'Operatore in inserimento',aut:1,mod:'Basi tecniche sul banco',lvl:{sic:0,aut:0,man:0,pro:0,igi:1,team:1}}
+ {id:'giulia',name:'Giulia F.',role:'Operatrice polivalente',mod:'Cambio formato della linea',lvl:{sic:2,aut:3,man:1,pro:2,igi:2,team:2}},
+ {id:'elena',name:'Elena P.',role:'Operatrice di linea',mod:'Lettura parametri macchina',lvl:{sic:1,aut:1,man:1,pro:1,igi:2,team:2}},
+ {id:'antonio',name:'Antonio D.',role:'Operatore di linea',mod:'Sicurezza e qualità: HACCP',lvl:{sic:1,aut:1,man:0,pro:0,igi:0,team:1}},
+ {id:'davide',name:'Davide C.',role:'Operatore in inserimento',mod:'Basi tecniche sul banco',lvl:{sic:0,aut:0,man:0,pro:0,igi:1,team:1}}
 ];
 
 /* ---------- stato (salvato solo su questo dispositivo) ---------- */
-const KEY='msl-demo-v2';
-function fresh(){return{v:2,
+const KEY='msl-demo-v5';
+function fresh(){return{v:5,
  steps:{banco:3,intervento:0,parametri:0,haccp:5,formato:0},
  lvl:{sic:2,aut:1,man:0,pro:1,igi:2,team:1},
  feedback:[
   {from:'Luca B.',role:'Supervisore di linea',stars:5,text:'Ottima precisione e grande impegno nel lavoro in autonomia.',date:'12 set'},
-  {from:'Sara M.',role:'Tecnico di riferimento',stars:4,text:'Buona gestione del cambio turno. Da consolidare la lettura degli allarmi.',date:'3 set'},
+  {from:'Sara M.',role:'Senior di riferimento',stars:4,text:'Buona gestione del cambio turno. Da consolidare la lettura degli allarmi.',date:'3 set'},
   {from:'Luca B.',role:'Supervisore di linea',stars:5,text:'Controlli qualità sempre puntuali, anche nei picchi di produzione.',date:'26 ago'}],
  valid:[{op:'giulia',skill:'aut',lvl:2,src:'Cambio formato della linea'},{op:'elena',skill:'pro',lvl:1,src:'Lettura parametri macchina'}],
- validated:[],fbRequest:false,assigned:null,sent:0}}
+ validated:[],fbRequest:false,assigned:null,sent:0,reward:null,goalsDone:false,tutorDone:false,coached:false,cases:[],tutorOpt:false,tutor:null}}
 let S;
-try{S=JSON.parse(localStorage.getItem(KEY));if(!S||S.v!==2)S=fresh()}catch(e){S=fresh()}
+try{S=JSON.parse(localStorage.getItem(KEY));if(!S||S.v!==5)S=fresh()}catch(e){S=fresh()}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 
 const M=id=>MODULES.find(m=>m.id===id);
@@ -575,25 +672,75 @@ function status(m){const k=S.steps[m.id];if(k>=5)return'done';if(m.req&&S.steps[
 const pct=m=>Math.min(100,S.steps[m.id]*20);
 const current=()=>MODULES.find(m=>status(m)==='doing')||MODULES.find(m=>status(m)==='todo');
 const suggested=()=>{const c=current();return MODULES.find(m=>status(m)==='todo'&&m!==c)||MODULES.find(m=>status(m)==='todo')};
-const autonomy=()=>3+((S.steps.banco>=5&&S.steps.intervento>=5)?1:0);
+const autoCount=L=>Object.values(L).filter(l=>l>=2).length;
+const autonomy=()=>autoCount(S.lvl);
 const AUT_LABEL=['','Iniziale','In crescita','Buono','Ottimo'];
 const avg=()=>(S.feedback.reduce((a,f)=>a+f.stars,0)/S.feedback.length).toFixed(1).replace('.',',');
 const PILL={doing:['In corso','p-doing'],todo:['Da iniziare','p-todo'],done:['Completato','p-done'],locked:['Bloccato','p-locked']};
 const pill=s=>`<span class="pill ${PILL[s][1]}">${PILL[s][0]}</span>`;
 const OP=id=>OPS.find(o=>o.id===id);
 const opLvl=o=>o.id==='marco'?S.lvl:o.lvl;
-const opAut=o=>o.id==='marco'?autonomy():o.aut;
+const opAut=o=>autoCount(opLvl(o));
 const opMod=o=>{if(o.id!=='marco')return o.mod;const c=current();return c?c.title:'Nessun modulo in corso'};
 const initials=n=>n.split(' ').map(x=>x[0]).join('');
-const mini=a=>`<div class="mini">${[1,2,3,4].map(i=>`<i class="${i<=a?'f':''}"></i>`).join('')}</div>`;
+const mini=(a,t=6)=>`<div class="mini">${Array.from({length:t},(_,i)=>`<i class="${i<a?'f':''}"></i>`).join('')}</div>`;
 let starV=5;
+const OBJ=[
+ {title:'Supera la verifica dei 3 mesi',why:'Completa il modulo “Basi tecniche sul banco”',ok:()=>S.steps.banco>=5,prog:()=>[Math.min(S.steps.banco,5),5],link:'#modulo/banco'},
+ {title:'Fai convalidare una nuova competenza',why:'Il supervisore conferma ciò che vede in linea',ok:()=>S.validated.some(v=>v.startsWith('marco:')),prog:()=>[S.validated.some(v=>v.startsWith('marco:'))?1:0,1],link:'#competenze'},
+ {title:'Mantieni una media feedback di almeno 4 stelle',why:'Le valutazioni di senior e supervisore',ok:()=>parseFloat(avg().replace(',','.'))>=4,prog:()=>[1,1],link:'#feedback'}
+];
+const GEN=[
+ {id:'eng',icon:'chat',title:'Inglese tecnico',desc:'Leggere i manuali e parlare con i fornitori esteri.',hrs:'20 ore'},
+ {id:'lean',icon:'levels',title:'Lean manufacturing',desc:'Ridurre sprechi e fermi linea con il metodo lean.',hrs:'12 ore'},
+ {id:'team',icon:'users',title:'Comunicazione e lavoro in squadra',desc:'Passaggi di consegne e gestione dei momenti critici.',hrs:'8 ore'}
+];
+const GOALS=[
+ {id:'g1',title:'Raggiungi il livello Autonomo in Automazione di linea',why:'Con il modulo “Basi tecniche sul banco”',ok:()=>S.lvl.aut>=2,prog:()=>[Math.min(S.steps.banco,5),5],link:'#modulo/banco'},
+ {id:'g2',title:'Fai convalidare la competenza dal supervisore',why:'Luca B. conferma ciò che vede in linea',ok:()=>S.validated.includes('marco:aut'),prog:()=>[S.validated.includes('marco:aut')?1:0,1],link:'#competenze/aut'},
+ {id:'g3',title:'Affianca un collega con esito positivo',why:'Davide C., in inserimento, su “Basi tecniche sul banco”',ok:()=>S.coached,prog:()=>[S.coached?1:0,1]}
+];
+const COURSES=[
+ {id:'plc',icon:'cpu',title:'Programmazione PLC di base',desc:'Certificazione introduttiva sulla logica delle macchine di linea.',hrs:'16 ore'},
+ {id:'hmi',icon:'levels',title:'Utilizzo e configurazione HMI',desc:'Leggere e configurare i pannelli operatore.',hrs:'12 ore'},
+ {id:'sicm',icon:'shield',title:'Sicurezza su macchine automatiche',desc:'Brevetto su procedure e dispositivi di sicurezza.',hrs:'8 ore'}
+];
+const TIERS=[
+ ['Tutor base','Affianca un collega su attività circoscritte e standardizzate. Evidenza: un collega accompagnato con esito positivo.','una certificazione introduttiva a scelta.'],
+ ['Tutor avanzato','Presidia il trasferimento del know-how: conduce Skill Station, co-progetta i moduli e segue più colleghi su competenze critiche.','una certificazione di alto profilo a scelta e il bonus Tutor.']
+];
+const ADV_COURSES=[
+ {icon:'cpu',title:'Programmazione PLC avanzata',desc:'Logiche complesse e modifiche documentate sulle macchine di linea.',hrs:'40 ore'},
+ {icon:'wrench',title:'Diagnostica guasti su sistemi automatici',desc:'Metodo di analisi dei fermi e dei guasti ricorrenti.',hrs:'32 ore'},
+ {icon:'levels',title:'Fondamenti di robotica industriale',desc:'Robot di linea e interazione uomo-macchina.',hrs:'24 ore'}
+];
+const goalsOk=()=>GOALS.filter(g=>g.ok()).length;
+const allGoals=()=>goalsOk()===GOALS.length;
+const objOk=()=>OBJ.filter(g=>g.ok()).length;
+const allObj=()=>objOk()===OBJ.length;
+const RW=id=>COURSES.find(r=>r.id===id);
+const GW=id=>GEN.find(r=>r.id===id);
+const CASEF=[['problem','Problema osservato'],['signals','Segnali rilevati'],['checks','Controlli effettuati'],['cause','Causa individuata'],['action','Intervento eseguito'],['verify','Verifica finale']];
+const CASES=[
+ {id:'film',mod:'banco',skill:'aut',line:'Linea 3',author:'Sara M., senior',title:'Allarme “film esaurito” con bobina ancora carica',problem:'La confezionatrice si ferma con l\'allarme “film esaurito” anche se la bobina non è finita.',signals:'Allarme intermittente, bobina ancora carica, film che si allenta poco prima del fermo.',checks:'Tensione del film, posizione del sensore di fine bobina, pulizia della fotocellula. Prima la fotocellula: è il controllo più rapido e la causa più frequente.',cause:'Fotocellula sporca di residui di cartone: legge un falso fine bobina.',action:'Messa in sicurezza della macchina, pulizia della fotocellula, prova a vuoto.',verify:'Due cicli completi senza allarme e controllo del film per 15 minuti.'},
+ {id:'lama',mod:'intervento',skill:'man',line:'Linea 3',author:'Sara M., senior',title:'Taglio irregolare delle confezioni',problem:'Le confezioni escono con il bordo sfrangiato.',signals:'Bordo irregolare sempre sullo stesso lato, rumore diverso al momento del taglio.',checks:'Usura della lama, serraggio del supporto, sincronismo del taglio sul pannello. Il difetto su un solo lato fa pensare alla lama, non al sincronismo.',cause:'Lama usurata su un lato dopo un cambio formato.',action:'Blocco energia con cartellino, sostituzione della lama, serraggio del supporto.',verify:'Prova di ripartenza e controllo di 20 confezioni consecutive.'},
+ {id:'tunnel',mod:'parametri',skill:'pro',line:'Linea 3',author:'Luca B., supervisore',title:'Temperatura del tunnel di raffreddamento in salita',problem:'La temperatura del tunnel sale di 3 gradi in un\'ora.',signals:'Valore fuori soglia sul pannello, condensa all\'uscita del tunnel.',checks:'Chiusura delle porte, funzionamento delle ventole, stato del filtro dell\'aria.',cause:'Filtro dell\'aria intasato che riduce il flusso.',action:'Segnalazione alla manutenzione e sostituzione programmata del filtro.',verify:'Temperatura stabile in soglia per un turno intero.'}
+];
+const allCases=()=>S.cases.concat(CASES);
+const caseFor=mid=>CASES.find(c=>c.mod===mid);
+function caseCard(c){return `<div class="case"><div class="case-h"><span class="pill p-doing">${ic('file',12)} Scheda caso</span><small class="muted">${esc(c.line)}, ${esc(c.author)}</small></div><h3>${esc(c.title)}</h3><dl>${CASEF.map(([k,l])=>`<div><dt>${l}</dt><dd>${esc(c[k]||'')}</dd></div>`).join('')}</dl></div>`}
+function checkGoals(){const sup=curRoute().startsWith('s-');
+ if(!S.goalsDone&&allObj()){S.goalsDone=true;save();setTimeout(()=>{confetti();toast(sup?'Marco R. ha raggiunto i suoi obiettivi: può scegliere il reward':'Obiettivi raggiunti! Scegli il tuo reward')},400)}
+ else if(S.tutorOpt&&!S.tutorDone&&allGoals()){S.tutorDone=true;save();setTimeout(()=>{confetti();toast(sup?'Marco R. ha raggiunto gli obiettivi per Tutor base':'Obiettivi per Tutor base raggiunti! Scegli la tua certificazione')},400)}}
+function goalsMeter(){const n=goalsOk();return `<div class="gmeter">${GOALS.map((g,i)=>`<i class="${i<n?'f':''}"></i>`).join('')}</div>`}
+function objMeter(){const n=objOk();return `<div class="gmeter">${OBJ.map((g,i)=>`<i class="${i<n?'f':''}"></i>`).join('')}</div>`}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* ---------- navigazione ---------- */
-const NAV=[['home','Home','home'],['percorso','Il mio percorso','route'],['competenze','Competenze','target'],['feedback','Feedback','chat'],['moduli','Moduli','book'],['profilo','Profilo','user']];
-const TABS=[['home','Home','home'],['percorso','Percorso','route'],['moduli','Moduli','book'],['feedback','Feedback','chat'],['profilo','Profilo','user']];
-const SUPSIDE=[['s-home','La mia squadra','users'],['s-matrix','Matrice competenze','target'],['s-valid','Convalide','check'],['s-profilo','Profilo','user']];
-const SUPTABS=[['s-home','Squadra','users'],['s-matrix','Matrice','target'],['s-valid','Convalide','check'],['s-profilo','Profilo','user']];
+const NAV=[['home','Home','home'],['percorso','Il mio percorso','route'],['competenze','Competenze','target'],['feedback','Feedback','chat'],['moduli','Moduli','book'],['casi','Casi dalla linea','file'],['premi','Reward','gift'],['profilo','Profilo','user']];
+const TABS=[['home','Home','home'],['percorso','Percorso','route'],['moduli','Moduli','book'],['premi','Reward','gift'],['feedback','Feedback','chat'],['profilo','Profilo','user']];
+const SUPSIDE=[['s-home','La mia squadra','users'],['s-matrix','Skill Board','target'],['s-valid','Convalide','check'],['s-casi','Schede caso','file'],['s-profilo','Profilo','user']];
+const SUPTABS=[['s-home','Squadra','users'],['s-matrix','Skill Board','target'],['s-valid','Convalide','check'],['s-casi','Casi','file'],['s-profilo','Profilo','user']];
 let navRole=null;
 function setNav(r){
  const sup=r.startsWith('s-'),role=sup?'sup':'op';
@@ -604,22 +751,23 @@ function setNav(r){
   document.getElementById('whoname').innerHTML=sup?'<b>Luca B.</b><span>Supervisore di linea</span>':'<b>Marco R.</b><span>Operatore di linea</span>';
   document.getElementById('roleOp').classList.toggle('on',!sup);document.getElementById('roleSup').classList.toggle('on',sup);
  }
- const map={modulo:'moduli','s-op':'s-home'};const k=map[r]||r;
+ const map={modulo:'moduli','s-op':'s-home',casi:'moduli'};const k=map[r]||r;
  document.querySelectorAll('[data-r]').forEach(a=>{const on=a.dataset.r===k;a.classList.toggle('on',on);on?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')})}
 
 /* ---------- viste ---------- */
-function skillRow(id){const s=SK(id),l=S.lvl[id];
- return `<a class="row-link" href="#competenze/${id}"><span class="badge lvl${l}">${ic(s.icon,18)}</span><span><b>${s.name}</b><small>Livello: <em class="t${l}">${LEVELS[l]}</em></small></span><span class="chev">${ic('chev',18)}</span></a>`}
+function skillRow(id){const s=SK(id),l=S.lvl[id];/*4*/
+ return `<a class="row-link" href="#competenze/${id}"><span class="badge lvl${l}">${ic(s.icon,18)}</span><span><b>${s.name}</b><small>Livello: <em class="t${l}">${l+1}. ${LEVELS[l]}</em></small></span><span class="chev">${ic('chev',18)}</span></a>`}
 
-function ring(n){const c=2*Math.PI*26,f=n/4;
- return `<div class="ring"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="var(--line)" stroke-width="7"/><circle class="arc" cx="32" cy="32" r="26" fill="none" stroke="var(--gold)" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 ${c}" data-dash="${c*f} ${c}"/></svg><b>${n}/4</b></div>`}
+function ring(n,t){const c=2*Math.PI*26,f=n/t;
+ return `<div class="ring"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="var(--line)" stroke-width="7"/><circle class="arc" cx="32" cy="32" r="26" fill="none" stroke="var(--gold)" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 ${c}" data-dash="${c*f} ${c}"/></svg><b>${n}/${t}</b></div>`}
 
 function home(){
- const c=current(),asg=S.assigned&&status(M(S.assigned))==='todo'?M(S.assigned):null,sg=asg||suggested(),a=autonomy(),f=S.feedback[0];
+ const c=current(),asg=S.assigned&&status(M(S.assigned))==='todo'?M(S.assigned):null,sg=asg||suggested(),a=autonomy(),f=S.feedback[0],r=S.reward;
  const stato=c&&status(c)==='doing'
   ?`<div class="modstate"><span class="ico">${ic(c.icon)}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><b style="font-size:.92rem">${c.title}</b>${pill('doing')}</div><div class="bar"><i style="width:0" data-w="${pct(c)}"></i></div><small class="muted">${pct(c)}% completato, fase: ${STEPS[Math.min(S.steps[c.id],4)]}</small></div></div>
     <div class="btns" style="margin-top:12px"><a class="btn" href="#modulo/${c.id}">Continua il modulo</a></div>`
   :`<p class="muted small">Nessun modulo in corso.</p>${c?`<div class="btns" style="margin-top:12px"><a class="btn" href="#modulo/${c.id}">Inizia ${esc(c.title)}</a></div>`:''}`;
+ const rw=S.reward,tutorTxt=rw?(rw.status==='approved'?'Reward approvato: '+GW(rw.id).title:'Reward scelto, in attesa di approvazione'):allObj()?'Obiettivi raggiunti: scegli il tuo reward':`${objOk()} obiettivi su ${OBJ.length} raggiunti`;
  return `<div class="fade">
  <div class="hello"><h1>Ciao <em>Marco</em>,</h1><p>il tuo percorso di crescita continua!</p></div>
  <div class="grid-home">
@@ -627,48 +775,100 @@ function home(){
   <div class="stack">
    <section class="card"><h2>Stato del modulo</h2>${stato}</section>
    <div class="pair">
-    <section class="card"><h2>Il tuo livello di autonomia</h2><div class="ringwrap">${ring(a)}<b>${AUT_LABEL[a]}</b></div><p class="small muted" style="margin-top:8px">${a<4?'Stai raggiungendo l\'autonomia prevista dal percorso.':'Hai raggiunto l\'autonomia prevista dal percorso.'}</p></section>
+    <section class="card"><h2>Competenze autonome</h2><div class="ringwrap">${ring(a,6)}<b>${a} su 6</b></div><p class="small muted" style="margin-top:8px">Competenze a livello Autonomo o Tutor, validate in linea.</p></section>
     <a class="card" href="#feedback" style="text-decoration:none"><h2>Feedback ricevuto</h2><div class="score">${star(22)}${avg()}<span class="muted" style="font-size:.9rem;font-weight:500">/5</span></div><p class="quote">“${esc(f.text)}”</p><p class="small muted" style="margin-top:4px">${esc(f.role)}</p></a>
    </div>
   </div>
  </div>
+ <a class="card rwcard" href="#premi" style="margin-top:14px"><span class="rwico">${ic('gift',24)}</span><div style="flex:1;min-width:0"><small class="muted">I tuoi reward del trimestre</small><h3>${tutorTxt}</h3>${objMeter()}</div><span class="chev">${ic('chev',18)}</span></a>
  <section class="card next" style="margin-top:14px">
   ${sg?`<span class="ico">${ic('bulb',22)}</span><div class="txt"><small class="muted">${asg?'Assegnato da Luca B., il tuo supervisore':'Prossimo modulo consigliato'}</small><h3>${sg.title}</h3><p class="small muted">${esc(sg.intro)}</p></div><a class="btn" href="#modulo/${sg.id}">Vai al modulo</a>`
   :`<span class="ico">${ic('check',22)}</span><div class="txt"><h3>Hai completato tutti i moduli disponibili</h3><p class="small muted">Il tuo supervisore sceglierà con te i prossimi obiettivi.</p></div>`}
  </section></div>`}
 
-function percorso(){
- const c=current(); const k=c?S.steps[c.id]:5;
- const items=PHASES.map((p,i)=>{let st='';
-  if(i<2)st='done'; else if(i<7){const s=i-2;st=s<k?'done':(s===k?'now':'')} else st=k>=5?'now':'';
-  return `<li class="${st}"><span class="num">${st==='done'?ic('check',18):i+1}</span><div><h3>${p[0]}</h3><p>${p[1]}</p><div class="who-does">${p[2]}${st==='now'?', sei qui':''}</div></div></li>`}).join('');
- return `<div class="fade"><div class="hello"><h1>Il mio <em>percorso</em></h1><p>8 fasi per sviluppare competenze, autonomia e valore.${c?` Modulo attuale: <b>${c.title}</b>.`:''}</p></div>
- <section class="card"><ol class="tl">${items}</ol>${c?`<a class="btn" href="#modulo/${c.id}">Continua da qui</a>`:''}</section></div>`}
+function goalRow(g,extra=''){const ok=g.ok(),[v,t]=g.prog();
+ return `<div class="goal ${ok?'ok':''}"><span class="gck">${ic(ok?'check':'target',16)}</span><div style="flex:1;min-width:0">${g.link?`<a class="glink" href="${g.link}"><b>${g.title}</b></a>`:`<b>${g.title}</b>`}<p class="small muted">${g.why}</p>${ok||!g.link?'':`<div class="bar"><i style="width:0" data-w="${Math.round(v/t*100)}"></i></div>`}${extra}</div><span class="small" style="font-weight:700;color:${ok?'var(--green)':'var(--muted)'}">${ok?'Fatto':v+'/'+t}</span></div>`}
+function courseCard(x,mine,st,unlocked,act,lockLabel){
+ return `<div class="rw ${mine?'mine':''} ${!unlocked?'lockd':''}"><span class="rwi">${ic(x.icon,22)}</span><b>${x.title}</b><p class="small muted">${x.desc} ${x.hrs}.</p>${mine?`<span class="pill ${st==='approved'?'p-done':'p-doing'}">${st==='approved'?'Approvato':'In attesa'}</span>`:(act&&unlocked?`<button class="btn gold" data-action="${act}" data-r="${x.id}">Scegli questo</button>`:(!unlocked?`<span class="pill p-locked">${ic('lock',12)} ${lockLabel}</span>`:''))}</div>`}
+function premi(){
+ const r=S.reward,all=allObj(),t=S.tutor,base=t&&t.status==='approved',tAll=allGoals();
+ const head=r?(r.status==='approved'?`<div class="rwbadge">${ic('check',30)}</div><h2>Reward approvato</h2><p>Luca B. ha approvato <b>${GW(r.id).title}</b>: l'ufficio HR ti iscriverà alla prossima edizione.</p>`
+   :`<div class="rwbadge">${ic('clock',30)}</div><h2>Reward scelto</h2><p>Hai scelto <b>${GW(r.id).title}</b>. Aspetta l'approvazione del supervisore.</p>`)
+  :all?`<div class="rwbadge">${ic('gift',30)}</div><h2>Obiettivi raggiunti!</h2><p>Scegli qui sotto il tuo reward.</p>`
+  :`<div class="rwbadge locked">${ic('lock',28)}</div><h2>${objOk()} obiettivi su ${OBJ.length}</h2><p>Raggiungili tutti per sbloccare il tuo reward.</p>`;
+ const tiers=TIERS.map((x,i)=>{const pl=i===0?(base?'<span class="pill p-done">Raggiunto</span>':'<span class="pill p-doing">Primo livello</span>'):(base?'<span class="pill p-doing">Il tuo prossimo passo</span>':'<span class="pill p-locked">Più avanti</span>');
+  return `<li class="${i===0&&base?'reached cur':''}"><span class="n">${i===0&&base?ic('check',14):i+1}</span><div style="flex:1"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>${x[0]}</b>${pl}</div><p class="small muted">${x[1]}</p><p class="small" style="margin-top:4px"><b>Riconoscimento:</b> ${x[2]}</p></div></li>`}).join('');
+ const g12=GOALS[0].ok()&&GOALS[1].ok();
+ const tgoals=GOALS.map(g=>goalRow(g,g.id==='g3'&&!g.ok()?(g12?`<button class="btn gold" data-action="affianca" style="margin-top:10px">${ic('users',16)}Registra affiancamento</button>`:`<p class="small muted" style="margin-top:6px">Disponibile dopo i primi due obiettivi</p>`):'')).join('');
+ const tstate=base?`<div class="tutorok">${ic('trophy',20)}<div><b>Sei Tutor base in Automazione di linea</b><p class="small muted">Certificazione approvata: ${RW(t.id).title}.</p></div></div>`:t?`<div class="tutorok">${ic('clock',20)}<div><b>Candidatura inviata</b><p class="small muted">Hai scelto ${RW(t.id).title}. Luca B. deve confermare il ruolo.</p></div></div>`:'';
+ const tutorBody=!S.tutorOpt?`<div class="optin"><p>Il ruolo di Tutor è <b>facoltativo</b>: è pensato per chi ha piacere di insegnare ai colleghi ciò che sa fare bene. Se ti interessa, candidati e vedrai obiettivi e riconoscimenti dedicati.</p><button class="btn" data-action="candidati">${ic('users',16)}Voglio diventare Tutor</button></div>`
+  :`${tstate}<h3 class="subh">Obiettivi per Tutor base</h3>${tgoals}
+   <h3 class="subh">Certificazione introduttiva a scelta</h3><p class="small muted" style="margin:-2px 0 12px">Il riconoscimento del Tutor base.</p>
+   <div class="rwgrid">${COURSES.map(x=>courseCard(x,t&&t.id===x.id,t&&t.status,tAll,!t?'pickcert':'','Bloccata')).join('')}</div>`;
+ return `<div class="fade"><div class="hello"><h1>I tuoi <em>reward</em></h1><p>Raggiungi gli obiettivi del trimestre e scegli il tuo reward. Se vuoi, puoi anche diventare Tutor.</p></div>
+ <section class="card rwhero">${head}${objMeter()}</section>
+ <section class="card objs" style="margin-top:14px"><h2>Obiettivi del trimestre</h2>${OBJ.map(g=>goalRow(g)).join('')}</section>
+ <section class="card rewards" style="margin-top:14px"><h2>Scegli il tuo reward: un corso di formazione</h2><p class="small muted" style="margin:-4px 0 12px">Per tutti gli operatori che raggiungono gli obiettivi.</p>
+ <div class="rwgrid">${GEN.map(x=>courseCard(x,r&&r.id===x.id,r&&r.status,all,!r?'pickrw':'','Bloccato')).join('')}</div></section>
+ <section class="card tutorsec" style="margin-top:22px"><div class="rwlvl"><span class="pill p-doing">Facoltativo</span></div><h2>Diventa Tutor</h2>${tutorBody}
+  <h3 class="subh">I due livelli Tutor</h3><ol class="lvlsteps">${tiers}</ol>
+  <div class="bonus" style="margin-top:14px"><span class="rwi">${ic('trophy',22)}</span><div><b>Tutor avanzato: bonus Tutor e certificazione di alto profilo</b><p class="small muted">Un bonus annuale nella componente di livelihood, più una certificazione a scelta tra ${ADV_COURSES.map(x=>x.title).join(', ')}.</p></div><span class="pill p-locked">${ic('lock',12)} Tutor avanzato</span></div>
+ </section></div>`}
 
-const meter=(l,big)=>`<div class="meter${big?' big':''}" role="img" aria-label="Livello ${LEVELS[l]}, ${l+1} su 3">${[0,1,2].map(i=>`<i class="${i<=l?'lvl'+l:''}"></i>`).join('')}</div>`;
+const PLAN=[
+ {when:'Settimane 1–2',title:'Punto di partenza',desc:'Con Luca B. e Sara M. definisci il piano e registri il livello iniziale nella Skill Board.',done:()=>true},
+ {when:'Mese 1',title:'Conoscere la linea',desc:'Fasi della linea, persone di riferimento, sicurezza e igiene del ruolo.',done:()=>true},
+ {when:'Mesi 1–3',title:'Esercitazioni al banco',desc:'Competenze di base in un ambiente sicuro, separato dalla produzione.',mod:'banco',done:()=>S.steps.banco>=5},
+ {check:'Verifica dei 3 mesi',date:'15 ottobre',done:()=>S.steps.banco>=5},
+ {when:'Mesi 3–6',title:'In linea con il senior',desc:'Applichi in linea ciò che hai provato al banco, affiancato da Sara M.',mod:'intervento',done:()=>S.steps.intervento>=5},
+ {check:'Verifica dei 6 mesi',date:'15 gennaio',done:()=>false},
+ {when:'Mesi 6–9',title:'Autonomia sulle attività verificate',desc:'Lavori senza guida solo dove hai superato la verifica: il passare dei mesi, da solo, non basta.',done:()=>false},
+ {when:'Mesi 9–12',title:'Progetto di miglioramento',desc:'Con il Maintenance Engineer riduci un fermo ricorrente e presenti i risultati ai colleghi: primo passo verso il ruolo di Tutor.',done:()=>false},
+ {check:'Verifica dei 12 mesi',date:'15 luglio 2027',done:()=>false}
+];
+function percorso(){
+ const st=PLAN.map(p=>p.done()); const cur=st.findIndex(d=>!d); let k=0;
+ const plan=PLAN.map((p,i)=>{const d=st[i];
+  if(p.check) return `<li class="chk ${d?'done':''}"><span class="num">${ic(d?'check':'clock',16)}</span><div><h3>${p.check}</h3><p>${d?'Fatta: piano aggiornato con responsabile e senior.':'In programma il '+p.date+', con Luca B. e Sara M.'}</p></div></li>`;
+  k++; const now=i===cur;
+  return `<li class="${d?'done':now?'now':''}"><span class="num">${d?ic('check',18):k}</span><div><div class="who-does" style="margin:8px 0 2px">${p.when}${now?', sei qui':''}</div><h3 style="margin-top:0">${p.title}</h3><p>${p.desc}</p>${p.mod?`<a class="small glink" href="#modulo/${p.mod}" style="font-weight:700">Modulo: ${M(p.mod).title} ›</a>`:''}</div></li>`}).join('');
+ const c=current(); const kk=c?S.steps[c.id]:5;
+ const cyc=PHASES.map((p,i)=>{let s2='';
+  if(i<2)s2='done'; else if(i<7){const x=i-2;s2=x<kk?'done':(x===kk?'now':'')} else s2=kk>=5?'now':'';
+  return `<li class="${s2}"><span class="num">${s2==='done'?ic('check',18):i+1}</span><div><div class="who-does" style="margin:8px 0 2px">${p[0]}</div><h3 style="margin-top:0">${p[1]}</h3><p>${p[2]}</p><div class="who-does">${p[3]}</div></div></li>`}).join('');
+ return `<div class="fade"><div class="hello"><h1>Il mio <em>percorso</em></h1><p>Il piano di 12 mesi concordato con il tuo responsabile e il ciclo in 8 fasi di ogni modulo.</p></div>
+ <section class="card plan"><h2>Il mio piano individuale</h2><div class="planmeta"><span><b>Profilo</b>Automation Expert</span><span><b>Avvio</b>15 luglio</span><span><b>Senior</b>Sara M.</span><span><b>Responsabile</b>Luca B.</span></div><ol class="tl">${plan}</ol></section>
+ <section class="card" style="margin-top:14px"><h2>Il ciclo di ogni modulo</h2>${c?`<p class="small muted" style="margin:-4px 0 12px">Modulo attuale: <b>${c.title}</b></p>`:''}<ol class="tl">${cyc}</ol>${c?`<a class="btn" href="#modulo/${c.id}">Continua da qui</a>`:''}</section></div>`}
+
+function casi(){
+ return `<div class="fade"><div class="hello"><h1>Casi dalla <em>linea</em></h1><p>Il ragionamento dei senior raccolto in schede: cosa hanno visto, cosa hanno controllato e perché.</p></div>
+ <div class="stack">${allCases().map((c,i)=>`<details class="card cased" ${i===0?'open':''}><summary><span class="badge lvl2" style="background:var(--navy)">${ic('file',18)}</span><span style="flex:1;min-width:0"><b>${esc(c.title)}</b><small class="muted" style="display:block">${SK(c.skill)?SK(c.skill).name:''}, ${esc(c.author)}</small></span><span class="chev">${ic('chev',18)}</span></summary>${caseCard(c)}</details>`).join('')}</div></div>`}
+
+const meter=(l,big)=>`<div class="meter${big?' big':''}" role="img" aria-label="Livello ${LEVELS[l]}, ${l+1} su 4">${[0,1,2,3].map(i=>`<i class="${i<=l?'lvl'+l:''}"></i>`).join('')}</div>`;
 
 function skillDetail(id){
  const s=SK(id); if(!s) return competenze();
  const l=S.lvl[id]; const mods=MODULES.filter(m=>m.skill===id);
- const nextTxt=l<2?`Prossimo traguardo: <b>${LEVELS[l+1]}</b>`:'Hai raggiunto il livello massimo';
+ const nextTxt=l<3?`Prossimo traguardo: <b>${LEVELS[l+1]}</b>`:'Hai raggiunto il livello più alto';
  return `<div class="fade"><a class="back" href="#competenze">${ic('left',18)}Tutte le competenze</a>
  <section class="card" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
   <span class="badge lvl${l}" style="width:52px;height:52px">${ic(s.icon,24)}</span>
   <div style="flex:1;min-width:200px"><h1 style="font-size:1.5rem">${s.name}</h1><p class="muted small" style="margin-top:4px">${s.desc}</p></div>
-  <div style="width:100%">${meter(l,true)}<p class="small" style="margin-top:8px">Livello attuale: <b class="t${l}">${LEVELS[l]}</b> <span class="muted">– ${nextTxt}</span></p>${S.validated.includes('marco:'+id)?`<p style="margin-top:10px"><span class="pill p-done">Convalidata da Luca B., supervisore</span></p>`:S.valid.some(v=>v.op==='marco'&&v.skill===id)?`<p style="margin-top:10px"><span class="pill p-doing">In attesa di convalida del supervisore</span></p>`:''}</div>
+  <div style="width:100%">${meter(l,true)}<p class="small" style="margin-top:8px">Livello attuale: <b class="t${l}">${l+1}. ${LEVELS[l]}</b> <span class="muted">– ${nextTxt}</span></p>${S.validated.includes('marco:'+id)?`<p style="margin-top:10px"><span class="pill p-done">Convalidata da Luca B., supervisore</span></p>`:S.valid.some(v=>v.op==='marco'&&v.skill===id)?`<p style="margin-top:10px"><span class="pill p-doing">In attesa di convalida del supervisore</span></p>`:''}</div>
  </section>
  <div class="grid-home" style="margin-top:14px">
-  <section class="card"><h2>Cosa significa ogni livello</h2><ol class="lvlsteps">${s.lv.map((t,i)=>`<li class="${i<=l?'reached':''} ${i===l?'cur':''}"><span class="n">${i<=l?ic('check',14):i+1}</span><div><b>${LEVELS[i]}</b>${i===l?' <span class="small muted">(sei qui)</span>':''}<p class="small muted">${t}</p></div></li>`).join('')}</ol></section>
+  <section class="card"><h2>Cosa significa ogni livello</h2><ol class="lvlsteps">${s.lv.map((t,i)=>`<li class="${i<=l?'reached':''} ${i===l?'cur':''}"><span class="n">${i<=l?ic('check',14):i+1}</span><div><b>${LEVELS[i]}</b>${i===l?' <span class="small muted">(sei qui)</span>':''}<p class="small muted">${t}</p><p class="evid">${ic('check',12)} Evidenza: ${EVID[i]}</p></div></li>`).join('')}</ol></section>
   <section class="card"><h2>Moduli collegati</h2>${mods.length?`<div class="stack" style="gap:10px">${mods.map(m=>{const st=status(m);return `<a class="modstate" href="#modulo/${m.id}" style="text-decoration:none"><span class="ico">${ic(m.icon)}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><b style="font-size:.92rem">${m.title}</b>${pill(st)}</div>${st==='doing'?`<div class="bar"><i style="width:0" data-w="${pct(m)}"></i></div>`:`<small class="muted">${m.mins} min</small>`}</div></a>`}).join('')}</div>`
-   :`<p class="empty">Nessun modulo ancora disponibile per questa competenza: il supervisore lo definirà con te.</p>`}</section>
+   :`<p class="empty">Nessun modulo ancora disponibile per questa competenza: il supervisore lo definirà con te.</p>`}
+   ${l===2?`<p class="small muted" style="margin-top:12px">Sei Autonomo. Se ti va di insegnarla ai colleghi, puoi diventare Tutor. <a class="glink" href="#premi" style="font-weight:700">Scopri come ›</a></p>`:''}</section>
  </div></div>`}
 
 function competenze(id){
  if(id) return skillDetail(id);
- return `<div class="fade"><div class="hello"><h1>Le tue <em>competenze</em></h1><p>La tua Skill Board: si aggiorna ogni volta che completi e superi un modulo.</p>${LEGEND}</div>
+ return `<div class="fade"><div class="hello"><h1>Le tue <em>competenze</em></h1><p>La tua Skill Board, sui quattro livelli del Magnum Skill Lab.</p>${LEGEND}</div>
  <div class="skills">${SKILLS.map(s=>{const l=S.lvl[s.id];
   return `<a class="card skill" href="#competenze/${s.id}"><span class="badge lvl${l}">${ic(s.icon,18)}</span><div><h3>${s.name}</h3><p class="small muted">${s.desc}</p>
-  ${meter(l)}<p class="small" style="margin-top:6px">Livello: <b class="t${l}">${LEVELS[l]}</b></p></div></a>`}).join('')}</div></div>`}
+  ${meter(l)}<p class="small" style="margin-top:6px">Livello: <b class="t${l}">${l+1}. ${LEVELS[l]}</b></p></div></a>`}).join('')}</div></div>`}
 
 function modCard(m){const s=status(m);
  const cta=s==='locked'?`<button class="btn ghost" disabled>${ic('lock',16)}Completa prima “${M(m.req).title}”</button>`
@@ -680,6 +880,7 @@ function modCard(m){const s=status(m);
 function moduli(){
  const groups=[['doing','In corso'],['todo','Consigliati per te'],['done','Completati'],['locked','Da sbloccare']];
  return `<div class="fade"><div class="hello"><h1>I tuoi <em>moduli</em></h1><p>Brevi, pratici, pensati per il tuo ruolo in linea.</p></div>
+ <a class="card rwcard" href="#casi"><span class="rwico">${ic('file',22)}</span><div style="flex:1;min-width:0"><small class="muted">Il sapere dei senior</small><h3>Casi dalla linea (${allCases().length})</h3></div><span class="chev">${ic('chev',18)}</span></a>
  ${groups.map(([s,t])=>{const l=MODULES.filter(m=>status(m)===s);return l.length?`<h2 class="section-title">${t}</h2><div class="mods">${l.map(modCard).join('')}</div>`:''}).join('')}</div>`}
 
 function feedback(){
@@ -692,44 +893,38 @@ function feedback(){
   <p>“${esc(f.text)}”</p><p class="small muted">${esc(f.role)}</p></section>`).join('')}</div></div>`}
 
 function profilo(){
- const done=MODULES.filter(m=>status(m)==='done').length;
- const nInt=SKILLS.filter(s=>S.lvl[s.id]>=1).length,a=autonomy();
- const req=[[nInt===6,`Tutte le competenze almeno a livello Intermedio (${nInt}/6)`],[a>=4,`Autonomia 4/4 (oggi ${a}/4)`]];
- const ready=req.every(r=>r[0]);
- const todo=['banco','intervento'].filter(id=>S.steps[id]<5).map(id=>`“${M(id).title}”`);
- const roles=[
-  ['Operatore di linea','Il tuo ruolo attuale.','reached cur'],
-  ['Operatore polivalente',ready?'Requisiti raggiunti: il supervisore ti proporrà il colloquio di crescita.':'Il prossimo passo del tuo percorso: lavori su più postazioni della linea.',ready?'reached':''],
-  ['Tecnico di linea','Almeno 3 competenze a livello Avanzato e un anno da operatore polivalente.','']];
+ const done=MODULES.filter(m=>status(m)==='done').length,a=autonomy(),r=S.tutor;
  return `<div class="fade"><div class="hello"><h1>Il tuo <em>profilo</em></h1></div>
- <section class="card"><div class="prof"><span class="avatar">MR</span><div><h2>Marco R.</h2><p class="muted small">Operatore di linea, Linea 3, turno A</p><p class="muted small">Tecnico di riferimento: Sara M. Supervisore: Luca B.</p></div></div>
- <div class="stats"><div class="stat"><b>${done}</b><span>Moduli completati</span></div><div class="stat"><b>${a}/4</b><span>Autonomia</span></div><div class="stat"><b>${avg()}</b><span>Feedback medio</span></div></div></section>
- <section class="card" style="margin-top:14px"><h2>Il mio percorso di carriera</h2><p class="small muted" style="margin:-4px 0 12px">Le competenze che sviluppi ti avvicinano al prossimo ruolo.</p>
- <ol class="lvlsteps">${roles.map((r,i)=>`<li class="${r[2]}"><span class="n">${r[2].includes('reached')?ic('check',14):i+1}</span><div><b>${r[0]}</b>${i===0?' <span class="small muted">(sei qui)</span>':''}<p class="small muted">${r[1]}</p>${i===1?`<div style="margin-top:8px;display:grid;gap:6px">${req.map(([ok,t])=>`<p class="small" style="display:flex;gap:8px;align-items:center"><span style="color:${ok?'var(--green)':'var(--muted)'};display:flex">${ic(ok?'check':'clock',16)}</span>${t}</p>`).join('')}</div>`:''}</div></li>`).join('')}</ol>
- ${todo.length?`<p class="small muted" style="margin-top:12px">Per arrivarci: completa ${todo.join(' e ')}.</p>`:''}</section>
+ <section class="card"><div class="prof"><span class="avatar">MR</span><div><h2>Marco R.</h2><p class="muted small">Operatore di linea, Linea 3, turno A</p><p class="muted small">Senior di riferimento: Sara M. Supervisore: Luca B.</p></div></div>
+ <div class="stats"><div class="stat"><b>${done}</b><span>Moduli completati</span></div><div class="stat"><b>${a}/6</b><span>Competenze autonome</span></div><div class="stat"><b>${avg()}</b><span>Feedback medio</span></div></div></section>
+ <section class="card" style="margin-top:14px"><h2>Il mio ruolo</h2><p class="small muted">In formazione come <b>Automation Expert</b>, piano di 12 mesi avviato il 15 luglio.</p>
+ <p class="small" style="margin-top:8px">${r&&r.status==='approved'?'Sei <b>Tutor base</b> in Automazione di linea.':`Obiettivi del trimestre: <b>${objOk()} su ${OBJ.length}</b>.`}</p>
+ <div class="btns" style="margin-top:12px"><a class="btn" href="#premi">${ic('gift',16)}I tuoi reward</a><a class="btn ghost" href="#percorso">Il mio piano</a></div></section>
  <section class="card" style="margin-top:14px"><h2>Demo</h2><div class="btns"><button class="btn gold" data-action="tour-start">${ic('play',16,true)}Tour guidato</button><button class="btn ghost" data-action="reset">Ricomincia la demo</button></div></section></div>`}
 
 /* ---------- app supervisore ---------- */
 function sHome(){
  const avgA=(OPS.reduce((n,o)=>n+opAut(o),0)/OPS.length).toFixed(1).replace('.',',');
- const adv=OPS.reduce((n,o)=>n+Object.values(opLvl(o)).filter(l=>l===2).length,0);
+ const adv=OPS.filter(o=>Object.values(opLvl(o)).includes(3)).length;
  const md=MODULES.filter(m=>status(m)==='done').length;
  return `<div class="fade"><div class="hello"><h1>Buongiorno <em>Luca</em>,</h1><p>Linea 3, turno A: ${OPS.length} operatori in squadra.</p></div>
  ${S.fbRequest?`<section class="card alert" style="margin-bottom:14px"><span class="badge" style="background:var(--gold);color:#2B1810">${ic('chat',18)}</span><div style="flex:1;min-width:180px"><b>Marco R. ha chiesto un feedback</b><p class="small muted">Rispondi entro fine turno.</p></div><a class="btn" href="#s-op/marco">Scrivi il feedback</a></section>`:''}
+ ${S.reward&&S.reward.status==='pending'?`<section class="card alert" style="margin-bottom:14px"><span class="badge" style="background:var(--gold);color:#2B1810">${ic('gift',18)}</span><div style="flex:1;min-width:180px"><b>Marco R. ha scelto il suo reward</b><p class="small muted">${GW(S.reward.id).title}</p></div><a class="btn" href="#s-valid">Approva</a></section>`:''}
+ ${S.tutor&&S.tutor.status==='pending'?`<section class="card alert" style="margin-bottom:14px"><span class="badge" style="background:var(--gold);color:#2B1810">${ic('trophy',18)}</span><div style="flex:1;min-width:180px"><b>Marco R. può diventare Tutor base</b><p class="small muted">Certificazione scelta: ${RW(S.tutor.id).title}</p></div><a class="btn" href="#s-valid">Conferma</a></section>`:''}
  <div class="kpis">
-  <div class="stat"><b>${avgA}/4</b><span>Autonomia media</span></div>
+  <div class="stat"><b>${avgA}/6</b><span>Competenze autonome (media)</span></div>
   <a class="stat" href="#s-valid" style="text-decoration:none;color:inherit"><b>${S.valid.length}</b><span>Da convalidare</span></a>
-  <div class="stat"><b>${adv}</b><span>Competenze avanzate</span></div>
+  <div class="stat"><b>${adv}</b><span>Tutor in squadra</span></div>
   <div class="stat"><b>${7+md}</b><span>Moduli completati nel mese</span></div>
  </div>
- <section class="card" style="margin-top:14px"><h2>La tua squadra</h2>${OPS.map(o=>`<a class="opline" href="#s-op/${o.id}"><span class="avatar" style="width:38px;height:38px;font-size:.78rem">${initials(o.name)}</span><div><b style="font-size:.93rem">${o.name}</b><p class="small muted">${esc(opMod(o))}</p></div><div style="text-align:right">${mini(opAut(o))}<small class="muted">${opAut(o)}/4</small></div></a>`).join('')}</section></div>`}
+ <section class="card" style="margin-top:14px"><h2>La tua squadra</h2>${OPS.map(o=>`<a class="opline" href="#s-op/${o.id}"><span class="avatar" style="width:38px;height:38px;font-size:.78rem">${initials(o.name)}</span><div><b style="font-size:.93rem">${o.name}</b><p class="small muted">${esc(opMod(o))}</p></div><div style="text-align:right">${mini(opAut(o))}<small class="muted">${opAut(o)}/6</small></div></a>`).join('')}</section></div>`}
 
 function sOp(id){
  const o=OP(id); if(!o) return sHome();
  const L=opLvl(o),a=opAut(o),isM=o.id==='marco',first=o.name.split(' ')[0];
  const mods=MODULES.map(m=>[m,isM?status(m):(m.title===o.mod?'doing':'todo')]);
  return `<div class="fade"><a class="back" href="#s-home">${ic('left',18)}La tua squadra</a>
- <section class="card prof" style="flex-wrap:wrap"><span class="avatar">${initials(o.name)}</span><div style="flex:1;min-width:160px"><h2>${o.name}</h2><p class="small muted">${o.role}, Linea 3, turno A</p><p class="small muted">In corso: ${esc(opMod(o))}</p></div><div>${mini(a)}<small class="muted">Autonomia ${a}/4</small></div></section>
+ <section class="card prof" style="flex-wrap:wrap"><span class="avatar">${initials(o.name)}</span><div style="flex:1;min-width:160px"><h2>${o.name}</h2><p class="small muted">${o.role}, Linea 3, turno A</p><p class="small muted">In corso: ${esc(opMod(o))}</p></div><div>${mini(a)}<small class="muted">Competenze autonome ${a}/6</small></div></section>
  <div class="grid-home" style="margin-top:14px">
   <section class="card"><h2>Competenze</h2>${SKILLS.map((s,i)=>`<div style="padding:10px 0;${i?'border-top:1px solid var(--line)':''}"><div style="display:flex;justify-content:space-between;gap:10px"><b style="font-size:.92rem">${s.name}</b><span class="small t${L[s.id]}" style="font-weight:700">${LEVELS[L[s.id]]}</span></div>${meter(L[s.id])}</div>`).join('')}${LEGEND}</section>
   <div class="stack">
@@ -738,23 +933,36 @@ function sOp(id){
     <label class="small muted" for="fbtext" style="display:block;margin:10px 0 6px">Commento per ${first}</label>
     <textarea id="fbtext" class="ta" placeholder="Es. Ottimo lavoro nel cambio turno di oggi."></textarea>
     <div class="btns" style="margin-top:12px"><button class="btn" data-action="sendfb" data-op="${o.id}">Invia feedback</button></div></section>
-   <section class="card"><h2>Assegna un modulo</h2>${mods.map(([m,st])=>`<div class="valid"><div><b style="font-size:.9rem">${m.title}</b><p class="small muted">${SK(m.skill).name}, ${m.mins} min</p></div>${st==='todo'?(isM&&S.assigned===m.id?'<span class="pill p-doing">Assegnato</span>':`<button class="btn ghost" data-action="assign" data-op="${o.id}" data-m="${m.id}">Assegna</button>`):pill(st)}</div>`).join('')}</section>
+   <section class="card assigncard"><h2>Assegna un modulo</h2>${mods.map(([m,st])=>`<div class="valid"><div><b style="font-size:.9rem">${m.title}</b><p class="small muted">${SK(m.skill).name}, ${m.mins} min</p></div>${st==='todo'?(isM&&S.assigned===m.id?'<span class="pill p-doing">Assegnato</span>':`<button class="btn ghost" data-action="assign" data-op="${o.id}" data-m="${m.id}">Assegna</button>`):pill(st)}</div>`).join('')}</section>
   </div></div></div>`}
 
 function sMatrix(){
- const cov=SKILLS.map(s=>OPS.filter(o=>opLvl(o)[s.id]===2).length);
+ const cov=SKILLS.map(s=>OPS.filter(o=>opLvl(o)[s.id]>=2).length);
  const gaps=SKILLS.filter((s,i)=>cov[i]<2);
- return `<div class="fade"><div class="hello"><h1>Matrice <em>competenze</em></h1><p>Chi sa fare cosa nella tua squadra, e dove serve formazione.</p>${LEGEND}</div>
+ return `<div class="fade"><div class="hello"><h1>Skill <em>Board</em></h1><p>Chi sa fare cosa nella tua squadra, e dove serve formazione.</p>${LEGEND}</div>
  <section class="card"><div class="mx"><table><thead><tr><th>Operatore</th>${SKILLS.map(s=>`<th>${s.name}</th>`).join('')}</tr></thead><tbody>
- ${OPS.map(o=>`<tr><td><a href="#s-op/${o.id}" style="font-weight:700;text-decoration:none">${o.name}</a></td>${SKILLS.map(s=>{const l=opLvl(o)[s.id];return `<td><span class="dotl lvl${l}" title="${LEVELS[l]}">${LEVELS[l][0]}</span></td>`}).join('')}</tr>`).join('')}
- <tr class="cov"><td>Esperti (Avanzato)</td>${cov.map(n=>`<td class="${n<2?'gap':''}">${n}</td>`).join('')}</tr></tbody></table></div>
- <p class="small muted" style="margin-top:12px">In rosso le competenze con meno di 2 esperti in squadra.</p></section>
- ${gaps.length?`<section class="card" style="margin-top:14px"><h2>Priorità del piano formativo</h2>${gaps.map(s=>`<div class="valid"><div><b style="font-size:.92rem">${s.name}</b><p class="small muted">${cov[SKILLS.indexOf(s)]} esperti su ${OPS.length}</p></div><button class="btn ghost" data-action="plan" data-s="${s.id}">Pianifica formazione</button></div>`).join('')}</section>`:''}</div>`}
+ ${OPS.map(o=>`<tr><td><a href="#s-op/${o.id}" style="font-weight:700;text-decoration:none">${o.name}</a></td>${SKILLS.map(s=>{const l=opLvl(o)[s.id];return `<td><span class="dotl lvl${l}" title="${LEVELS[l]}">${l+1}</span></td>`}).join('')}</tr>`).join('')}
+ <tr class="cov"><td>Autonomi o Tutor</td>${cov.map(n=>`<td class="${n<2?'gap':''}">${n}</td>`).join('')}</tr></tbody></table></div>
+ <p class="small muted" style="margin-top:12px">In rosso le competenze con meno di 2 persone autonome in squadra.</p></section>
+ ${gaps.length?`<section class="card" style="margin-top:14px"><h2>Priorità del piano formativo</h2>${gaps.map(s=>`<div class="valid"><div><b style="font-size:.92rem">${s.name}</b><p class="small muted">${cov[SKILLS.indexOf(s)]} autonomi su ${OPS.length}</p></div><button class="btn ghost" data-action="plan" data-s="${s.id}">Pianifica formazione</button></div>`).join('')}</section>`:''}</div>`}
 
 function sValid(){
  return `<div class="fade"><div class="hello"><h1>Da <em>convalidare</em></h1><p>Competenze raggiunte dagli operatori che aspettano la tua conferma.</p></div>
  <section class="card">${S.valid.length?S.valid.map((x,i)=>{const o=OP(x.op);return `<div class="valid"><div style="display:flex;gap:12px;align-items:center"><span class="avatar" style="width:38px;height:38px;font-size:.78rem">${initials(o.name)}</span><div><b style="font-size:.93rem">${o.name}</b><p class="small">${SK(x.skill).name}: <b class="t${x.lvl}">${LEVELS[x.lvl]}</b></p><p class="small muted">Dopo il modulo “${esc(x.src)}”</p></div></div><div class="btns"><button class="btn ghost" data-action="prova" data-i="${i}">Chiedi una prova in linea</button><button class="btn gold" data-action="valida" data-i="${i}">${ic('check',18)}Convalida</button></div></div>`}).join(''):`<p class="empty">Nessuna competenza da convalidare.</p>`}</section>
+ <section class="card rewconf" style="margin-top:14px"><h2>Reward da approvare</h2>${S.reward&&S.reward.status==='pending'?`<div class="valid"><div style="display:flex;gap:12px;align-items:center"><span class="avatar" style="width:38px;height:38px;font-size:.78rem">MR</span><div><b style="font-size:.93rem">Marco R.</b><p class="small">Corso: ${GW(S.reward.id).title}</p><p class="small muted">Tutti gli obiettivi del trimestre raggiunti</p></div></div><button class="btn gold" data-action="approverw">${ic('check',18)}Approva il reward</button></div>`
+  :S.reward?`<p class="empty">Reward di Marco R. approvato.</p>`:`<p class="empty">Nessun reward da approvare. Marco R. è a ${objOk()} obiettivi su ${OBJ.length}.</p>`}</section>
+ ${S.tutorOpt||S.tutor?`<section class="card tutorconf" style="margin-top:14px"><h2>Tutor da confermare</h2>${S.tutor&&S.tutor.status==='pending'?`<div class="valid"><div style="display:flex;gap:12px;align-items:center"><span class="avatar" style="width:38px;height:38px;font-size:.78rem">MR</span><div><b style="font-size:.93rem">Marco R.</b><p class="small">Tutor base in Automazione di linea</p><p class="small muted">Certificazione scelta: ${RW(S.tutor.id).title}</p></div></div><button class="btn gold" data-action="approvetutor">${ic('check',18)}Conferma e approva</button></div>`
+  :S.tutor?`<p class="empty">Marco R. è Tutor base: conferma registrata.</p>`:`<p class="empty">Marco R. si è candidato: è a ${goalsOk()} obiettivi su ${GOALS.length} per Tutor base.</p>`}</section>`:''}
  ${S.validated.length?`<p class="small muted" style="margin-top:12px">Convalidate in questa sessione: ${S.validated.length}</p>`:''}</div>`}
+
+function sCasi(){
+ return `<div class="fade"><div class="hello"><h1>Schede <em>caso</em></h1><p>Trasforma un problema risolto in linea in una scheda che tutta la squadra può usare.</p></div>
+ <section class="card"><h2>Nuova scheda caso</h2>
+  <label class="small muted" for="cf-title">Titolo</label><input id="cf-title" class="ta inp" placeholder="Es. Fermo ripetuto al nastro di uscita">
+  <label class="small muted" for="cf-skill">Competenza</label><select id="cf-skill" class="ta inp">${SKILLS.map(x=>`<option value="${x.id}">${x.name}</option>`).join('')}</select>
+  ${CASEF.map(([k,l])=>`<label class="small muted" for="cf-${k}">${l}</label><textarea id="cf-${k}" class="ta" style="min-height:60px"></textarea>`).join('')}
+  <div class="btns" style="margin-top:12px"><button class="btn" data-action="addcase">${ic('check',16)}Pubblica la scheda</button></div></section>
+ <section class="card" style="margin-top:14px"><h2>Schede pubblicate (${allCases().length})</h2>${allCases().map(c=>`<div class="valid"><div><b style="font-size:.92rem">${esc(c.title)}</b><p class="small muted">${SK(c.skill)?SK(c.skill).name:''}, ${esc(c.author)}</p></div></div>`).join('')}</section></div>`}
 
 function sProfilo(){
  return `<div class="fade"><div class="hello"><h1>Il tuo <em>profilo</em></h1></div>
@@ -780,7 +988,7 @@ function modulo(id){
  const stepper=`<div class="stepper" aria-label="Fase ${k+1} di 5">${STEPS.map((t,i)=>`<div class="${i<S.steps[id]&&i!==k?'d':''}${i===k?'c':''}"><i></i><span>${t}</span></div>`).join('')}</div>`;
  let body='';
  if(k===0) body=`<h2>Spiegare</h2><p style="margin-top:8px">${m.intro}</p><ul class="keypoints">${m.points.map(p=>`<li>${ic('check',18)}${p}</li>`).join('')}</ul>`;
- if(k===1) body=`<h2>Dimostrare</h2><button class="video" data-action="video" style="margin-top:12px" aria-label="Riproduci video dimostrativo"><span class="play">${ic('play',26,true)}</span><small>Video dimostrativo, 2:40</small></button><p style="margin-top:12px">${m.demo}</p>`;
+ if(k===1) body=`<h2>Dimostrare</h2><button class="video" data-action="video" style="margin-top:12px" aria-label="Riproduci video dimostrativo"><span class="play">${ic('play',26,true)}</span><small>Video dimostrativo, 2:40</small></button><p style="margin-top:12px">${m.demo}</p>${caseFor(m.id)?`<p class="small muted" style="margin:16px 0 8px">Il ragionamento del senior, passo per passo:</p>${caseCard(caseFor(m.id))}`:''}`;
  if(k===2) body=`<h2>Provare</h2><p class="muted small" style="margin:6px 0 12px">Esegui ogni attività con il tuo tecnico di riferimento e spuntala quando hai finito.</p><div class="stack" style="gap:10px">${m.tasks.map((t,i)=>`<label class="check"><input type="checkbox" class="task" ${past?'checked':''}><span>${t}</span></label>`).join('')}</div>`;
  if(k===3) body=`<h2>Ricevere feedback</h2><div class="tutor" style="margin-top:12px"><span class="avatar">${m.fb.from.split(' ').map(x=>x[0]).join('')}</span><div><b>${m.fb.from}</b><p class="small muted">${m.fb.role}</p><div class="stars" style="margin:6px 0">${Array.from({length:5},(_,i)=>`<span style="opacity:${i<m.fb.stars?1:.25}">${star(16)}</span>`).join('')}</div><p>“${m.fb.text}”</p></div></div>`;
  if(k===4) body=`<h2>Verificare</h2><p class="muted small" style="margin-top:6px">Due domande per aggiornare la tua Skill Board.</p>${m.quiz.map((q,qi)=>`<div class="q"><fieldset><legend>${qi+1}. ${q.q}</legend>${q.o.map((o,oi)=>`<label class="opt" data-q="${qi}" data-o="${oi}"><input type="radio" name="q${qi}" value="${oi}"><span>${o}</span></label>`).join('')}</fieldset></div>`).join('')}`;
@@ -803,44 +1011,73 @@ function next(id){
  S.steps[id]++; vs++;
  if(S.steps[id]>=5){S.lvl[m.skill]=Math.min(2,S.lvl[m.skill]+1);S.valid=S.valid.filter(v=>!(v.op==='marco'&&v.skill===m.skill));S.valid.unshift({op:'marco',skill:m.skill,lvl:S.lvl[m.skill],src:m.title})}
  save(); render();
- if(S.steps[id]>=5){confetti();toast(`${SK(m.skill).name} ora è ${LEVELS[S.lvl[m.skill]]}`)}
+ if(S.steps[id]>=5){confetti();toast(`${SK(m.skill).name} ora è ${LEVELS[S.lvl[m.skill]]}`);checkGoals()}
 }
 
 
 /* ---------- tour guidato ---------- */
 const TOUR=[
- {route:'home',target:'.hello',title:'Questa è la home di Marco',text:'Marco è un operatore di linea. Da qui vede a colpo d\'occhio le sue competenze, il modulo in corso, l\'autonomia raggiunta e i feedback ricevuti.'},
- {route:'home',target:'a[href="#competenze/man"]',title:'Ogni competenza ha un livello',text:'I colori richiamano i gusti Magnum: caramello per Base, lampone per Intermedio, pistacchio per Avanzato. Tocca "Manutenzione di base".',until:()=>location.hash==='#competenze/man'},
- {target:'.lvlsteps',title:'Traguardi concreti',text:'Ogni livello descrive cosa l\'operatore sa fare davvero sul campo. Marco oggi è a livello Base e sa già quali moduli seguire per crescere.'},
- {route:'home',target:'a.btn[href="#modulo/banco"]',title:'Il modulo in corso',text:'Marco sta seguendo "Basi tecniche sul banco", già al 60%. Tocca "Continua il modulo".',until:()=>location.hash==='#modulo/banco'},
- {target:'[data-action="next"]',title:'Le fasi del percorso',text:'La barra in alto mostra le fasi del modulo. Marco è alla fase Feedback: il tutor ha valutato la sua prova pratica. Tocca "Ho letto il feedback".',until:()=>S.steps.banco>=4},
- {target:'section.card',title:'La verifica',text:'Ultima fase: due domande per aggiornare la Skill Board. Tocca una risposta per ciascuna domanda. Suggerimento: in linea la sicurezza viene sempre prima di tutto.',hint:'Rispondi alle due domande',until:()=>document.querySelectorAll('#view .opt input:checked').length>=2},
- {target:'[data-action="next"]',title:'Conferma le risposte',text:'Ora tocca "Verifica le risposte". Se sono corrette il modulo si chiude e la competenza sale di livello; se una è sbagliata, la vedi in rosso e puoi riprovare.',hint:'Tocca il pulsante evidenziato',until:()=>S.steps.banco>=5},
- {target:'.levelup',title:'Livello raggiunto',text:'Automazione di linea passa ad Avanzato. Home, Skill Board e percorso si aggiornano da soli, e l\'app propone il modulo successivo.'},
- {global:true,target:'#roleSup',title:'Cambiamo punto di vista',text:'Il supervisore ha una sua app, separata da quella dell\'operatore. Tocca "Supervisore" in alto.',until:()=>curRoute().startsWith('s-')},
- {route:'s-home',target:'.kpis',title:'L\'app del supervisore',text:'Luca B., responsabile della Linea 3, vede la sua squadra a colpo d\'occhio: autonomia media, convalide in attesa, competenze avanzate e moduli completati.'},
- {route:'s-valid',target:'.valid',title:'Convalidare le competenze',text:'La nuova competenza di Marco aspetta la conferma di chi lo vede lavorare ogni giorno. Tocca "Convalida".',until:()=>!S.valid.some(v=>v.op==='marco')},
- {route:'s-matrix',target:'.mx',title:'La matrice delle competenze',text:'Tutta la squadra in una tabella. Grazie a Marco, Automazione di linea ora ha 2 esperti; in rosso restano le priorità del piano formativo.'},
- {route:'s-home',target:'.hello',title:'Tour completato',text:'Magnum Skill Lab: percorsi chiari per chi lavora in linea, strumenti concreti per chi guida la squadra. Ora puoi esplorare liberamente le due app.'}
+ {route:'s-home',target:'.kpis',title:'Iniziamo dal supervisore',text:'Luca B. è il responsabile della Linea 3. Con My Magnum vede la sua squadra a colpo d\'occhio: competenze autonome, convalide in attesa, Tutor e moduli completati.'},
+ {route:'s-matrix',target:'.mx',title:'La Skill Board',text:'Chi sa fare cosa, sui quattro livelli del Magnum Skill Lab, dal lampone al cioccolato: Osservatore, Affiancato, Autonomo e Tutor. In rosso le competenze con meno di 2 persone autonome: in Automazione di linea c\'è solo Giulia.'},
+ {route:'s-matrix',target:'.mx',tap:()=>document.querySelector('#view .mx a[href="#s-op/marco"]'),tapText:'Tocca Marco',title:'Chi può colmare il gap?',text:'Marco è già al livello Affiancato in Automazione di linea. Tocca il suo nome per aprire la sua scheda.',until:()=>location.hash==='#s-op/marco'},
+ {route:'s-op/marco',target:'.assigncard',tap:()=>document.querySelector('#view [data-action=assign][data-m=intervento]'),tapText:'Tocca "Assegna"',title:'Assegnare il prossimo modulo',text:'Luca pianifica il passo dopo: assegna a Marco "Primo intervento guidato in linea". Arriverà subito nella sua app.',until:()=>S.assigned==='intervento'},
+ {global:true,tapText:'Tocca qui',target:'#roleOp',title:'Ora il punto di vista di Marco',text:'Marco, operatore di linea, ha la sua area. Tocca "Operatore" in alto.',until:()=>!curRoute().startsWith('s-')},
+ {route:'home',target:'.next',title:'L\'app di Marco',text:'Il modulo assegnato da Luca è già qui. Prima però Marco deve chiudere quello in corso, "Basi tecniche sul banco".'},
+ {route:'home',target:'a.btn[href="#modulo/banco"]',title:'Il modulo in corso',text:'È già al 60%. Tocca "Continua il modulo".',until:()=>location.hash==='#modulo/banco'},
+ {route:'modulo/banco',target:'[data-action="next"]',title:'Il feedback del senior',text:'La barra in alto mostra le fasi del modulo. Sara M., la sua senior, ha valutato la prova pratica. Tocca "Ho letto il feedback".',until:()=>S.steps.banco>=4},
+ {route:'modulo/banco',target:'section.card',tap:()=>[...document.querySelectorAll('#view .q')].find(q=>!q.querySelector('input:checked')),tapText:'Scegli una risposta',title:'La verifica',text:'Due domande per aggiornare la Skill Board. Tocca una risposta per ciascuna. Suggerimento: in linea la sicurezza viene prima di tutto.',hint:'Rispondi alle due domande',until:()=>document.querySelectorAll('#view .opt input:checked').length>=2},
+ {route:'modulo/banco',target:'[data-action="next"]',title:'Conferma le risposte',text:'Tocca "Verifica le risposte". Se una è sbagliata la vedi in rosso e puoi riprovare.',hint:'Tocca il pulsante evidenziato',until:()=>S.steps.banco>=5},
+ {route:'modulo/banco',target:'.levelup',title:'Livello raggiunto',text:'Automazione di linea sale al livello 3, Autonomo. Ma non basta l\'app: deve confermarlo chi vede Marco lavorare.'},
+ {global:true,tapText:'Tocca qui',target:'#roleSup',title:'Torniamo da Luca',text:'Tocca "Supervisore" in alto.',until:()=>curRoute().startsWith('s-')},
+ {route:'s-valid',target:'.valid',tap:()=>document.querySelector('#view .valid [data-action=valida]'),tapText:'Tocca "Convalida"',title:'Convalidare la competenza',text:'La competenza di Marco è arrivata nelle convalide di Luca. Tocca "Convalida".',until:()=>!S.valid.some(v=>v.op==='marco')},
+ {route:'s-matrix',target:'.mx',title:'Gap colmato',text:'Automazione di linea ha ora 2 persone autonome e non è più in rosso: la decisione di Luca ha dato risultato.'},
+ {route:'premi',target:'.objs',title:'I reward di Marco',text:'Di nuovo nell\'app di Marco. Ogni operatore ha obiettivi formativi del trimestre: verifica superata, competenza convalidata e buoni feedback. Marco li ha raggiunti tutti.'},
+ {route:'premi',target:'.rewards',tap:()=>document.querySelector('#view [data-action=pickrw]'),tapText:'Scegline uno',title:'Il reward',text:'Obiettivi raggiunti: Marco sceglie il suo reward, un corso di formazione.',until:()=>!!S.reward},
+ {route:'s-valid',target:'.rewconf',tap:()=>document.querySelector('#view [data-action=approverw]'),tapText:'Tocca qui',title:'L\'approvazione di Luca',text:'La scelta arriva al supervisore, che approva il reward di Marco.',until:()=>S.reward&&S.reward.status==='approved'},
+ {route:'premi',target:'.tutorsec',title:'Diventa Tutor, se vuoi',text:'Non tutti vogliono insegnare. Chi lo desidera si candida qui e trova obiettivi, certificazioni e, al livello avanzato, il bonus Tutor.'},
+ {route:'premi',target:'.rwhero',title:'Tour completato',text:'My Magnum: il supervisore pianifica e convalida, l\'operatore cresce e viene premiato. Ora puoi esplorare liberamente le due aree.'}
 ];
 let T=null;
 const curRoute=()=>location.hash.slice(1)||'home';
-function tourStart(){S=fresh();vsFor=null;save();T=0;document.body.classList.add('touring');if(curRoute()==='home')render();else location.hash='#home'}
+function tourStart(){S=fresh();vsFor=null;save();T=0;document.body.classList.add('touring');if(curRoute()==='s-home')render();else location.hash='#s-home'}
 function goStep(){const st=TOUR[T];if(st.route&&curRoute()!==st.route){location.hash='#'+st.route;return}tourPaint()}
-function tourEnd(){T=null;document.body.classList.remove('touring');document.querySelectorAll('.tour-target').forEach(e=>e.classList.remove('tour-target'));document.getElementById('tour').classList.remove('show');toast('Buona esplorazione!')}
+function tourEnd(){T=null;tapEl=null;placeTap();document.querySelectorAll('.tour-action').forEach(e=>e.classList.remove('tour-action'));document.body.classList.remove('touring');document.querySelectorAll('.tour-target').forEach(e=>e.classList.remove('tour-target'));document.getElementById('tour').classList.remove('show');toast('Buona esplorazione!')}
 function tourPaint(){
  const card=document.getElementById('tour');
  document.querySelectorAll('.tour-target').forEach(e=>e.classList.remove('tour-target'));
  if(T===null){card.classList.remove('show');return}
+ if(T<3&&location.hash==='#s-op/marco')T=3;
  const st=TOUR[T];
  if(st.until&&st.until()){T++;if(T>=TOUR.length)return tourEnd();return goStep()}
  const last=T===TOUR.length-1;
+ const lost=!document.querySelector(st.global?st.target:'#view '+st.target)&&st.route&&curRoute()!==st.route;
+ if(lost){tapEl=null;placeTap();document.querySelectorAll('.tour-action').forEach(e=>e.classList.remove('tour-action'));
+  card.innerHTML=`<div class="dots">${TOUR.map((_,i)=>`<i class="${i<=T?'on':''}"></i>`).join('')}</div><h3>Sei uscito dal percorso</h3><p>Puoi esplorare questa pagina, poi riprendi il tour da dove eri: “${st.title}”.</p>
+  <div class="row"><button class="skip" data-action="tour-end">Esci dal tour</button><button class="btn" data-action="tour-resume">Torna al tour</button></div>`;
+  card.classList.add('show');return}
  card.innerHTML=`<div class="dots">${TOUR.map((_,i)=>`<i class="${i<=T?'on':''}"></i>`).join('')}</div><h3>${st.title}</h3><p>${st.text}</p>
   <div class="row">${last?'<span></span>':'<button class="skip" data-action="tour-end">Esci dal tour</button>'}${st.until?`<span class="hint">${st.hint||'Tocca l\'elemento evidenziato'}</span>`:`<button class="btn" data-action="tour-next">${last?'Esplora l\'app':'Avanti'}</button>`}</div>`;
  card.classList.add('show');
  const el=document.querySelector(st.global?st.target:'#view '+st.target);
- if(el){el.classList.add('tour-target');setTimeout(()=>el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:el.offsetHeight>innerHeight*.45?'start':'center'}),120)}
+ if(el)el.classList.add('tour-target');
+ tapEl=st.tap?st.tap():(st.until?el:null);tapLabel=st.tapText||'Tocca qui';
+ document.querySelectorAll('.tour-action').forEach(e=>e.classList.remove('tour-action'));
+ if(tapEl)tapEl.classList.add('tour-action');
+ const sc=tapEl||el;
+ if(sc)setTimeout(()=>{const r=sc.getBoundingClientRect();const top=r.height>innerHeight*.45?r.top+scrollY-110:r.top+scrollY-innerHeight*.3;window.scrollTo({top:Math.max(0,top),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});setTimeout(placeTap,60)},120);
+ placeTap();
 }
+let tapEl=null,tapLabel='Tocca qui';
+function placeTap(){
+ const t=document.getElementById('tap');
+ if(T===null||!tapEl||!document.body.contains(tapEl)){t.classList.remove('show');return}
+ const r=tapEl.getBoundingClientRect(),below=r.top<120;
+ t.innerHTML=below?`<span class="arr up"></span><span class="lbl">${tapLabel}</span>`:`<span class="lbl">${tapLabel}</span><span class="arr"></span>`;
+ const w=t.offsetWidth||120,left=Math.min(innerWidth-w-8,Math.max(8,r.left+r.width/2-w/2));
+ t.style.left=left+'px';t.style.top=(below?r.bottom+8:r.top-58)+'px';
+ t.classList.add('show');
+}
+addEventListener('scroll',placeTap,{passive:true});addEventListener('resize',placeTap);
 function confetti(){
  const box=document.createElement('div');box.className='confetti';
  const cols=['#C29B4C','#E2C07A','#5A3825','#2B1810','#F3E6C8'];
@@ -861,7 +1098,15 @@ document.addEventListener('click',e=>{
  if(a==='video') toast('Nella beta il video è un segnaposto: qui andrà il filmato girato in linea.');
  if(a==='notif') toast(curRoute().startsWith('s-')?(S.fbRequest?'Marco R. ha chiesto un feedback.':(S.valid.length?`${S.valid.length} competenze aspettano la tua convalida.`:'Nessuna nuova notifica.')):(S.assigned?'Luca B. ti ha assegnato un nuovo modulo.':'Nuovo feedback disponibile e un modulo consigliato per te.'));
  if(a==='askfb'){S.fbRequest=true;save();render();toast('Richiesta inviata a Luca B., supervisore di linea.')}
- if(a==='valida'){const x=S.valid.splice(+b.dataset.i,1)[0];S.validated.push(x.op+':'+x.skill);save();render();toast(`${SK(x.skill).name} di ${OP(x.op).name} convalidata.`)}
+ if(a==='valida'){const x=S.valid.splice(+b.dataset.i,1)[0];S.validated.push(x.op+':'+x.skill);save();render();toast(`${SK(x.skill).name} di ${OP(x.op).name} convalidata.`);checkGoals()}
+ if(a==='pickrw'){S.reward={id:b.dataset.r,status:'pending'};save();render();toast('Reward scelto: la richiesta è arrivata a Luca B.')}
+ if(a==='pickcert'){S.tutor={id:b.dataset.r,status:'pending'};save();render();toast('Candidatura inviata: Luca B. deve confermare il ruolo di Tutor base')}
+ if(a==='candidati'){S.tutorOpt=true;save();render();toast('Candidatura a Tutor registrata: ecco i tuoi obiettivi');checkGoals()}
+ if(a==='affianca'){S.coached=true;save();render();toast('Affiancamento registrato, confermato da Sara M.');checkGoals()}
+ if(a==='addcase'){const g=k=>(document.getElementById('cf-'+k).value||'').trim();if(!g('title')||!g('problem')){toast('Scrivi almeno il titolo e il problema osservato.');return}
+  const c={id:'u'+Date.now(),skill:g('skill'),line:'Linea 3',author:'Luca B., supervisore',title:g('title')};CASEF.forEach(([k])=>c[k]=g(k));S.cases.unshift(c);save();render();toast('Scheda pubblicata: gli operatori la trovano in Casi dalla linea')}
+ if(a==='approverw'){S.reward.status='approved';save();render();confetti();toast('Reward approvato: Marco R. lo vedrà nella sua app')}
+ if(a==='approvetutor'){S.tutor.status='approved';S.lvl.aut=3;save();render();confetti();toast('Marco R. è Tutor base: certificazione approvata')}
  if(a==='prova'){const x=S.valid[+b.dataset.i];toast(`${OP(x.op).name} riceverà la richiesta di una prova in linea`)}
  if(a==='star'){starV=+b.dataset.v;document.querySelectorAll('.starpick button').forEach((x,i)=>x.classList.toggle('on',i<starV))}
  if(a==='sendfb'){const o=OP(b.dataset.op),t=(document.getElementById('fbtext').value.trim()||'Buon lavoro, continua così.');
@@ -874,9 +1119,10 @@ document.addEventListener('click',e=>{
  if(a==='splash'){showSplash()}
  if(a==='tour-next'){T++;T>=TOUR.length?tourEnd():goStep()}
  if(a==='tour-end'){tourEnd()}
+ if(a==='tour-resume'){goStep()}
  if(a==='reset'){S=fresh();vsFor=null;save();location.hash='#home';render();toast('Demo ripristinata.')}
 });
-const VIEWS={home,percorso,competenze,moduli,feedback,profilo,modulo,'s-home':sHome,'s-op':sOp,'s-matrix':sMatrix,'s-valid':sValid,'s-profilo':sProfilo};
+const VIEWS={home,premi,casi,'s-casi':sCasi,percorso,competenze,moduli,feedback,profilo,modulo,'s-home':sHome,'s-op':sOp,'s-matrix':sMatrix,'s-valid':sValid,'s-profilo':sProfilo};
 function render(){
  const [r,arg]=(location.hash.slice(1)||'home').split('/');
  const fn=VIEWS[r]||home;
